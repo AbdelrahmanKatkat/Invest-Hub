@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Fundamental Analysis</title>
+<meta name="description" content="Cash flow statements, ratio analysis, economic moats, red flags, and qualitative analysis.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamental.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamental" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="fundamental.html">Fundamental Analysis</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#a371f726">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Cash flow statements, ratio analysis, economic moats, red flags, and qualitative analysis. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="cash-flow-statement" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Reading a cash flow statement</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company reports $100,000 of net income but $150,000 of operating cash flow. How can cash be higher than profit?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>The cash flow statement splits cash movements into <b>operating</b>, <b>investing</b> and <b>financing</b> activities. Profit includes non-cash items like <b>depreciation</b> (an expense with no actual cash outflow that period), so operating cash flow adds it back.</p>
+        <div class="worked"><b>Worked example</b><p>Net income $100,000 + depreciation add-back $60,000 − working-capital increase $10,000 = <b>$150,000</b> operating cash flow.</p></div>
+        <div class="eq">\text{Operating CF}=\text{Net income}+\text{Depreciation}-\Delta\text{Working capital}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise depreciation: operating cash flow rises above net income further.</li></ol></div>
+      <div data-lab="calc" data-title="From net income to operating cash flow" data-params="netIncome=100000:-500000..2000000:1000; depreciation=60000:0..500000:1000; workingCapitalChange=10000:-200000..200000:1000" data-rows="operating cash flow = netIncome + depreciation - workingCapitalChange"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A profitable company can still run short of actual cash if profit isn't converting to cash.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Analysts comparing net income to operating cash flow as a quality-of-earnings check.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name the three sections of a cash flow statement.</summary><div class="ans">Operating, investing, financing.</div></details>
+        <details class="check"><summary>2. Net income $50,000, depreciation $20,000, no working-capital change. Operating CF?</summary><div class="ans">$70,000.</div></details>
+        <details class="check"><summary>3. Why is depreciation added back to net income?</summary><div class="ans">It's a non-cash expense — it reduces reported profit without an actual cash outflow that period.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Operating cash flow can differ from net income due to non-cash items.</li><li>A gap between the two is worth investigating.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="ratio-analysis" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Ratio analysis</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company earns $80,000 on $400,000 of equity and $1,000,000 of total assets. Which figure tells you more about management's efficiency?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Return on equity (ROE)</b> measures profit relative to owners' capital; <b>return on assets (ROA)</b> measures it relative to everything the company controls, debt included. ROE can look inflated by heavy borrowing even when the underlying business isn't especially efficient.</p>
+        <div class="worked"><b>Worked example</b><p>ROE = 80,000/400,000 = <b>20%</b>. ROA = 80,000/1,000,000 = <b>8%</b> — the gap hints at significant debt financing.</p></div>
+        <div class="eq">ROE=\frac{\text{Net income}}{\text{Equity}}\qquad ROA=\frac{\text{Net income}}{\text{Total assets}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise total assets with equity fixed: ROA falls, but ROE stays the same — more debt-financed assets, same equity profitability.</li></ol></div>
+      <div data-lab="calc" data-title="ROE vs. ROA" data-params="netIncome=80000:1000..5000000:1000; equity=400000:1000..5000000:1000; assets=1000000:1000..10000000:1000" data-rows="ROE % = netIncome / equity * 100; ROA % = netIncome / assets * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A high ROE driven mainly by heavy debt is a different (riskier) story than one driven by genuine operating efficiency.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>ROE is commonly compared across companies in the same industry.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Net income $60,000, equity $300,000. ROE?</summary><div class="ans">20%.</div></details>
+        <details class="check"><summary>2. Why might ROE be high while ROA is only modest?</summary><div class="ans">Heavy use of debt can inflate ROE relative to ROA, which reflects all assets regardless of financing.</div></details>
+        <details class="check"><summary>3. Does a high ROE always mean an efficient business?</summary><div class="ans">Not necessarily — check whether it's driven by leverage rather than genuine operating efficiency.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>ROE and ROA answer related but different questions.</li><li>A gap between them can signal heavy leverage.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="economic-moats" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Economic moats</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two companies both earn high profits today. One can raise prices 10% with little customer loss; the other loses customers at a 2% price rise. Which has the wider moat?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>An <b>economic moat</b> is a durable advantage — a brand, network effect, high switching costs, or scale — that protects long-run profits from competition. The company that can raise prices without losing much business has pricing power, a classic sign of a moat.</p>
+        <div class="worked"><b>Worked example</b><p>If a 10% price rise costs almost no customers, the implied "customer loss per 1% price rise" is near 0; at the other company it's roughly 2% lost per 1% price rise — a rough, illustrative way to compare pricing power.</p></div>
+        <div class="eq">\text{price sensitivity}\approx\frac{\%\ \text{customers lost}}{\%\ \text{price increase}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise customer loss for the same price increase: sensitivity rises — weaker pricing power, a narrower moat.</li></ol></div>
+      <div data-lab="calc" data-title="Illustrative pricing power" data-params="priceIncrease=10:1..50:1; customerLoss=2:0..50:1" data-rows="price sensitivity (loss per 1% price rise) = customerLoss / priceIncrease"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A moat can narrow over time — past pricing power doesn't guarantee future pricing power.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Companies widely cited for strong brand, network-effect, or switching-cost moats.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name a type of economic moat.</summary><div class="ans">Any of: brand, network effect, switching costs, scale.</div></details>
+        <details class="check"><summary>2. Which is a sign of pricing power: losing many customers at a small price rise, or losing few?</summary><div class="ans">Losing few customers at a price rise signals stronger pricing power.</div></details>
+        <details class="check"><summary>3. Can a moat narrow over time?</summary><div class="ans">Yes — competitive advantages can erode; a past moat doesn't guarantee a future one.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A moat is a durable competitive advantage.</li><li>Pricing power is one observable clue to a moat's strength.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="red-flags-in-financials" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Red flags in financials</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company's revenue grows 10% this year, but its accounts receivable (money owed by customers) grows 40%. Should that raise an eyebrow?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Receivables growing much faster than revenue can mean the company is booking sales it hasn't actually collected cash for yet — a potential <b>red flag</b>. Other common ones: recurring "one-time" charges, and profit and cash flow trending in opposite directions (Lesson 0.1 in this module).</p>
+        <div class="worked"><b>Worked example</b><p>Receivables growth (40%) ÷ revenue growth (10%) = <b>4×</b> — receivables are growing four times faster than sales, worth investigating.</p></div>
+        <div class="eq">\text{red-flag ratio}=\frac{\%\ \text{growth in receivables}}{\%\ \text{growth in revenue}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring receivables growth down toward revenue growth: the ratio approaches 1 — a less worrying pattern.</li></ol></div>
+      <div data-lab="calc" data-title="Receivables-to-revenue growth check" data-params="revenueGrowth=10:-20..100:1; receivablesGrowth=40:-20..100:1" data-rows="red-flag ratio = receivablesGrowth / revenueGrowth"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>One red flag isn't proof of a problem — it's a prompt to look closer, not an automatic conclusion.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Analysts flagging aggressive revenue recognition during due diligence.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What might fast-growing receivables relative to revenue suggest?</summary><div class="ans">Sales being booked before cash is actually collected.</div></details>
+        <details class="check"><summary>2. Revenue +8%, receivables +32%. Ratio?</summary><div class="ans">32/8 = 4×.</div></details>
+        <details class="check"><summary>3. Does one red flag prove fraud or trouble?</summary><div class="ans">No — it's a prompt for closer investigation, not automatic proof.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Red flags are prompts to investigate, not verdicts.</li><li>Comparing growth rates across statement lines can reveal mismatches.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="qualitative-analysis" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Qualitative analysis</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two companies have near-identical financial ratios. Can the numbers alone tell you which is the better investment?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Numbers describe the past; <b>qualitative analysis</b> — management's track record and incentives, industry position, governance — helps judge whether the numbers are likely to hold up or improve. The best fundamental analysis combines both.</p>
+        <div class="worked"><b>Worked example</b><p>A simple illustrative "confidence score": starting from a 50% baseline, add 10 points for a strong management track record, add 10 for a leading industry position, subtract 15 for weak governance — net score moves with the qualitative inputs, not with any new financial ratio.</p></div>
+        <div class="eq">\text{score}=\text{base}+\sum(\text{qualitative adjustments})</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Push the governance adjustment very negative: the overall score falls even if nothing in the financials changed.</li></ol></div>
+      <div data-lab="calc" data-title="Illustrative qualitative scoring" data-params="base=50:0..100:1; managementAdj=10:-30..30:1; industryAdj=10:-30..30:1; governanceAdj=-15:-30..30:1" data-rows="overall score = base + managementAdj + industryAdj + governanceAdj"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Qualitative judgement is inherently more subjective than a ratio — it should supplement, not replace, the numbers.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Management track record and strategy routinely discussed on earnings calls.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name a qualitative factor in fundamental analysis.</summary><div class="ans">Any of: management quality, industry position, governance.</div></details>
+        <details class="check"><summary>2. Can two companies with identical ratios be different investments?</summary><div class="ans">Yes — qualitative factors can differ even when the numbers look alike.</div></details>
+        <details class="check"><summary>3. Should qualitative judgement replace ratio analysis?</summary><div class="ans">No — it should supplement it, since it's inherently more subjective.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Numbers and qualitative judgement both matter.</li><li>Identical ratios can still hide very different businesses.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Technical Analysis looks at reading price and volume directly.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

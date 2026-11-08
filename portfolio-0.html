@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Portfolio Management</title>
+<meta name="description" content="Modern portfolio theory, the efficient frontier, CAPM and beta, factor investing, and rebalancing policy.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-portfolio.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="portfolio" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="portfolio.html">Portfolio Management</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#56d36426">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Modern portfolio theory, the efficient frontier, CAPM and beta, factor investing, and rebalancing policy. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="modern-portfolio-theory" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Modern portfolio theory</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Is picking "good" individual assets the same problem as building a "good" portfolio?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Modern portfolio theory</b> treats portfolio construction as a whole-portfolio optimisation problem, not an asset-by-asset one — exactly the diversification math from Investment Fundamentals Lesson 0.7, generalised to many assets at once.</p>
+        <div class="worked"><b>Worked example</b><p>Recall: two assets, each σ=20%, correlation 0.3, blended 50/50, gave a portfolio σ of about 16.1% — lower than either asset alone. MPT asks: for a given target risk, which exact mix of many assets maximises expected return?</p></div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Revisit the two-asset diversification lab and vary correlation — the same mechanism scales to many assets.</li></ol></div>
+      <div data-lab="diversify"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>MPT relies on estimated returns, risks and correlations — the output is only as good as those estimates.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Most target-date and robo-advisor allocation models trace back to MPT.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Is MPT an asset-by-asset or whole-portfolio approach?</summary><div class="ans">Whole-portfolio.</div></details>
+        <details class="check"><summary>2. What three inputs does MPT need per asset/pair?</summary><div class="ans">Expected return, risk (σ), and correlation with other assets.</div></details>
+        <details class="check"><summary>3. Is MPT's output only as good as what?</summary><div class="ans">Its input estimates — garbage in, garbage out.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>MPT generalises two-asset diversification to a whole portfolio.</li><li>Its quality depends entirely on its input estimates.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="efficient-frontier" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>The efficient frontier</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two portfolios have the same expected return, but one has lower risk. Is there ever a reason to hold the higher-risk one?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>The <b>efficient frontier</b> is the set of portfolios offering the best possible expected return for each level of risk. A portfolio below the frontier is <b>dominated</b> — some other portfolio offers more return for the same risk, or less risk for the same return, so there's no good reason to hold the dominated one.</p>
+        <div class="worked"><b>Worked example</b><p>A stylised frontier shape, return rising with the square root of risk: at risk 9% the frontier might offer about 6% return; at risk 16% about 8% — return keeps rising with risk, but at a decreasing rate.</p></div>
+        <div class="eq">\text{Return}\approx a\sqrt{\text{Risk}}+b</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Pick a risk level and read the frontier's return; any portfolio below that curve at the same risk is dominated.</li></ol></div>
+      <div data-lab="fplot" data-title="A stylised efficient frontier" data-f="a*sqrt(x)+b" data-params="a=0.2:0.05..0.5:0.01; b=0.02:0..0.05:0.005" data-view="0,0.3,0,0.15"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>The frontier is built from estimates and shifts as those estimates change — it isn't a fixed, known curve in the real world.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Portfolio optimisation tools plot and select portfolios along an estimated frontier.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does "dominated" mean for a portfolio?</summary><div class="ans">Some other portfolio offers more return for the same risk, or less risk for the same return.</div></details>
+        <details class="check"><summary>2. Is there ever a good reason to hold a dominated portfolio?</summary><div class="ans">Generally no, if the frontier estimate is accurate.</div></details>
+        <details class="check"><summary>3. Is the real-world efficient frontier a fixed, known curve?</summary><div class="ans">No — it's built from estimates that shift over time.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>The efficient frontier shows the best return available at each risk level.</li><li>It's an estimate, not a fixed fact.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="capm-and-beta" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>CAPM & beta</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Risk-free rate 2%, the market is expected to return 8%, and a stock has a beta of 1.3. What return does CAPM suggest is "fair" for that stock's risk?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Beta</b> measures an asset's sensitivity to overall market moves (beta of 1.3 means it tends to move about 30% more than the market). The <b>Capital Asset Pricing Model (CAPM)</b> uses beta to estimate a "fair" expected return for that level of market-related risk.</p>
+        <div class="worked"><b>Worked example</b><p>2% + 1.3×(8% − 2%) = 2% + 7.8% = <b>9.8%</b>.</p></div>
+        <div class="eq">E[R]=R_f+\beta\,(R_m-R_f)</div>
+        <table class="sym"><tr><td>Rf</td><td>risk-free rate</td></tr><tr><td>Rm</td><td>expected market return</td></tr><tr><td>β</td><td>sensitivity to market moves</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set beta to 1: CAPM gives exactly the market return — no more, no less.</li></ol></div>
+      <div data-lab="calc" data-title="CAPM expected return" data-params="rf=0.02:0..0.08:0.001; rm=0.08:0..0.2:0.002; beta=1.3:0..2.5:0.05" data-rows="expected return % = (rf + beta*(rm-rf)) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>CAPM uses one factor (market beta) — it's a simplification, not a complete description of risk (Lesson "factor-investing-intro" adds more).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Beta is reported on virtually every stock's profile.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a beta of 1.3 mean?</summary><div class="ans">The asset tends to move about 30% more than the overall market, in the same direction.</div></details>
+        <details class="check"><summary>2. Rf=3%, Rm=9%, beta=0.8. CAPM expected return?</summary><div class="ans">3 + 0.8×6 = 7.8%.</div></details>
+        <details class="check"><summary>3. Is CAPM a complete description of risk?</summary><div class="ans">No — it's a one-factor simplification.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Beta measures sensitivity to the overall market.</li><li>CAPM estimates a fair expected return from beta alone — a simplification.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="factor-investing-intro" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Factor investing, briefly</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>CAPM uses one factor (the market). What if more than one shared characteristic helps explain returns across many stocks?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Factor investing</b> extends CAPM's single market factor to several (such as value, size or quality), each with its own exposure coefficient. A stock's expected return becomes a combination of several factor exposures, not just one.</p>
+        <div class="worked"><b>Worked example</b><p>A simplified two-factor estimate: E[R] = 2% + 1.1×(market premium 6%) + 0.5×(value premium 3%) = 2 + 6.6 + 1.5 = <b>10.1%</b>.</p></div>
+        <div class="eq">E[R]=R_f+\sum_k \beta_k\,(\text{factor premium}_k)</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the value-factor exposure: the estimated expected return rises, holding the market exposure fixed.</li></ol></div>
+      <div data-lab="calc" data-title="A simple two-factor estimate" data-params="rf=0.02:0..0.08:0.001; betaMarket=1.1:0..2:0.05; marketPremium=0.06:0..0.12:0.005; betaValue=0.5:-1..1.5:0.05; valuePremium=0.03:0..0.08:0.002" data-rows="expected return % = (rf + betaMarket*marketPremium + betaValue*valuePremium) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>More factors can fit historical data better while still not reliably predicting the future — a close cousin of overfitting (Quant Investing).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>"Smart beta" and factor ETFs built around specific factor exposures.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. How does factor investing extend CAPM?</summary><div class="ans">By adding more than one shared-characteristic factor instead of only the market.</div></details>
+        <details class="check"><summary>2. Does more factors always mean a more reliable model?</summary><div class="ans">Not necessarily — more factors can overfit past data without improving future predictions.</div></details>
+        <details class="check"><summary>3. Name an example of a commonly discussed factor.</summary><div class="ans">Any of: value, size, momentum, quality.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Factor models generalise CAPM to multiple shared characteristics.</li><li>More factors isn't automatically better.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="rebalancing-policies" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Rebalancing policies in depth</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Should you rebalance every month, every year, or only once drift crosses some threshold?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Building on Investment Fundamentals Lesson 4.2: a <b>calendar policy</b> rebalances on a fixed schedule regardless of drift size; a <b>threshold policy</b> rebalances only once drift exceeds a set amount. More frequent rebalancing controls drift more tightly but costs more in trading (and, in taxable accounts, potential taxes).</p>
+        <div class="worked"><b>Worked example</b><p>A threshold policy set to trigger at 5% drift rebalances less often than one set at 2% drift, trading fewer times per year but allowing more drift from target in between.</p></div>
+        <div class="eq">\text{trigger}: |\text{current weight}-\text{target weight}|>\text{threshold}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Lower the threshold: more of a given drift range triggers a rebalance — tighter control, more frequent trading.</li></ol></div>
+      <div data-lab="calc" data-title="Does this drift trigger a rebalance?" data-params="currentWeight=64:0..100:1; targetWeight=60:0..100:1; thresholdPct=5:0.5..15:0.5" data-rows="drift (pp) = currentWeight - targetWeight; rebalance triggered (1 yes, 0 no) = max(0, min(1, (abs(currentWeight-targetWeight)-thresholdPct)*1000))"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Very tight thresholds can generate excessive trading costs relative to the drift they correct.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Target-date funds' internal rebalancing schedules commonly combine both calendar and threshold elements.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What's the difference between calendar and threshold rebalancing?</summary><div class="ans">Calendar rebalances on a fixed schedule; threshold rebalances only once drift exceeds a set amount.</div></details>
+        <details class="check"><summary>2. Current weight 68%, target 60%, threshold 5pp. Does it trigger?</summary><div class="ans">Drift = 8pp > 5pp threshold, so yes.</div></details>
+        <details class="check"><summary>3. What's the trade-off of a very tight threshold?</summary><div class="ans">Tighter drift control but more frequent trading and costs.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Rebalancing policy trades drift control against trading cost.</li><li>Calendar and threshold approaches can be combined.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Risk & Derivatives looks at measuring and hedging risk directly.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

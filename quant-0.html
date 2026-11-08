@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Quant Investing</title>
+<meta name="description" content="Factor models, backtesting, signal construction, systematic vs. discretionary investing, and overfitting risk.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-quant.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="quant" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="quant.html">Quant Investing</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#8957e526">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Factor models, backtesting, signal construction, systematic vs. discretionary investing, and overfitting risk. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="factor-models-intro" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Factor models, briefly</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Can a stock's expected return be broken into pieces tied to measurable characteristics, rather than treated as one unexplained number?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>factor model</b> expresses expected return as a base rate plus exposures to shared, measurable characteristics (factors) — the same idea introduced less formally in Portfolio Management's factor-investing lesson, now treated as a tool for building systematic signals.</p>
+        <div class="worked"><b>Worked example</b><p>E[R] = 2% + 0.08×(factor 1 score) + 0.05×(factor 2 score). With scores of 10 and 6: 2 + 0.8 + 0.3 = <b>3.1%</b> over the base rate's own period.</p></div>
+        <div class="eq">E[R]=a+b_1x_1+b_2x_2</div>
+        <table class="sym"><tr><td>x₁, x₂</td><td>factor exposure scores</td></tr><tr><td>b₁, b₂</td><td>how much each factor contributes</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise a factor's coefficient: its contribution to expected return grows proportionally to its score.</li></ol></div>
+      <div data-lab="calc" data-title="A simple two-factor model" data-params="a=2:0..10:0.1; b1=0.08:-0.2..0.3:0.01; x1=10:-20..20:1; b2=0.05:-0.2..0.3:0.01; x2=6:-20..20:1" data-rows="E[R] % = a + b1*x1 + b2*x2"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A factor model fits historical data by construction — it doesn't guarantee the same relationship holds going forward.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Multi-factor risk models used by quantitative funds.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a factor model add to a simple base rate?</summary><div class="ans">Exposures to shared, measurable characteristics (factors), each with its own coefficient.</div></details>
+        <details class="check"><summary>2. a=1, b1=0.1, x1=5. E[R] from this one term plus a?</summary><div class="ans">1 + 0.1×5 = 1.5%.</div></details>
+        <details class="check"><summary>3. Does a factor model guarantee future performance?</summary><div class="ans">No — it's fit to historical data and may not hold going forward.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Factor models decompose expected return into measurable exposures.</li><li>Fit to the past doesn't guarantee the future.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="backtesting-basics" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Backtesting basics</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You test a trading rule on 10 years of data and it looks great. Is that proof it will work going forward?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Backtesting</b> splits data into an <b>in-sample</b> period (used to build/tune the rule) and an <b>out-of-sample</b> period (used to test it, untouched during development). A rule that only looks good in-sample may simply be fit to that specific data's noise.</p>
+        <div class="worked"><b>Worked example</b><p>10 years of data split 70/30: 7 years in-sample, 3 years out-of-sample = <b>30%</b> of the data reserved purely for honest testing.</p></div>
+        <div class="eq">\text{out-of-sample years}=\text{total years}\times(1-\text{in-sample fraction})</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the in-sample fraction toward 100%: almost no data is left for an honest, untouched test.</li></ol></div>
+      <div data-lab="calc" data-title="In-sample / out-of-sample split" data-params="totalYears=10:1..50:1; inSampleFraction=0.7:0.1..0.95:0.05" data-rows="in-sample years = totalYears * inSampleFraction; out-of-sample years = totalYears * (1 - inSampleFraction)"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Peeking at out-of-sample data while still tuning the rule quietly turns it into in-sample data.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A strategy that looked great in-sample but failed once tested out-of-sample.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What's the purpose of an out-of-sample period?</summary><div class="ans">An honest test on data the rule wasn't built or tuned on.</div></details>
+        <details class="check"><summary>2. 20 years of data, 80% in-sample. Out-of-sample years?</summary><div class="ans">4 years.</div></details>
+        <details class="check"><summary>3. What happens if you tune a rule using out-of-sample data?</summary><div class="ans">It stops being a true out-of-sample test — it's effectively become in-sample.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Backtesting needs a genuinely untouched out-of-sample period.</li><li>In-sample success alone is not proof of a real strategy.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="signal-construction" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Signal construction</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock scores 85 on some measure, with a universe average of 70 and a standard deviation of 10. How "extreme" is that, in a comparable unit?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>z-score</b> normalises a raw measure into "how many standard deviations from the average" — using the same standard-deviation idea from Investment Fundamentals Lesson 0.5 — so very different measures (valuation, momentum, quality) can be compared and combined on one common scale.</p>
+        <div class="worked"><b>Worked example</b><p>(85 − 70)/10 = <b>1.5</b> — one and a half standard deviations above average.</p></div>
+        <div class="eq">z=\frac{x-\mu}{\sigma}</div>
+        <table class="sym"><tr><td>x</td><td>the raw measure</td></tr><tr><td>μ, σ</td><td>the universe's average and standard deviation</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set x equal to the average: z becomes 0 — exactly typical.</li></ol></div>
+      <div data-lab="calc" data-title="Z-score normalisation" data-params="x=85:0..200:1; mu=70:0..200:1; sigma=10:0.5..50:0.5" data-rows="z-score = (x - mu) / sigma"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A z-score depends on the comparison universe chosen — the same raw value can have different z-scores in different universes.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Ranking stocks by a standardised valuation or momentum score.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a z-score measure?</summary><div class="ans">How many standard deviations a value is from the average.</div></details>
+        <details class="check"><summary>2. x=60, μ=50, σ=5. Z-score?</summary><div class="ans">2.</div></details>
+        <details class="check"><summary>3. Can the same raw value have different z-scores?</summary><div class="ans">Yes — it depends on the comparison universe's average and standard deviation.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Z-scores put different measures on one comparable scale.</li><li>They depend on the chosen comparison universe.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="systematic-vs-discretionary" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Systematic vs. discretionary</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two managers both use valuation and momentum signals. One follows them mechanically every time; the other uses them as one input among several judgement calls. Same strategy?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>systematic</b> process follows fixed, pre-defined rules consistently; a <b>discretionary</b> one leaves room for human judgement on top of (or instead of) the rules. This is really the same process-vs-impulse theme from Behavioral Finance's debiasing lesson, applied at the level of an entire investment process.</p>
+        <div class="worked"><b>Worked example</b><p>If a systematic process follows its rules on 100% of decisions and a discretionary one overrides the rule-based signal on, say, 30% of decisions, that 30% is exactly where human judgement (and human bias) can enter.</p></div>
+        <div class="eq">\text{override rate}=\frac{\text{decisions overriding the rule}}{\text{total decisions}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Push the override rate to 0%: the process becomes fully systematic by this measure.</li></ol></div>
+      <div data-lab="calc" data-title="How systematic is a process?" data-params="overrides=30:0..100:1; totalDecisions=100:1..1000:1" data-rows="override rate % = overrides / totalDecisions * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Neither approach is automatically superior — systematic removes bias but can miss context; discretionary can adapt but reopens the door to bias.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Rules-based quant funds vs. traditional active managers.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What's the key difference between systematic and discretionary processes?</summary><div class="ans">Systematic follows fixed rules consistently; discretionary allows judgement calls on top.</div></details>
+        <details class="check"><summary>2. 10 overrides out of 50 decisions. Override rate?</summary><div class="ans">20%.</div></details>
+        <details class="check"><summary>3. Is one approach automatically better than the other?</summary><div class="ans">No — each has trade-offs between bias-resistance and contextual adaptability.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Systematic and discretionary processes trade off consistency and adaptability.</li><li>Overrides are exactly where human judgement (and bias) re-enters.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="overfitting-risk" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Overfitting risk</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A strategy has 20 tunable parameters fit on only 50 historical observations. Should that make you nervous?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Overfitting</b> happens when a model has enough free parameters relative to the data that it starts fitting noise rather than a real, repeatable pattern — the single biggest risk in quant strategy design, and a sharper version of the factor-model warning in Lesson 0.1.</p>
+        <div class="worked"><b>Worked example</b><p>50 observations ÷ 20 parameters = <b>2.5</b> observations per parameter — far below commonly-cited rules of thumb suggesting at least 10 observations per parameter as a bare minimum.</p></div>
+        <div class="eq">\text{obs. per parameter}=\frac{\text{observations}}{\text{parameters}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Cut the parameter count while holding observations fixed: observations-per-parameter rises — a less overfitting-prone setup.</li></ol></div>
+      <div data-lab="calc" data-title="Observations per parameter" data-params="observations=50:10..10000:10; parameters=20:1..200:1" data-rows="observations per parameter = observations / parameters"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A strategy with many parameters can look spectacular in-sample precisely because it's fitting noise, not signal.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>The "more parameters than data can support" trap in strategy design, closely related to Lesson 0.2's backtesting discipline.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is overfitting?</summary><div class="ans">A model fitting noise in the data rather than a real, repeatable pattern, usually from too many free parameters relative to data.</div></details>
+        <details class="check"><summary>2. 200 observations, 10 parameters. Observations per parameter?</summary><div class="ans">20.</div></details>
+        <details class="check"><summary>3. Does a great in-sample result rule out overfitting?</summary><div class="ans">No — overfitting specifically produces great-looking in-sample results.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Overfitting is the central risk of the whole quant field.</li><li>Too many parameters relative to data is the classic warning sign.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> You've now covered the basic pass of every path on Invest Buddy. Deeper modules are planned next, one path at a time.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

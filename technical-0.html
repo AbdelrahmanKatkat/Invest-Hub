@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Technical Analysis</title>
+<meta name="description" content="Chart types, moving averages, momentum indicators, volume analysis, and the debate around technical analysis.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-technical.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="technical" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="technical.html">Technical Analysis</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#f8514926">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Chart types, moving averages, momentum indicators, volume analysis, and the debate around technical analysis. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="chart-types" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Chart types</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A line chart, a bar chart and a candlestick chart can all show the same stock. What's actually different between them?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>line chart</b> plots just the closing price — simple, but it hides a period's range. A <b>bar</b> or <b>candlestick</b> chart shows the open, high, low and close for each period, revealing how much a price swung even within one day.</p>
+        <div class="worked"><b>Worked example</b><p>A day opens $48, dips to $46, rises to $51, closes $50. A line chart would only show the "50" endpoint; a candlestick shows the full $46–$51 range that happened along the way.</p></div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Picture plotting only the close each day for a week versus plotting the full daily range — notice how much intraday detail the line chart loses.</li></ol></div>
+      <div data-lab="fplot" data-title="A price line is only one slice of the full range" data-f="x^2*0.3+2" data-params="" data-view="0,5,0,10"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A line chart can look deceptively smooth compared to what the price actually did intraday.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Candlestick charts on virtually every trading platform.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a line chart typically plot?</summary><div class="ans">Just the closing price for each period.</div></details>
+        <details class="check"><summary>2. What four values does a candlestick show for one period?</summary><div class="ans">Open, high, low, close.</div></details>
+        <details class="check"><summary>3. Which chart type hides intraday range: line or candlestick?</summary><div class="ans">Line.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Line charts simplify; candlesticks show more of what actually happened.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="moving-averages" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Moving averages</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Prices over 5 days: 10, 12, 11, 13, 14. What's the 5-day moving average, and what does it smooth away?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>moving average</b> replaces day-to-day noise with the average of the last N periods, making the underlying trend easier to see. A <b>crossover</b> (e.g. a short average crossing above a longer one) is a commonly watched, debated trend signal.</p>
+        <div class="worked"><b>Worked example</b><p>(10+12+11+13+14)/5 = 60/5 = <b>12</b>.</p></div>
+        <div class="eq">MA_N=\frac1N\sum_{i=1}^{N}P_i</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Confirm the average is 12, then raise one price a lot — notice how much a single outlier can move a short average.</li></ol></div>
+      <div data-lab="calc" data-title="5-day moving average" data-params="p1=10:0..100:0.5; p2=12:0..100:0.5; p3=11:0..100:0.5; p4=13:0..100:0.5; p5=14:0..100:0.5" data-rows="5-day moving average = (p1+p2+p3+p4+p5)/5"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A short moving average reacts to noise more than a long one — neither is simply "better".</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>50-day/200-day moving-average crossovers discussed in market commentary.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a moving average do to day-to-day noise?</summary><div class="ans">Smooths it out by averaging over several periods.</div></details>
+        <details class="check"><summary>2. Prices 20,22,18,24,26. 5-day average?</summary><div class="ans">(20+22+18+24+26)/5 = 22.</div></details>
+        <details class="check"><summary>3. Does a shorter or longer moving average react faster to new prices?</summary><div class="ans">A shorter one.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Moving averages trade noise for smoothness.</li><li>Shorter vs. longer averages trade off responsiveness and stability.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="momentum-indicators" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Momentum indicators</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock's average recent gain is 1.5%, its average recent loss is 1.0%. What does the Relative Strength Index (RSI) say?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>RSI</b> compares the size of recent gains to recent losses, scaled to 0–100. High readings (often around 70+) are commonly called "overbought"; low readings (often around 30−) "oversold" — descriptive labels, not guarantees of a reversal.</p>
+        <div class="worked"><b>Worked example</b><p>RS = 1.5/1.0 = 1.5. RSI = 100 − 100/(1+1.5) = 100 − 40 = <b>60</b>.</p></div>
+        <div class="eq">RS=\frac{\text{avg gain}}{\text{avg loss}}\qquad RSI=100-\frac{100}{1+RS}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise average loss toward average gain: RS falls toward 1 and RSI moves toward 50 — neutral.</li></ol></div>
+      <div data-lab="calc" data-title="RSI calculator" data-params="avgGain=1.5:0..10:0.1; avgLoss=1.0:0.01..10:0.1" data-rows="RS = avgGain / avgLoss; RSI = 100 - 100 / (1 + (avgGain/avgLoss))"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>"Overbought" doesn't mean "must fall now" — a strong trend can stay overbought for a long time.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>RSI commonly plotted under a price chart as an overbought/oversold gauge.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does RSI compare?</summary><div class="ans">The size of recent average gains to recent average losses.</div></details>
+        <details class="check"><summary>2. Avg gain 2, avg loss 2. RSI?</summary><div class="ans">RS=1; RSI=100−50=50 (neutral).</div></details>
+        <details class="check"><summary>3. Does "overbought" guarantee a price drop?</summary><div class="ans">No — it's descriptive, not a guarantee.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>RSI scales recent gain/loss strength to 0–100.</li><li>Extremes are descriptive labels, not certainties.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="volume-analysis" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Volume analysis</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock breaks above a resistance level on very high volume. Does that mean something different from the same breakout on thin volume?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Volume</b> — how many shares traded — is often used to confirm or question a price move. A move on heavy volume is commonly viewed as more "convincing" (more participants agreeing with it) than the same move on thin volume, though this is a heuristic, not a law.</p>
+        <div class="worked"><b>Worked example</b><p>Average daily volume 1,000,000 shares; breakout day volume 2,500,000 shares: volume ratio = 2,500,000/1,000,000 = <b>2.5×</b> average — a notably heavier-than-usual day.</p></div>
+        <div class="eq">\text{volume ratio}=\frac{\text{day's volume}}{\text{average volume}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring the day's volume down toward the average: the ratio approaches 1 — an unremarkable volume day.</li></ol></div>
+      <div data-lab="calc" data-title="Volume ratio" data-params="dayVolume=2500000:0..20000000:10000; avgVolume=1000000:1..10000000:10000" data-rows="volume ratio = dayVolume / avgVolume"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Volume confirms conviction, not direction by itself — a heavy-volume move can still reverse.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>"Breakout on high volume" is a commonly cited (and debated) pattern.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does volume measure?</summary><div class="ans">How many shares (or contracts) traded over a period.</div></details>
+        <details class="check"><summary>2. Day volume 3,000,000, average 1,500,000. Ratio?</summary><div class="ans">2×.</div></details>
+        <details class="check"><summary>3. Does heavy volume guarantee a price move continues?</summary><div class="ans">No — it's a heuristic about conviction, not a guarantee.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Volume is used to gauge conviction behind a price move.</li><li>It's a heuristic, not a certainty.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="the-ta-debate" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>The debate around technical analysis</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>If markets are even roughly efficient (Financial Markets, Lesson "market-efficiency"), should chart patterns work at all?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Technical analysis has enthusiastic practitioners and serious academic skeptics; weak-form market efficiency specifically questions whether past-price patterns offer a reliable edge. Neither side has fully "won" — it remains genuinely debated evidence.</p>
+        <div class="worked"><b>Worked example</b><p>If a pattern "works" only 52% of the time versus a 50% coin flip, that's a real but very small edge — easily erased by trading costs (Investment Fundamentals Lessons 1.1–1.2) unless the edge is large and consistent.</p></div>
+        <div class="eq">\text{edge}=\text{win rate}-50\%</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the win rate: the edge grows. Push trading costs up alongside: a small edge can be erased entirely.</li></ol></div>
+      <div data-lab="calc" data-title="A small edge vs. trading costs" data-params="winRate=52:40..70:1; costPerTradePct=0.2:0..2:0.05" data-rows="edge (pp) = winRate - 50; net of two round-trip costs (pp) = winRate - 50 - 2*costPerTradePct"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A small statistical edge can be fully erased by trading costs and taxes.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Academic market-efficiency research is routinely cited both for and against technical trading approaches.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does weak-form efficiency specifically question?</summary><div class="ans">Whether past price patterns offer a reliable trading edge.</div></details>
+        <details class="check"><summary>2. Win rate 55%, two round-trip costs of 0.3pp each. Net edge?</summary><div class="ans">55 − 50 − 0.6 = 4.4 percentage points.</div></details>
+        <details class="check"><summary>3. Is the debate over technical analysis fully settled?</summary><div class="ans">No — it remains genuinely debated.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Technical analysis is debated, not settled, evidence.</li><li>A small edge can be erased by trading costs.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Behavioral Finance goes deeper into the psychology behind these patterns.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

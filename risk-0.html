@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Risk & Derivatives</title>
+<meta name="description" content="Drawdown and VaR, options basics, futures basics, hedging with derivatives, and an intro to the Greeks.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-risk.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="risk" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="risk.html">Risk & Derivatives</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#f0883e26">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Drawdown and VaR, options and futures basics, hedging with derivatives, and a first look at the Greeks. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="drawdown-and-var" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Drawdown & VaR</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A portfolio peaked at $120,000, then fell to $84,000 before recovering. How bad was that fall, in a single number?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Maximum drawdown</b> measures the worst peak-to-trough decline. <b>Value-at-Risk (VaR)</b> is a different, forward-looking idea: an estimated loss threshold that shouldn't be exceeded more than some stated percentage of the time, based on a model's assumptions.</p>
+        <div class="worked"><b>Worked example</b><p>(84,000 − 120,000)/120,000 = <b>−30%</b> maximum drawdown.</p></div>
+        <div class="eq">\text{Drawdown}=\frac{\text{Trough}-\text{Peak}}{\text{Peak}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring the trough closer to the peak: drawdown shrinks toward 0%.</li></ol></div>
+      <div data-lab="calc" data-title="Maximum drawdown" data-params="peak=120000:1000..1000000:1000; trough=84000:1000..1000000:1000" data-rows="drawdown % = (trough - peak) / peak * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>VaR says nothing about how bad a loss could be beyond its threshold — only that the threshold is estimated not to be crossed, at a stated frequency.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Fund fact sheets reporting "maximum drawdown" as a risk measure.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does maximum drawdown measure?</summary><div class="ans">The worst peak-to-trough decline.</div></details>
+        <details class="check"><summary>2. Peak $50,000, trough $40,000. Drawdown?</summary><div class="ans">−20%.</div></details>
+        <details class="check"><summary>3. Does VaR describe how bad a loss could be beyond its threshold?</summary><div class="ans">No — it only estimates that the threshold shouldn't be crossed more than some stated frequency, based on model assumptions.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Drawdown measures an actual worst peak-to-trough decline.</li><li>VaR is a model-based, forward-looking threshold, not a worst-case guarantee.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="options-basics" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Options basics</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You buy a call option, strike $50, paying a $3 premium. At expiry the stock is $65. What's your profit?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>call option</b> gives the right (not obligation) to buy at the strike price. Its payoff at expiry is the stock price minus the strike, if positive, and zero otherwise — the premium paid is the most a buyer can ever lose.</p>
+        <div class="worked"><b>Worked example</b><p>Payoff = max(0, 65 − 50) = 15. Profit = 15 − 3 (premium) = <b>$12</b> per share.</p></div>
+        <div class="eq">\text{Payoff}=\max(0,\,S-K)\qquad \text{Profit}=\text{Payoff}-\text{Premium}</div>
+        <table class="sym"><tr><td>S</td><td>stock price at expiry</td></tr><tr><td>K</td><td>strike price</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring the stock price below the strike: payoff goes to 0 and profit becomes exactly −premium (the most a buyer can lose).</li></ol></div>
+      <div data-lab="calc" data-title="Call option payoff" data-params="stockPrice=65:1..500:1; strike=50:1..500:1; premium=3:0..50:0.1" data-rows="payoff = max(0, stockPrice - strike); profit = max(0, stockPrice - strike) - premium"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A call buyer's maximum loss is the premium — but a call <i>seller</i>'s loss is, in principle, unlimited on the upside.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Call options used to bet on or participate in a stock's upside with limited downside.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Strike $40, stock at expiry $55, premium $4. Profit?</summary><div class="ans">max(0,55-40)-4 = 15-4 = $11.</div></details>
+        <details class="check"><summary>2. What's the most a call buyer can lose?</summary><div class="ans">The premium paid.</div></details>
+        <details class="check"><summary>3. Is a call seller's potential loss also capped?</summary><div class="ans">No — in principle it's unlimited as the stock price rises.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A call's payoff is max(0, stock price − strike).</li><li>Buyer risk is capped at the premium; seller risk is not.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="futures-basics" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Futures basics</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A futures contract controls $100,000 of notional value, but you only need to post $5,000 of margin. What does that imply about risk?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>futures contract</b> is an agreement to exchange an asset at a set price later (the same basic idea as Investment Fundamentals Lesson 2.5's futures/spot relationship), but trading it requires only a small margin deposit relative to the full contract value — creating substantial <b>leverage</b>.</p>
+        <div class="worked"><b>Worked example</b><p>100,000/5,000 = <b>20×</b> leverage — a 5% move in the underlying asset moves your margin by roughly 100%.</p></div>
+        <div class="eq">\text{Leverage}=\frac{\text{Notional value}}{\text{Margin posted}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise required margin: leverage falls — less risk amplification per dollar posted.</li></ol></div>
+      <div data-lab="calc" data-title="Futures leverage" data-params="notional=100000:1000..1000000:1000; margin=5000:500..100000:500" data-rows="leverage = notional / margin"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Leverage amplifies losses exactly as much as gains, the same warning as margin accounts (Investment Fundamentals Lesson 1.4).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Commodity and index futures used by institutions and speculators alike.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Notional $200,000, margin $10,000. Leverage?</summary><div class="ans">20×.</div></details>
+        <details class="check"><summary>2. Does leverage amplify gains only, or losses too?</summary><div class="ans">Both, equally.</div></details>
+        <details class="check"><summary>3. What's the relationship between futures and the spot/futures basis from Investment Fundamentals Lesson 2.5?</summary><div class="ans">The futures price there is exactly this kind of contract's agreed future price.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Futures require only a fraction of notional value as margin, creating leverage.</li><li>Leverage amplifies gains and losses equally.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="hedging-with-derivatives" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Hedging with derivatives</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You own a stock at $100 and are worried about a near-term drop. A put option, strike $95, costs $4. How does that protect you?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>put option</b> gives the right to sell at the strike price, so it gains value as the stock falls — like insurance against a decline. Buying a put alongside owning the stock is <b>hedging</b>: using a derivative to offset risk rather than to speculate.</p>
+        <div class="worked"><b>Worked example</b><p>Below $95, losses on the stock are offset by gains on the put; the net effective floor is strike minus premium = 95 − 4 = <b>$91</b>, versus an unprotected position that could keep falling further.</p></div>
+        <div class="eq">\text{Effective floor}=\text{Strike}-\text{Premium paid}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the strike (buy more protection): the effective floor rises, typically at a higher premium cost in reality.</li></ol></div>
+      <div data-lab="calc" data-title="Protective put floor" data-params="strike=95:1..500:1; premium=4:0..50:0.1" data-rows="effective floor = strike - premium"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A hedge has a cost (the premium) even if the drop never happens — like any insurance.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Portfolio managers buying index puts ahead of an uncertain event as portfolio insurance.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a protective put do?</summary><div class="ans">Offsets losses on a held stock below the strike, acting like insurance.</div></details>
+        <details class="check"><summary>2. Strike $80, premium $3. Effective floor?</summary><div class="ans">$77.</div></details>
+        <details class="check"><summary>3. Does a hedge cost anything if the feared drop never happens?</summary><div class="ans">Yes — the premium is spent either way, like any insurance.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A protective put sets an effective floor below which losses are offset.</li><li>Hedging has a real, ongoing cost.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="the-greeks-intro" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>The Greeks, briefly</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>An option has a delta of 0.5. The stock moves up $2. Roughly how much does the option's price move?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Delta</b> approximates how much an option's price moves per $1 move in the underlying stock — a quick, approximate sensitivity measure (other "Greeks" measure sensitivity to time, volatility and rates, beyond this basic pass).</p>
+        <div class="worked"><b>Worked example</b><p>0.5 × $2 = <b>$1</b> estimated option price move.</p></div>
+        <div class="eq">\Delta\text{Option price}\approx \text{Delta}\times\Delta\text{Stock price}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise delta toward 1: the option moves more like the stock itself, dollar for dollar.</li></ol></div>
+      <div data-lab="calc" data-title="Delta approximation" data-params="delta=0.5:0..1:0.05; stockMove=2:-20..20:0.5" data-rows="estimated option price move = delta * stockMove"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Delta itself changes as the stock price moves — the approximation is only accurate for small moves.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Delta is quoted alongside every listed option.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does delta approximate?</summary><div class="ans">How much an option's price moves per $1 move in the underlying stock.</div></details>
+        <details class="check"><summary>2. Delta 0.3, stock moves $5. Estimated option move?</summary><div class="ans">$1.50.</div></details>
+        <details class="check"><summary>3. Is delta constant as the stock price changes?</summary><div class="ans">No — it changes too, so the approximation is best for small moves.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Delta is a quick sensitivity approximation for an option's price.</li><li>It's most accurate for small underlying price moves.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Global & Current Events applies all of this to reading real-time news.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Behavioral Finance</title>
+<meta name="description" content="Anchoring and framing, overconfidence, mental accounting, prospect theory, and debiasing techniques.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-behavioral.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="behavioral" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="behavioral.html">Behavioral Finance</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#db61a226">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Anchoring and framing, overconfidence, mental accounting, prospect theory, and debiasing techniques. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="anchoring" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Anchoring & framing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock you bought at $100 is now $70. Does "it's down 30% from where I bought it" matter to what it's worth going forward?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Anchoring</b> is letting an often-irrelevant reference point (your purchase price, a past high) skew a current judgement. <b>Framing</b> is how the same fact, phrased differently, changes the decision — "70% of people survive" feels different from "30% die," even though they're identical.</p>
+        <div class="worked"><b>Worked example</b><p>A $100 purchase now at $70 is, going forward, simply a $70 asset — its future prospects don't know or care what you paid. Anchoring to $100 can cause holding on "to get back to even" for a reason unrelated to the asset's actual current value.</p></div>
+        <div class="eq">\text{anchoring gap}=\text{reference price}-\text{current price}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Change the reference price: the "gap" changes, but the asset's actual current value hasn't.</li></ol></div>
+      <div data-lab="calc" data-title="The anchor vs. the current value" data-params="referencePrice=100:1..1000:1; currentPrice=70:1..1000:1" data-rows="anchoring gap = referencePrice - currentPrice; gap as % of reference = (referencePrice - currentPrice) / referencePrice * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>"Getting back to even" is an anchor-driven goal, not a forward-looking investment reason.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Holding a losing position specifically to "break even" rather than reassessing it fresh.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is anchoring?</summary><div class="ans">Letting an often-irrelevant reference point skew a current judgement.</div></details>
+        <details class="check"><summary>2. Bought at $50, now $35. What's the anchoring gap?</summary><div class="ans">$15 (30% of the reference price).</div></details>
+        <details class="check"><summary>3. Does an asset's future value depend on your original purchase price?</summary><div class="ans">No — its future prospects don't depend on what any particular holder paid.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Anchoring attaches too much weight to an often-irrelevant reference point.</li><li>Framing changes decisions without changing the underlying facts.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="overconfidence" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Overconfidence</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You're 90% sure a stock will rise. How often would predictions you're "90% sure" about actually need to come true for that confidence to be justified?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Overconfidence</b> is being more certain of your own judgement than your actual track record justifies. If your "90% confident" calls are only right 70% of the time, your confidence is miscalibrated — a commonly observed pattern in both everyday judgement and investing.</p>
+        <div class="worked"><b>Worked example</b><p>Stated confidence 90%, actual accuracy 70%: miscalibration gap = 90 − 70 = <b>20 percentage points</b> of overconfidence.</p></div>
+        <div class="eq">\text{miscalibration}=\text{stated confidence}-\text{actual accuracy}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring actual accuracy up to match stated confidence: the gap closes to 0 — well-calibrated.</li></ol></div>
+      <div data-lab="calc" data-title="Confidence calibration gap" data-params="statedConfidence=90:50..100:1; actualAccuracy=70:0..100:1" data-rows="miscalibration (pp) = statedConfidence - actualAccuracy"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Feeling certain is not the same as being accurate — the two are only loosely related without tracking a real history.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Investors overestimating their own ability to time market tops and bottoms.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is overconfidence, precisely?</summary><div class="ans">Being more certain of a judgement than your actual accuracy justifies.</div></details>
+        <details class="check"><summary>2. Stated confidence 80%, actual accuracy 55%. Gap?</summary><div class="ans">25 percentage points.</div></details>
+        <details class="check"><summary>3. Is feeling very certain proof of being right?</summary><div class="ans">No — confidence and accuracy are only loosely related without a tracked record.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Overconfidence is a measurable gap between stated certainty and actual accuracy.</li><li>Tracking a real record is the only way to check calibration.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="mental-accounting" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Mental accounting</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A $500 tax refund and $500 of extra salary are both exactly $500. Do people treat them the same way?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Mental accounting</b> is treating money differently depending on its source or mental "label" — a windfall often gets spent more freely than equivalent earned income, even though both spend identically. The same applies to investment "buckets" that are really all one pool of money.</p>
+        <div class="worked"><b>Worked example</b><p>If 80% of a $500 windfall gets spent versus 20% of $500 in regular salary, that's a 60-percentage-point gap in spending behavior for an identical dollar amount.</p></div>
+        <div class="eq">\text{spending gap}=\%\text{ spent (windfall)}-\%\text{ spent (salary)}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring both spending percentages together: the gap shrinks to 0 — the money is being treated the same regardless of label.</li></ol></div>
+      <div data-lab="calc" data-title="Mental accounting spending gap" data-params="pctSpentWindfall=80:0..100:1; pctSpentSalary=20:0..100:1" data-rows="spending gap (pp) = pctSpentWindfall - pctSpentSalary"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Treating a "play money" investing account differently from a "serious" one, even though both carry identical real-world risk.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Treating dividend income as "spendable" while treating an equal capital gain as "off-limits," though both are the same net worth.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is mental accounting?</summary><div class="ans">Treating money differently based on its source or label, even though it's fungible.</div></details>
+        <details class="check"><summary>2. Why is this considered an inconsistency, not just a preference?</summary><div class="ans">Because the dollars are economically identical and interchangeable regardless of their mental label.</div></details>
+        <details class="check"><summary>3. Give an investing example of mental accounting.</summary><div class="ans">Treating a "play money" account more carelessly than a "serious" one, despite identical real risk.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Money is fungible; mental labels shouldn't change its real value.</li><li>This bias can creep into how accounts or "buckets" are treated.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="prospect-theory" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Prospect theory</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A $1,000 loss and a $1,000 gain are the same size. Do they feel the same size?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Prospect theory</b> describes how people weigh gains and losses relative to a reference point, and commonly cited research finds losses are felt more strongly than equivalent gains — a pattern consistent with the recovery-math asymmetry from Investment Fundamentals Lesson 0.9 (a 20% loss needs a 25% gain to undo).</p>
+        <div class="worked"><b>Worked example</b><p>If losses are felt about twice as strongly as equivalent gains (an illustrative, commonly-cited finding, not a universal constant), a $1,000 loss might feel subjectively like "losing" roughly $2,000 worth of good feeling compared to a $1,000 gain's positive feeling.</p></div>
+        <div class="eq">\text{subjective loss}\approx\lambda\times\text{dollar loss},\quad \lambda>1</div>
+        <table class="sym"><tr><td>λ</td><td>a loss-aversion multiplier (commonly cited estimates are roughly 2, illustrative and debated)</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set λ to 1: losses and gains are treated symmetrically — no loss aversion.</li></ol></div>
+      <div data-lab="calc" data-title="Illustrative loss-aversion multiplier" data-params="dollarLoss=1000:0..50000:100; lambda=2:1..4:0.1" data-rows="subjective weight of the loss = dollarLoss * lambda"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Treating λ as a precise, universal number — estimates vary across studies and contexts.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Why a drawdown often feels worse than an equivalent earlier gain felt good — directly motivating Lesson 0.9's panic-selling example.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. According to prospect theory, are losses or gains typically felt more strongly?</summary><div class="ans">Losses.</div></details>
+        <details class="check"><summary>2. Is the loss-aversion multiplier a precise universal constant?</summary><div class="ans">No — commonly-cited estimates vary and are illustrative, not exact.</div></details>
+        <details class="check"><summary>3. How does this connect to the breakeven-gain math in Investment Fundamentals Lesson 0.9?</summary><div class="ans">Both describe a real asymmetry between losses and gains, one mathematical and one psychological.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Losses are commonly felt more strongly than equivalent gains.</li><li>This compounds with the mathematical asymmetry of recovering from a loss.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="debiasing-techniques" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Debiasing techniques</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>If biases are built into how people think, can anything practical actually defend against them?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Checklists, rules written <i>in advance</i>, and automation reduce the room for an in-the-moment biased decision — you're deciding the rule when calm, not deciding the trade when emotional. This is the same principle behind Investment Fundamentals Module 4's automated contributions and written plan.</p>
+        <div class="worked"><b>Worked example</b><p>An illustrative "decision quality" score: a plan made with a written checklist followed consistently might score 85/100 for process discipline, versus 40/100 for ad-hoc, in-the-moment decisions — a stand-in for "a documented process tends to reduce impulsive mistakes," not a literal measurement.</p></div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Compare a high checklist-adherence score to a low one and consider what kinds of decisions each would tend to produce.</li></ol></div>
+      <div data-lab="calc" data-title="Illustrative process-discipline score" data-params="checklistAdherence=85:0..100:1; impulsiveOverrides=1:0..10:1" data-rows="estimated decision quality = checklistAdherence - impulsiveOverrides*5"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Having a plan doesn't help if it's abandoned whenever it's inconvenient — the discipline is the point.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Investment policy statements and automated contributions (Investment Fundamentals Module 4).</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Why does deciding a rule "in advance" help?</summary><div class="ans">It removes the in-the-moment, emotionally-charged decision that biases tend to exploit.</div></details>
+        <details class="check"><summary>2. Name a concrete debiasing technique.</summary><div class="ans">Any of: a written checklist, a pre-committed rule, automated/scheduled contributions.</div></details>
+        <details class="check"><summary>3. Does having a written plan help if it's ignored under stress?</summary><div class="ans">No — the benefit depends on actually following it.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Pre-committed rules and automation reduce room for in-the-moment bias.</li><li>A plan only helps if it's actually followed.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Investment Strategies turns analysis into a repeatable process.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

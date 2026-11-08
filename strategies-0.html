@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Investment Strategies</title>
+<meta name="description" content="Value, growth, momentum, income and passive indexing as repeatable investment strategies.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-strategies.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="strategies" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="strategies.html">Investment Strategies</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#d2992226">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Value, growth, momentum, income and passive indexing as repeatable, testable processes. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="value-investing" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Value investing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You estimate a company is worth $80 a share. It trades at $55. How much of a buffer does that give you if your estimate is wrong?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Value investing</b> means buying below an estimated intrinsic worth, with a <b>margin of safety</b> — the gap between estimated value and price — as a cushion against estimation error.</p>
+        <div class="worked"><b>Worked example</b><p>(80 − 55)/80 = <b>31.25%</b> margin of safety.</p></div>
+        <div class="eq">\text{Margin of safety}=\frac{\text{Intrinsic value}-\text{Price}}{\text{Intrinsic value}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring the price close to the estimated value: margin of safety shrinks toward 0.</li></ol></div>
+      <div data-lab="calc" data-title="Margin of safety" data-params="intrinsicValue=80:1..1000:1; price=55:1..1000:1" data-rows="margin of safety % = (intrinsicValue - price) / intrinsicValue * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>An intrinsic-value estimate is still an estimate — the margin of safety cushions estimation error, it doesn't eliminate it.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Classic value-investing commentary about buying "a dollar for fifty cents."</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is margin of safety?</summary><div class="ans">The gap between estimated intrinsic value and price, as a cushion against error.</div></details>
+        <details class="check"><summary>2. Intrinsic value $100, price $70. Margin of safety?</summary><div class="ans">30%.</div></details>
+        <details class="check"><summary>3. Does a margin of safety guarantee you're right about the value estimate?</summary><div class="ans">No — it cushions error, it doesn't eliminate the risk of a wrong estimate.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Value investing buys below an estimated intrinsic worth.</li><li>Margin of safety cushions, but doesn't eliminate, estimation error.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="growth-investing" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Growth investing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock trades at a P/E of 30 and is expected to grow earnings 20% a year. Is that multiple "expensive"?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Growth investing</b> accepts a higher P/E (Investment Fundamentals Lesson 3.3) in exchange for faster expected earnings growth. The <b>PEG ratio</b> relates the multiple to the growth rate as a rough cross-check.</p>
+        <div class="worked"><b>Worked example</b><p>30/20 = <b>1.5</b> PEG. A PEG near or below 1 is sometimes used as an (imprecise) rule-of-thumb reference point, though it's not a hard rule.</p></div>
+        <div class="eq">PEG=\frac{P/E}{\text{Expected growth rate }(\%)}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise expected growth with P/E fixed: PEG falls — the same multiple looks more reasonable against faster growth.</li></ol></div>
+      <div data-lab="calc" data-title="PEG ratio" data-params="pe=30:1..100:1; growthRate=20:1..60:1" data-rows="PEG = pe / growthRate"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Growth forecasts are uncertain — PEG is only as good as the growth estimate feeding it.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Growth-oriented funds concentrated in fast-expanding industries.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does PEG relate?</summary><div class="ans">The P/E ratio to the expected earnings growth rate.</div></details>
+        <details class="check"><summary>2. P/E 40, growth 25%. PEG?</summary><div class="ans">40/25 = 1.6.</div></details>
+        <details class="check"><summary>3. Is a low PEG a guarantee of a good investment?</summary><div class="ans">No — it depends entirely on the growth estimate being accurate.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Growth investing pays more per dollar of current earnings for expected future growth.</li><li>PEG is a rough cross-check, not a precise rule.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="momentum-investing" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Momentum investing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock has risen steadily for 6 months. Does that trend, by itself, say anything useful about the next 6 months?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Momentum investing</b> buys what has recently trended up, on evidence that trends have historically tended to persist for some period before reversing — directly related to the trend-slope idea from Investment Fundamentals Lesson 3.5, now used as a selection rule across many stocks rather than read off one chart.</p>
+        <div class="worked"><b>Worked example</b><p>A stock rising from $40 to $52 over 6 months has a trailing 6-month return of (52−40)/40 = <b>30%</b> — a momentum strategy would rank this favorably versus a flat or declining peer.</p></div>
+        <div class="eq">\text{trailing return}=\frac{P_{\text{now}}-P_{\text{6mo ago}}}{P_{\text{6mo ago}}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Make the two prices equal: trailing return goes to 0% — no momentum signal either way.</li></ol></div>
+      <div data-lab="calc" data-title="Trailing return ranking input" data-params="priceNow=52:1..1000:1; priceSixMoAgo=40:1..1000:1" data-rows="trailing 6-month return % = (priceNow - priceSixMoAgo) / priceSixMoAgo * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Momentum can reverse sharply and without warning — past persistence is not a guarantee.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Momentum factor funds and trend-following strategies.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does momentum investing buy?</summary><div class="ans">What has recently trended upward, expecting the trend to persist for a while.</div></details>
+        <details class="check"><summary>2. Price $30 six months ago, $36 now. Trailing return?</summary><div class="ans">20%.</div></details>
+        <details class="check"><summary>3. Is a trend guaranteed to continue?</summary><div class="ans">No — momentum can reverse sharply.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Momentum investing bets on the persistence of recent trends.</li><li>It carries real reversal risk.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="income-investing" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Income investing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You bought a stock at $50. Its dividend has since grown to $3/year. What's your yield relative to what you actually paid?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Income investing</b> prioritises current cash income over price appreciation. <b>Yield on cost</b> measures the current dividend against your original purchase price, which can look very different from the yield a new buyer sees today (the current-price dividend yield from Investment Fundamentals Lesson 2.1).</p>
+        <div class="worked"><b>Worked example</b><p>3/50 = <b>6%</b> yield on cost — potentially much higher than the stock's current-price dividend yield if the price has also risen since purchase.</p></div>
+        <div class="eq">\text{Yield on cost}=\frac{\text{Current dividend}}{\text{Original purchase price}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the dividend with purchase price fixed: yield on cost rises — a longer holding period with dividend growth compounds this.</li></ol></div>
+      <div data-lab="calc" data-title="Yield on cost" data-params="currentDividend=3:0..50:0.1; purchasePrice=50:1..1000:1" data-rows="yield on cost % = currentDividend / purchasePrice * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A high yield on cost reflects a long, successful holding period — it says nothing about buying the stock fresh today at its current price.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Dividend-growth portfolios commonly cited as a retirement-income approach.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does yield on cost use as its denominator?</summary><div class="ans">The original purchase price, not the current price.</div></details>
+        <details class="check"><summary>2. Dividend $4, purchase price $40. Yield on cost?</summary><div class="ans">10%.</div></details>
+        <details class="check"><summary>3. Does a high yield on cost mean the stock is a good buy today?</summary><div class="ans">Not necessarily — it reflects the original purchase, not today's price.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Yield on cost measures income against your original price, not today's.</li><li>It can look very different from a fresh buyer's current yield.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="passive-indexing" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Passive indexing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>If markets are reasonably efficient (Financial Markets Lesson "market-efficiency") and active management costs more (Investment Fundamentals Lesson 2.7), what's the simplest alternative?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Passive indexing</b> gives up trying to beat a benchmark and instead tracks it as cheaply as possible. It directly combines two earlier lessons: the market-efficiency argument that beating the market consistently is hard, and the fee-drag math showing how much costs matter over decades.</p>
+        <div class="worked"><b>Worked example</b><p>Reusing Investment Fundamentals Lesson 2.7's numbers: $10,000 at 7% gross for 30 years grows to about $75,485 at a 0.03% fee versus about $57,435 at a 1% fee — the same math, now framed as the core argument for passive indexing.</p></div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Revisit the fee-drag calculator in Investment Fundamentals Lesson 2.7 and vary the years held — the passive-vs-active cost gap grows with time.</li></ol></div>
+      <div data-lab="calc" data-title="Active vs. passive fee drag (recap)" data-params="principal=10000:1000..100000:500; gross=0.07:0.02..0.12:0.005; feeLow=0.0003:0..0.01:0.0001; feeHigh=0.01:0..0.02:0.0005; years=30:1..40:1" data-rows="passive ending value = principal * (1 + gross - feeLow)^years; active ending value = principal * (1 + gross - feeHigh)^years"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>"Passive" doesn't mean risk-free — an index fund still carries the full risk of the market it tracks.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Broad-market index funds and ETFs are the standard passive vehicle.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What two earlier ideas does passive indexing combine?</summary><div class="ans">Market efficiency (hard to beat consistently) and the cost of fees compounding over time.</div></details>
+        <details class="check"><summary>2. Does passive indexing eliminate market risk?</summary><div class="ans">No — it still carries the full risk of the tracked market.</div></details>
+        <details class="check"><summary>3. Why does the active-vs-passive fee gap grow with more years held?</summary><div class="ans">Because the fee difference compounds, the same way returns compound (Investment Fundamentals Lesson 0.1).</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Passive indexing trades the attempt to beat the market for low, predictable costs.</li><li>It still carries full market risk.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Portfolio Management turns strategies into a whole-portfolio decision.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

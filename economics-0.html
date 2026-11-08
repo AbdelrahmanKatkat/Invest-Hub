@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Economics</title>
+<meta name="description" content="Supply and demand, inflation, interest rates, GDP and growth, and the business cycle.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-economics.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="economics" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="economics.html">Economics</a> › Module 0</div>
+    <div class="hero">
+      <div class="big" style="background:#2f81f726">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Supply and demand, inflation, interest rates, GDP and growth, and the business cycle. Basic pass — concise for now.</p>
+        <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="supply-and-demand" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Supply & demand</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A bad harvest cuts the coffee supply. What happens to coffee prices?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>The <b>demand curve</b> slopes down (lower price, more is bought); the <b>supply curve</b> slopes up (higher price, more is offered). They cross at an <b>equilibrium</b> price and quantity. A <b>shift</b> of a curve (the harvest fails, supply shrinks at every price) moves that equilibrium; a <b>movement along</b> a curve is just price responding to the existing curves.</p>
+        <div class="eq">Q_d(P)=Q_s(P)\ \text{at equilibrium}</div>
+        <table class="sym"><tr><td>Qd(P), Qs(P)</td><td>quantity demanded / supplied at price P</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the supply line's intercept (a worse harvest): the crossing point moves to a higher price, lower quantity.</li></ol></div>
+      <div data-lab="fplot" data-title="Supply meets demand" data-names="Demand;Supply" data-f="20-0.5*x; b+0.5*x" data-params="b=2:0..12:0.5" data-view="0,24,0,22" data-roots></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Confusing a shift of a curve with a movement along it.</li><li>Price controls (floors/ceilings) can prevent a market from ever reaching its natural equilibrium.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Commodity price shocks (coffee, oil) from supply disruptions.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. A bumper harvest shifts supply which way?</summary><div class="ans">Right/outward — more is offered at every price, pushing the equilibrium price down.</div></details>
+        <details class="check"><summary>2. Is a price rise caused by rising demand a "shift" or a "movement along" the supply curve?</summary><div class="ans">A movement along the supply curve — suppliers respond to the new price; the supply curve itself hasn't moved.</div></details>
+        <details class="check"><summary>3. What keeps a price ceiling from working as intended?</summary><div class="ans">If set below equilibrium it creates a shortage — quantity demanded exceeds quantity supplied at that price.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Equilibrium is where supply and demand curves cross.</li><li>Shifts move the equilibrium; movements along a curve don't.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="inflation" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Inflation</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A basket of goods costs $200 this year and $206 next year. What's the inflation rate, and why does it matter to an investor?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Inflation</b> is the rate of change of a basket of goods' price (tracked as the CPI). It erodes the purchasing power of a fixed amount of cash — the same idea behind the real-return calculation in Investment Fundamentals Lesson 2.3.</p>
+        <div class="worked"><b>Worked example</b><p>(206 − 200)/200 = <b>3%</b> inflation.</p></div>
+        <div class="eq">\text{Inflation}=\frac{\text{Basket}_1-\text{Basket}_0}{\text{Basket}_0}</div>
+        <table class="sym"><tr><td>Basket₀, Basket₁</td><td>the price of the same fixed basket of goods, one year apart</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Confirm the 3% result, then try a basket that falls in price — inflation turns negative (deflation).</li></ol></div>
+      <div data-lab="calc" data-title="Inflation rate" data-params="basket0=200:50..1000:1; basket1=206:50..1000:1" data-rows="inflation % = (basket1 - basket0) / basket0 * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>CPI is an average across a basket — personal experience of inflation can differ a lot.</li><li>Slowing inflation (disinflation) is not the same as falling prices (deflation).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Central bank inflation targets widely referenced in markets; wage and bond negotiations citing CPI.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Basket goes from $150 to $153. Inflation rate?</summary><div class="ans">(153-150)/150 = 2%.</div></details>
+        <details class="check"><summary>2. What does inflation do to the purchasing power of idle cash?</summary><div class="ans">Erodes it — the same dollar amount buys less over time.</div></details>
+        <details class="check"><summary>3. Is disinflation the same as deflation?</summary><div class="ans">No — disinflation is inflation slowing down (prices still rising, just more slowly); deflation is prices actually falling.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Inflation is the % change in a fixed basket's price.</li><li>It erodes purchasing power, which is why real return (Lesson 2.3) matters.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="interest-rates" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Interest rates</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A central bank raises its policy rate. You have a $10,000 loan whose rate rises from 5% to 8%. What's the extra yearly cost?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A central bank's <b>policy rate</b> is effectively the price of money. It ripples into mortgage rates, savings yields, and the discount rate used to value future cash flows (the same r from Investment Fundamentals Lesson 0.3).</p>
+        <div class="worked"><b>Worked example</b><p>10,000 × (0.08 − 0.05) = <b>$300</b> more interest per year.</p></div>
+        <div class="eq">\text{Extra interest}=\text{Principal}\times(r_2-r_1)</div>
+        <table class="sym"><tr><td>r₁, r₂</td><td>the old and new interest rate</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the rate gap further: the extra cost grows proportionally.</li></ol></div>
+      <div data-lab="calc" data-title="Cost of a rate change" data-params="principal=10000:1000..100000:500; r1=0.05:0..0.15:0.0025; r2=0.08:0..0.15:0.0025" data-rows="extra interest per year = principal * (r2 - r1)"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Fixed-rate borrowers aren't immediately affected by a rate change; variable-rate borrowers are.</li><li>Rate changes take time to work through the whole economy.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A rate hike raising mortgage and savings rates, and the discounting link to Lesson 0.3's present value.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. A $5,000 loan's rate rises from 4% to 6%. Extra yearly interest?</summary><div class="ans">5000 × 0.02 = $100.</div></details>
+        <details class="check"><summary>2. Who feels a rate change immediately: fixed- or variable-rate borrowers?</summary><div class="ans">Variable-rate borrowers.</div></details>
+        <details class="check"><summary>3. What financial-math concept uses the same "r" as an interest rate?</summary><div class="ans">The discount rate in present value (Investment Fundamentals Lesson 0.3).</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>The policy rate is the price of money and ripples outward.</li><li>Fixed vs. variable rate exposure changes who feels it, and when.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="gdp-and-growth" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>GDP & growth</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Nominal GDP grows 6% while inflation runs at 4%. How much did the economy actually produce more of?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>GDP</b> measures total economic output. <b>Nominal</b> GDP growth mixes real output growth with price inflation; <b>real</b> GDP growth strips inflation out — the same nominal/real split as Lesson 0.2's inflation idea. A widely-cited (rough) recession signal is two consecutive quarters of shrinking real GDP.</p>
+        <div class="worked"><b>Worked example</b><p>(1.06/1.04) − 1 ≈ <b>1.92%</b> real growth — close to, but not exactly, the simple 6% − 4% = 2% approximation.</p></div>
+        <div class="eq">\text{Real growth}=\frac{1+\text{nominal}}{1+\text{inflation}}-1</div>
+        <table class="sym"><tr><td>nominal</td><td>GDP growth before adjusting for inflation</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set nominal equal to inflation: real growth goes to 0% — no actual increase in output.</li></ol></div>
+      <div data-lab="calc" data-title="Real vs. nominal GDP growth" data-params="nominal=0.06:0..0.15:0.005; inflation=0.04:0..0.12:0.005" data-rows="real growth % = ((1+nominal)/(1+inflation) - 1) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>GDP doesn't capture everything of value (unpaid work, environmental costs).</li><li>Total GDP vs. per-capita GDP tell different stories about living standards.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Quarterly GDP releases and recession calls reported in financial news.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Nominal growth 8%, inflation 5%. Approximate real growth?</summary><div class="ans">About 3% (exactly (1.08/1.05)-1 ≈ 2.86%).</div></details>
+        <details class="check"><summary>2. What's a commonly-cited rough definition of a recession?</summary><div class="ans">Two consecutive quarters of shrinking real GDP.</div></details>
+        <details class="check"><summary>3. Why might per-capita GDP matter more than total GDP for living standards?</summary><div class="ans">Total GDP can rise just from population growth without each person being better off; per-capita adjusts for that.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Real GDP growth strips inflation out of nominal growth.</li><li>GDP is a useful but incomplete measure of economic well-being.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="business-cycle" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>The business cycle</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Unemployment is low and factories are near full capacity. Is the economy more likely headed toward a peak or a trough?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Economies move through <b>expansion</b> (growing, unemployment falling) → <b>peak</b> → <b>contraction</b> (shrinking, unemployment rising) → <b>trough</b> → a new expansion. <b>Leading indicators</b> (new orders, building permits) tend to turn before the cycle does; <b>lagging indicators</b> (like unemployment) confirm a turn after the fact — near-full capacity and low unemployment are themselves late-cycle, lagging signs.</p>
+        <div class="eq">\text{cycle}(t)\approx A\sin(2\pi f t)</div>
+        <table class="sym"><tr><td>A</td><td>amplitude — how deep the swings are</td></tr><tr><td>f</td><td>frequency — how often a full cycle repeats</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise frequency: cycles repeat faster. Raise amplitude: swings get more extreme. No two real cycles are this regular — this is a simplified illustration, not a forecast.</li></ol></div>
+      <div data-lab="fplot" data-title="A stylised business cycle" data-f="A*sin(2*pi*f*x)" data-params="A=1:0.2..2:0.1; f=0.2:0.05..0.6:0.05" data-view="0,10,-2.2,2.2"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>No two real cycles are the same length or severity.</li><li>Any single indicator can send a false signal — they're usually read together.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>PMI surveys, unemployment claims and GDP releases used together to gauge where the cycle stands.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name the four phases of the business cycle in order.</summary><div class="ans">Expansion, peak, contraction, trough.</div></details>
+        <details class="check"><summary>2. Is unemployment generally a leading or a lagging indicator?</summary><div class="ans">Lagging — it tends to confirm a turn in the cycle after it has already begun.</div></details>
+        <details class="check"><summary>3. Why read multiple indicators together instead of just one?</summary><div class="ans">Any single indicator can send a false signal; combining several reduces that risk.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>The cycle moves through expansion, peak, contraction and trough.</li><li>Leading indicators turn first; lagging indicators confirm afterward.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Financial Markets looks at how exchanges and market structure actually work.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

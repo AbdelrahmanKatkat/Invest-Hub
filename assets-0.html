@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Asset Classes</title>
+<meta name="description" content="Equity styles, fixed-income types, alternative assets, international assets, and inflation-protected assets.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-assets.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="assets" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="assets.html">Asset Classes</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#db6d2826">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Equity styles, fixed-income types, alternative assets, international assets, and inflation-protected assets. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="equity-styles" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Equity styles</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two stocks, same industry: one trades at a P/E of 35, the other at 12. Are they playing the same game?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Growth</b> companies are expected to expand earnings quickly and typically trade at higher multiples (recall P/E, Investment Fundamentals Lesson 3.3); <b>value</b> companies trade cheaper relative to current earnings or assets, often because growth is expected to be slower. <b>Large-cap</b> vs. <b>small-cap</b> is a separate split, by company size.</p>
+        <div class="worked"><b>Worked example</b><p>35/12 ≈ <b>2.9×</b> — the growth stock is priced at nearly three times the value stock's earnings multiple.</p></div>
+        <div class="eq">\text{multiple ratio}=\frac{P/E_{\text{growth}}}{P/E_{\text{value}}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Bring the two P/Es together: the ratio approaches 1 — the "style gap" narrows.</li></ol></div>
+      <div data-lab="calc" data-title="Growth vs. value multiple gap" data-params="peGrowth=35:5..100:1; peValue=12:5..100:1" data-rows="multiple ratio = peGrowth / peValue"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A high multiple isn't automatically "overpriced" if growth is genuinely fast; a low multiple isn't automatically "cheap" (Lesson 3.3's trap again).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Growth-heavy vs. value-heavy index funds track this exact split.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Which style typically trades at a higher earnings multiple?</summary><div class="ans">Growth.</div></details>
+        <details class="check"><summary>2. P/E 40 vs. P/E 10 — ratio?</summary><div class="ans">4×.</div></details>
+        <details class="check"><summary>3. Is large-cap vs. small-cap the same split as growth vs. value?</summary><div class="ans">No — it's a separate dimension, by company size rather than valuation style.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Growth vs. value is about valuation and growth expectations.</li><li>Large vs. small cap is a separate, size-based split.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="fixed-income-types" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Fixed-income types</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A government bond yields 4%. A similar-maturity corporate bond yields 5.5%. Why the gap?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Government</b>, <b>corporate</b>, <b>municipal</b> and <b>high-yield</b> bonds mainly differ in who owes the money and how likely they are to pay it back. A riskier borrower must offer a higher yield to attract lenders — the extra yield is the <b>credit spread</b>.</p>
+        <div class="worked"><b>Worked example</b><p>5.5% − 4% = <b>1.5 percentage points</b> (150 basis points) of credit spread, compensating for the corporate issuer's higher default risk relative to the government.</p></div>
+        <div class="eq">\text{Credit spread}=\text{Corporate yield}-\text{Government yield}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the corporate yield: the spread widens — the market is pricing in more perceived risk.</li></ol></div>
+      <div data-lab="calc" data-title="Credit spread" data-params="govYield=0.04:0..0.1:0.001; corpYield=0.055:0..0.15:0.001" data-rows="credit spread (pp) = (corpYield - govYield) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>"High-yield" is a polite name for higher default risk, not a free source of extra return.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Credit spreads widening during stress periods as perceived default risk rises.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a credit spread compensate a lender for?</summary><div class="ans">The extra risk of the borrower not paying as promised.</div></details>
+        <details class="check"><summary>2. Government yield 3%, corporate 4.8%. Spread?</summary><div class="ans">1.8 percentage points.</div></details>
+        <details class="check"><summary>3. Is "high-yield" bond return extra free money?</summary><div class="ans">No — it compensates for materially higher default risk.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Bond types mainly differ by borrower and default risk.</li><li>Credit spread is the market's price for that extra risk.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="alternative-assets" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Alternative assets</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A private fund charges "2 and 20". On $1,000,000 committed with $200,000 of profit above the hurdle, what does that actually cost?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Private equity</b>, <b>hedge funds</b> and <b>collectibles</b> trade liquidity and transparency (you often can't sell quickly or see a daily price) for potentially different return drivers than public markets. "2 and 20" means a 2% annual management fee plus 20% of profits above a hurdle.</p>
+        <div class="worked"><b>Worked example</b><p>Management fee: 2% × $1,000,000 = $20,000. Performance fee: 20% × $200,000 = $40,000. Total: <b>$60,000</b> for the year.</p></div>
+        <div class="eq">\text{Total fee}=\text{mgmt \%}\times\text{committed}+\text{carry \%}\times\text{profit above hurdle}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the profit above hurdle: the performance fee grows proportionally; the management fee doesn't.</li></ol></div>
+      <div data-lab="calc" data-title="\"2 and 20\" fee structure" data-params="committed=1000000:100000..10000000:10000; mgmtPct=0.02:0..0.05:0.001; profitAboveHurdle=200000:0..2000000:10000; carryPct=0.2:0..0.3:0.01" data-rows="management fee = mgmtPct * committed; performance fee = carryPct * profitAboveHurdle; total fee = mgmtPct * committed + carryPct * profitAboveHurdle"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Illiquidity isn't automatically compensated by better returns — it's a real cost of flexibility given up.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>"2 and 20" is a widely-referenced (though not universal) private-fund fee convention.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does "2 and 20" mean?</summary><div class="ans">A 2% annual management fee plus 20% of profits above a hurdle.</div></details>
+        <details class="check"><summary>2. $500,000 committed, 2% mgmt fee, $100,000 profit above hurdle, 20% carry. Total fee?</summary><div class="ans">0.02×500,000 + 0.20×100,000 = 10,000 + 20,000 = $30,000.</div></details>
+        <details class="check"><summary>3. Does illiquidity guarantee a higher return?</summary><div class="ans">No — it's a cost (reduced flexibility), not a guaranteed benefit.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Alternatives trade liquidity/transparency for potentially different return drivers.</li><li>"2 and 20" is a common fee structure, not free money for the manager-less investor.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="international-assets" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>International assets</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A foreign stock returns 10% in its local currency, which then falls 4% against your home currency. What's your actual return?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>International investing (across <b>developed</b> and <b>emerging</b> markets) adds a currency-movement component on top of the local-market return. A weaker foreign currency subtracts from your home-currency return; a stronger one adds to it.</p>
+        <div class="worked"><b>Worked example</b><p>(1.10 × 0.96) − 1 ≈ <b>5.6%</b> — noticeably below the 10% local return, purely from currency.</p></div>
+        <div class="eq">R_{\text{home}}=(1+R_{\text{local}})\times(1+R_{\text{fx}})-1</div>
+        <table class="sym"><tr><td>R_fx</td><td>the foreign currency's return against your home currency (negative if it weakens)</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Make the currency move positive (strengthen): home-currency return exceeds the local return.</li></ol></div>
+      <div data-lab="calc" data-title="Currency-adjusted return" data-params="localReturn=0.10:-0.3..0.5:0.01; fxReturn=-0.04:-0.3..0.3:0.01" data-rows="home-currency return % = ((1+localReturn)*(1+fxReturn) - 1) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Forgetting the currency leg entirely when comparing a foreign return to a domestic one.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A US investor's return on a foreign stock depends on both the stock and the exchange rate.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Local return 8%, currency +2%. Home-currency return?</summary><div class="ans">(1.08×1.02)−1 ≈ 10.2%.</div></details>
+        <details class="check"><summary>2. Does a weakening foreign currency help or hurt a foreign investment's home-currency return?</summary><div class="ans">Hurts it, all else equal.</div></details>
+        <details class="check"><summary>3. Developed vs. emerging markets — which split is this?</summary><div class="ans">A split by how established and liquid a country's markets and institutions are.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>International returns combine the local return and a currency return.</li><li>Currency moves can meaningfully help or hurt the final result.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="inflation-protected-assets" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Inflation-protected assets</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A regular bond's coupon is fixed in dollars. What's different about a bond whose principal adjusts with inflation?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>An inflation-linked bond adjusts its principal with a price index (like CPI), so the coupon payment (a fixed rate applied to that adjusted principal) rises with inflation too — directly addressing the purchasing-power erosion from Lesson 0.2.</p>
+        <div class="worked"><b>Worked example</b><p>$1,000 principal, 3% inflation adjustment: new principal = 1,000 × 1.03 = <b>$1,030</b>. A 2% coupon then applies to $1,030, not the original $1,000.</p></div>
+        <div class="eq">\text{Adjusted principal}=\text{Principal}\times(1+\text{inflation})</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise inflation: the adjusted principal (and thus the coupon in dollar terms) rises with it.</li></ol></div>
+      <div data-lab="calc" data-title="Inflation-adjusted principal" data-params="principal=1000:100..100000:100; inflation=0.03:-0.02..0.15:0.005; couponRate=0.02:0..0.08:0.0025" data-rows="adjusted principal = principal * (1 + inflation); coupon payment = principal * (1 + inflation) * couponRate"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Inflation-linked bonds still carry interest-rate risk — inflation protection isn't the same as price stability.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Inflation-linked government bonds (e.g. TIPS-style securities).</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What adjusts on an inflation-linked bond?</summary><div class="ans">The principal, based on a price index like CPI.</div></details>
+        <details class="check"><summary>2. Principal $2,000, inflation 4%. Adjusted principal?</summary><div class="ans">2,000 × 1.04 = $2,080.</div></details>
+        <details class="check"><summary>3. Does inflation protection eliminate interest-rate risk?</summary><div class="ans">No — the bond's price can still move with interest rates, same as Lesson 2.2's bonds lesson.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Inflation-linked bonds adjust principal with a price index.</li><li>They still carry interest-rate risk, just not inflation-erosion risk.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Fundamental Analysis goes deeper into valuing a business.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

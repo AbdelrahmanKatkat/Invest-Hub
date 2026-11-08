@@ -2,7 +2,11 @@
 // Usage: node tools/gen-curriculum.js [slug]        slug defaults to "fundamentals"
 //   fundamentals -> curriculum/investment-fundamentals.md -> window.FUNDAMENTALS_MODULES
 const fs = require('fs');
-const FILES = { fundamentals: 'investment-fundamentals' };
+const FILES = {
+  fundamentals: 'investment-fundamentals', economics: 'economics', markets: 'markets', assets: 'assets',
+  fundamental: 'fundamental', technical: 'technical', behavioral: 'behavioral', strategies: 'strategies',
+  portfolio: 'portfolio', risk: 'risk', global: 'global', quant: 'quant',
+};
 const slugs = process.argv[2] ? [process.argv[2]] : Object.keys(FILES);
 const BAR = '¦'; // placeholder for an escaped pipe inside a table cell
 

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Foundations · Global & Current Events</title>
+<meta name="description" content="Reading macro news, earnings season, geopolitics and markets, currency and FX basics, and separating signal from noise.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-global.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="global" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="global.html">Global & Current Events</a> › Module 0</div>
+    <div class="hero"><div class="big" style="background:#388bfd26">0</div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Reading macro news, earnings season, geopolitics and currencies as an investor, and separating signal from noise. Basic pass — concise for now.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="reading-macro-news" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Reading macro news</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Inflation comes in at 3.5%. Markets jump. Economists had expected 3.2%. Why does a number everyone expected to be high still move markets?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Markets react to the <b>surprise</b> relative to expectations, not the raw number alone. A "high" inflation reading that was already fully expected moves markets far less than a smaller number that surprises relative to consensus.</p>
+        <div class="worked"><b>Worked example</b><p>Actual 3.5%, expected 3.2%: surprise = 3.5 − 3.2 = <b>+0.3 percentage points</b> — the part that actually moves prices.</p></div>
+        <div class="eq">\text{Surprise}=\text{Actual}-\text{Expected}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set actual equal to expected: surprise goes to 0 — in theory, little market reaction from this release alone.</li></ol></div>
+      <div data-lab="calc" data-title="Macro surprise" data-params="actual=3.5:-5..15:0.1; expected=3.2:-5..15:0.1" data-rows="surprise (pp) = actual - expected"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Reacting to the headline number without checking what was already expected.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>CPI and jobs reports routinely move markets based on the surprise versus consensus forecasts.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What actually moves markets about a data release?</summary><div class="ans">The surprise relative to what was already expected, not just the raw number.</div></details>
+        <details class="check"><summary>2. Actual 4.1%, expected 4.4%. Surprise?</summary><div class="ans">−0.3 percentage points.</div></details>
+        <details class="check"><summary>3. Would a "high" but fully-expected number move markets much?</summary><div class="ans">Generally less than a smaller number that surprises consensus.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Surprise relative to expectations drives the market reaction, not the raw figure.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="earnings-season" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Earnings season</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company reports EPS of $1.35 when analysts expected $1.20. Is that a "big" beat?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>An "earnings beat" is relative to <b>consensus estimates</b>, not some absolute bar. The same actual EPS can be a big beat against one estimate and a miss against a higher one.</p>
+        <div class="worked"><b>Worked example</b><p>(1.35 − 1.20)/1.20 = <b>+12.5%</b> beat.</p></div>
+        <div class="eq">\text{Surprise \%}=\frac{\text{Actual}-\text{Estimate}}{\text{Estimate}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the estimate above the actual: the surprise turns negative — a miss, even with the same actual result.</li></ol></div>
+      <div data-lab="calc" data-title="Earnings surprise" data-params="actualEPS=1.35:0..20:0.01; estimateEPS=1.20:0..20:0.01" data-rows="surprise % = (actualEPS - estimateEPS) / estimateEPS * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A single quarter's "beat" or "miss" says little without the context of the full-year outlook and guidance.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Quarterly earnings reports moving individual stocks and sometimes whole sectors.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is an "earnings beat" relative to?</summary><div class="ans">Consensus analyst estimates, not an absolute number.</div></details>
+        <details class="check"><summary>2. Actual EPS $2.00, estimate $1.80. Surprise %?</summary><div class="ans">(2.00-1.80)/1.80 ≈ 11.1%.</div></details>
+        <details class="check"><summary>3. Can the same actual EPS be a beat against one estimate and a miss against another?</summary><div class="ans">Yes — it entirely depends on which estimate it's compared to.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A beat or miss is always relative to an estimate.</li><li>Context (guidance, full-year outlook) matters beyond one quarter.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="geopolitics-and-markets" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Geopolitics & markets</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A country's bonds normally yield 4%. Rising political instability pushes buyers to demand more. How is that extra demand expressed in price terms?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Political risk can add a required-return <b>premium</b> — investors demand extra compensation for added uncertainty, the same spread logic as Asset Classes Lesson "fixed-income-types," just driven by politics instead of credit quality.</p>
+        <div class="worked"><b>Worked example</b><p>Baseline yield 4% + political risk premium 1.5% = required yield <b>5.5%</b>.</p></div>
+        <div class="eq">\text{Required yield}=\text{Baseline yield}+\text{Risk premium}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the political risk premium: required yield rises, and (per Lesson 2.2) bond prices would fall to deliver it.</li></ol></div>
+      <div data-lab="calc" data-title="Political risk premium" data-params="baselineYield=0.04:0..0.1:0.001; riskPremium=0.015:0..0.1:0.001" data-rows="required yield % = (baselineYield + riskPremium) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Geopolitical effects are often sector- or country-specific, not a blanket move across every asset.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Energy and defense sectors reacting to specific geopolitical events; sovereign bond spreads reflecting political risk.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. How does political risk typically show up in bond yields?</summary><div class="ans">As an added risk premium on top of the baseline yield.</div></details>
+        <details class="check"><summary>2. Baseline 3%, premium 2%. Required yield?</summary><div class="ans">5%.</div></details>
+        <details class="check"><summary>3. Does a geopolitical event typically move every asset the same way?</summary><div class="ans">No — effects are often sector- or country-specific.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Political risk adds a required-return premium, like a credit spread.</li><li>Effects are usually specific, not universal.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="currency-and-fx-basics" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Currency & FX basics</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>$1 buys €0.92. You convert $1,000. How many euros do you get, and what does an interest-rate difference between two countries have to do with this?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>An <b>exchange rate</b> converts one currency into another, directly feeding Asset Classes Lesson "international-assets"'s currency-adjusted return. Interest-rate differentials between countries relate to <b>carry</b> — the incentive to borrow in a low-rate currency and hold a higher-rate one, though this carries its own currency risk.</p>
+        <div class="worked"><b>Worked example</b><p>$1,000 × 0.92 = <b>€920</b>.</p></div>
+        <div class="eq">\text{Converted amount}=\text{Amount}\times\text{Exchange rate}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the exchange rate: the same dollar amount converts to more of the other currency.</li></ol></div>
+      <div data-lab="calc" data-title="Currency conversion" data-params="amountUSD=1000:1..1000000:10; rate=0.92:0.1..10:0.01" data-rows="converted amount = amountUSD * rate"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A "carry" trade's extra yield can be wiped out (or worse) by an adverse currency move.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Converting a foreign investment's return back to a home currency (Asset Classes Lesson "international-assets").</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. $500 converted at a rate of 0.85. Result?</summary><div class="ans">€425.</div></details>
+        <details class="check"><summary>2. What is a "carry" trade built around?</summary><div class="ans">Interest-rate differentials between two currencies.</div></details>
+        <details class="check"><summary>3. Can currency moves offset a carry trade's extra yield?</summary><div class="ans">Yes — an adverse currency move can erase or exceed the extra yield.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Exchange rates directly convert returns between currencies.</li><li>Carry trades add currency risk on top of the rate differential.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="signal-vs-noise" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Signal vs. noise</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>If you reacted to every market headline, how often would you actually be changing your long-term plan for a good reason?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Most daily headlines are <b>noise</b> relative to a long-term plan; a smaller number carry genuine <b>signal</b>. A disciplined, scheduled review process (Investment Fundamentals Module 4) filters this, instead of reacting to every story as it breaks.</p>
+        <div class="worked"><b>Worked example</b><p>If roughly 1 in 20 headlines genuinely changes a reasonable long-term outlook, that's a <b>5%</b> signal rate — a rough, illustrative way to frame "most of it is noise," not a precise measured statistic.</p></div>
+        <div class="eq">\text{signal rate}=\frac{\text{headlines that genuinely matter}}{\text{total headlines}}</div>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the number of headlines with the "genuinely matters" count fixed: the signal rate falls — more noise diluting the same signal.</li></ol></div>
+      <div data-lab="calc" data-title="Illustrative signal rate" data-params="mattersCount=1:0..50:1; totalHeadlines=20:1..200:1" data-rows="signal rate % = mattersCount / totalHeadlines * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Treating every headline as equally actionable is a recipe for the behavioural mistakes in Behavioral Finance.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A written, scheduled review process vs. reacting to every news cycle.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Is most daily financial news signal or noise, relative to a long-term plan?</summary><div class="ans">Mostly noise.</div></details>
+        <details class="check"><summary>2. What defends against over-reacting to noise?</summary><div class="ans">A disciplined, scheduled review process instead of reacting to every headline.</div></details>
+        <details class="check"><summary>3. 2 "matters" headlines out of 40 total. Signal rate?</summary><div class="ans">5%.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Most headlines are noise relative to a long-term plan.</li><li>A scheduled process filters signal from noise better than constant reaction.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Next: Quant Investing applies statistics and code systematically to markets.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

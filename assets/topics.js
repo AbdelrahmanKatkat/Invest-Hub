@@ -9,17 +9,61 @@ window.HUB = {
       tags: ['Compounding', 'Risk & return', 'Diversification', 'Sharpe ratio', 'Asset allocation'],
       // sections/modules are generated from curriculum/investment-fundamentals.md (see assets/curriculum-fundamentals.js)
     },
-    { id: 'economics', title: 'Economics (Macro & Micro)', icon: '🌐', color: '#2f81f7', status: 'soon', desc: 'Supply and demand, inflation, interest rates, GDP, central banks and the business cycle — the forces that move every market.' },
-    { id: 'markets', title: 'Financial Markets', icon: '🏦', color: '#3fb950', status: 'soon', desc: 'How exchanges, order books, market makers, clearing and settlement actually work, from a market order to T+1 settlement.' },
-    { id: 'assets', title: 'Asset Classes', icon: '🧱', color: '#db6d28', status: 'soon', desc: 'Equities, fixed income, cash, real estate, commodities and crypto in depth: how each is priced, what drives its return and risk.' },
-    { id: 'fundamental', title: 'Fundamental Analysis', icon: '🔍', color: '#a371f7', status: 'soon', desc: 'Reading financial statements, valuation (DCF, multiples), moats and quality — figuring out what a business is worth.' },
-    { id: 'technical', title: 'Technical Analysis', icon: '📈', color: '#f85149', status: 'soon', desc: 'Price and volume charts, trend, support/resistance, indicators and the evidence for and against them.' },
-    { id: 'behavioral', title: 'Behavioral Finance', icon: '🧠', color: '#db61a2', status: 'soon', desc: 'Why rational markets still produce bubbles and panics: loss aversion, overconfidence, herding and how to defend against your own brain.' },
-    { id: 'strategies', title: 'Investment Strategies', icon: '♟️', color: '#d29922', status: 'soon', desc: 'Value, growth, momentum, income and passive indexing — turning analysis into a repeatable, testable process.' },
-    { id: 'portfolio', title: 'Portfolio Management', icon: '📦', color: '#56d364', status: 'soon', desc: 'Modern portfolio theory, asset allocation, rebalancing, tax drag and the discipline of managing a portfolio over decades.' },
-    { id: 'risk', title: 'Risk & Derivatives', icon: '🛡️', color: '#f0883e', status: 'soon', desc: 'Measuring and hedging risk: volatility, drawdown, options, futures and the Greeks, without blowing up the portfolio.' },
-    { id: 'global', title: 'Global & Current Events', icon: '🗞️', color: '#388bfd', status: 'soon', desc: 'Reading macro news, earnings and geopolitics as an investor: separating signal from noise in real time.' },
-    { id: 'quant', title: 'Quant Investing', icon: '🧮', color: '#8957e5', status: 'soon', desc: 'Factor models, backtesting, signal construction and systematic strategies — applying statistics and code to markets.' },
+    {
+      id: 'economics', title: 'Economics (Macro & Micro)', icon: '🌐', color: '#2f81f7', status: 'live', href: 'economics.html', curriculum: 'assets/curriculum-economics.js', next: 'markets',
+      desc: 'Supply and demand, inflation, interest rates, GDP, central banks and the business cycle — the forces that move every market.',
+      tags: ['Supply & demand', 'Inflation', 'Interest rates', 'GDP', 'Business cycle'],
+    },
+    {
+      id: 'markets', title: 'Financial Markets', icon: '🏦', color: '#3fb950', status: 'live', href: 'markets.html', curriculum: 'assets/curriculum-markets.js', next: 'assets',
+      desc: 'How exchanges, order books, market makers, clearing and settlement actually work, from a market order to T+1 settlement.',
+      tags: ['Market types', 'Exchange vs. OTC', 'Market efficiency', 'Regulation'],
+    },
+    {
+      id: 'assets', title: 'Asset Classes', icon: '🧱', color: '#db6d28', status: 'live', href: 'assets.html', curriculum: 'assets/curriculum-assets.js', next: 'fundamental',
+      desc: 'Equities, fixed income, cash, real estate, commodities and crypto in depth: how each is priced, what drives its return and risk.',
+      tags: ['Equity styles', 'Fixed income', 'Alternatives', 'International'],
+    },
+    {
+      id: 'fundamental', title: 'Fundamental Analysis', icon: '🔍', color: '#a371f7', status: 'live', href: 'fundamental.html', curriculum: 'assets/curriculum-fundamental.js', next: 'technical',
+      desc: 'Reading financial statements, valuation (DCF, multiples), moats and quality — figuring out what a business is worth.',
+      tags: ['Cash flow', 'Ratios', 'Moats', 'Red flags'],
+    },
+    {
+      id: 'technical', title: 'Technical Analysis', icon: '📈', color: '#f85149', status: 'live', href: 'technical.html', curriculum: 'assets/curriculum-technical.js', next: 'behavioral',
+      desc: 'Price and volume charts, trend, support/resistance, indicators and the evidence for and against them.',
+      tags: ['Chart types', 'Moving averages', 'Momentum', 'Volume'],
+    },
+    {
+      id: 'behavioral', title: 'Behavioral Finance', icon: '🧠', color: '#db61a2', status: 'live', href: 'behavioral.html', curriculum: 'assets/curriculum-behavioral.js', next: 'strategies',
+      desc: 'Why rational markets still produce bubbles and panics: loss aversion, overconfidence, herding and how to defend against your own brain.',
+      tags: ['Anchoring', 'Overconfidence', 'Mental accounting', 'Prospect theory'],
+    },
+    {
+      id: 'strategies', title: 'Investment Strategies', icon: '♟️', color: '#d29922', status: 'live', href: 'strategies.html', curriculum: 'assets/curriculum-strategies.js', next: 'portfolio',
+      desc: 'Value, growth, momentum, income and passive indexing — turning analysis into a repeatable, testable process.',
+      tags: ['Value', 'Growth', 'Momentum', 'Income', 'Passive'],
+    },
+    {
+      id: 'portfolio', title: 'Portfolio Management', icon: '📦', color: '#56d364', status: 'live', href: 'portfolio.html', curriculum: 'assets/curriculum-portfolio.js', next: 'risk',
+      desc: 'Modern portfolio theory, asset allocation, rebalancing, tax drag and the discipline of managing a portfolio over decades.',
+      tags: ['MPT', 'Efficient frontier', 'CAPM', 'Factors'],
+    },
+    {
+      id: 'risk', title: 'Risk & Derivatives', icon: '🛡️', color: '#f0883e', status: 'live', href: 'risk.html', curriculum: 'assets/curriculum-risk.js', next: 'global',
+      desc: 'Measuring and hedging risk: volatility, drawdown, options, futures and the Greeks, without blowing up the portfolio.',
+      tags: ['Drawdown', 'Options', 'Futures', 'Hedging'],
+    },
+    {
+      id: 'global', title: 'Global & Current Events', icon: '🗞️', color: '#388bfd', status: 'live', href: 'global.html', curriculum: 'assets/curriculum-global.js', next: 'quant',
+      desc: 'Reading macro news, earnings and geopolitics as an investor: separating signal from noise in real time.',
+      tags: ['Macro news', 'Earnings season', 'Geopolitics', 'FX'],
+    },
+    {
+      id: 'quant', title: 'Quant Investing', icon: '🧮', color: '#8957e5', status: 'live', href: 'quant.html', curriculum: 'assets/curriculum-quant.js',
+      desc: 'Factor models, backtesting, signal construction and systematic strategies — applying statistics and code to markets.',
+      tags: ['Factors', 'Backtesting', 'Signals', 'Overfitting'],
+    },
   ],
 };
 

@@ -4,9 +4,8 @@ Interactive, animated lessons that take you from the basics to confident investi
 Sibling project to **AI-Hub**, reusing its architecture (curriculum-first authoring, dark/light/neon themes, animated
 labs, notes) rebuilt for investment education.
 
-**Live path:** Investment Fundamentals (5 modules, 33 lessons — a concise "basic pass" for now, to be deepened module by
-module). **Planned:** Economics, Financial Markets, Asset Classes, Fundamental Analysis, Technical Analysis, Behavioral
-Finance, Investment Strategies, Portfolio Management, Risk & Derivatives, Global & Current Events, Quant Investing.
+**Live:** all 12 paths. Investment Fundamentals has 5 modules / 33 lessons; the other 11 each have one "Foundations"
+module / 5 lessons. Every lesson is a concise **basic pass** for now, to be deepened module by module on request.
 
 **General education only — nothing on this site is investment advice** or a recommendation to buy, sell or hold any
 specific security. Market data shown in dashboard widgets is sample/illustrative, not a live feed.

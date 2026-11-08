@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 3 · Valuation Basics · Investment Fundamentals</title>
+<meta name="description" content="Reading a balance sheet and income statement, P/E and other multiples, an intro to discounted cash flow, and an intro to chart reading.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamentals.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamentals" data-module="3">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="investment-fundamentals.html">Investment Fundamentals</a> › Module 3</div>
+    <div class="hero">
+      <div class="big" style="background:#a371f726">🔍</div>
+      <div style="flex:1">
+        <h1>Module 3 · Valuation Basics</h1>
+        <p>A first look at figuring out what something is worth: reading a balance sheet and income statement, P/E and other multiples, discounted cash flow, and reading a price chart. Basic pass — concise for now, to be deepened later.</p>
+        <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span><span class="chip">Builds on Modules 0–2</span></div>
+      </div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <!-- ===================== 3.1 ===================== -->
+    <section class="lesson" id="balance-sheet" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">3.1</span><h2>Reading a balance sheet</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company reports $500,000 in assets and $300,000 in liabilities. Is that good or bad?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>balance sheet</b> is a snapshot at one moment: what a company owns (<b>assets</b>), what it owes (<b>liabilities</b>), and what's left over for owners (<b>equity</b>). <b>Solvency</b> asks whether a company can meet its long-term obligations; <b>liquidity</b> asks whether it can meet its near-term ones, often checked with the <b>current ratio</b> (current assets ÷ current liabilities).</p>
+        <div class="worked"><b>Worked example</b><p>Assets $500,000, liabilities $300,000 → equity = <b>$200,000</b>. Debt-to-equity = 300,000/200,000 = <b>1.5</b>. Separately, current assets of $120,000 against current liabilities of $80,000 gives a current ratio of 120,000/80,000 = <b>1.5</b> — comfortably above 1, meaning short-term obligations are well covered.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Equity}=\text{Assets}-\text{Liabilities}\qquad \text{D/E}=\frac{\text{Liabilities}}{\text{Equity}}\qquad \text{Current ratio}=\frac{\text{Current assets}}{\text{Current liabilities}}</div>
+        <table class="sym"><tr><td>Assets</td><td>everything the company owns of value</td></tr><tr><td>Liabilities</td><td>everything the company owes</td></tr><tr><td>Equity</td><td>the residual belonging to owners</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise liabilities while equity stays fixed: debt-to-equity climbs.</li></ol></div>
+      <div data-lab="calc" data-title="Balance sheet ratios" data-params="assets=500000:10000..5000000:10000; liabilities=300000:0..5000000:10000; curAssets=120000:0..1000000:5000; curLiab=80000:1..1000000:5000" data-rows="equity = assets - liabilities; debt-to-equity = liabilities / (assets - liabilities); current ratio = curAssets / curLiab"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>More debt isn't automatically bad — it can fund productive growth; context (industry, rates) matters.</li><li>A very high current ratio can also signal cash sitting idle rather than financial strength.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Debt-to-equity is commonly compared across companies within the same industry.</li><li>"Working capital" discussions reference the current ratio.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does equity represent?</summary><div class="ans">What's left for owners after subtracting liabilities from assets.</div></details>
+        <details class="check"><summary>2. Assets $800,000, liabilities $600,000. Debt-to-equity?</summary><div class="ans">Equity = 200,000; D/E = 600,000/200,000 = 3.0.</div></details>
+        <details class="check"><summary>3. Why might comparing D/E across different industries be misleading?</summary><div class="ans">Typical, healthy debt levels vary a lot by industry (e.g. capital-intensive utilities vs. asset-light software firms), so an industry-agnostic comparison can mislead.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A balance sheet is a snapshot of assets, liabilities and equity.</li><li>Debt-to-equity and the current ratio summarise solvency and liquidity respectively.</li><li>Ratios should be judged in industry context, not in isolation.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 3.2 ===================== -->
+    <section class="lesson" id="income-statement" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">3.2</span><h2>Reading an income statement</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two companies both report $1,000,000 in revenue. How do you tell which one is actually running a tighter, more profitable business?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>An <b>income statement</b> runs from <b>revenue</b> (the top line) through costs to <b>net income</b> (the bottom line). <b>Gross margin</b> (gross profit ÷ revenue) shows how much is left after the direct cost of making the product; <b>net margin</b> (net income ÷ revenue) shows what's left after everything. Margins — percentages — let you compare profitability across companies of very different sizes; raw dollar profits do not.</p>
+        <div class="worked"><b>Worked example</b><p>Revenue $1,000,000, cost of goods sold $600,000 → gross profit $400,000, gross margin = 400,000/1,000,000 = <b>40%</b>. If net income is $80,000, net margin = 80,000/1,000,000 = <b>8%</b> — operating expenses and other costs consumed the other 32 percentage points.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Gross margin}=\frac{\text{Revenue}-\text{COGS}}{\text{Revenue}}\qquad \text{Net margin}=\frac{\text{Net income}}{\text{Revenue}}</div>
+        <table class="sym"><tr><td>COGS</td><td>cost of goods sold — the direct cost of producing what was sold</td></tr><tr><td>Net income</td><td>what's left after all expenses, interest and taxes</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise COGS toward revenue: gross margin shrinks toward 0%.</li></ol></div>
+      <div data-lab="calc" data-title="Margin calculator" data-params="revenue=1000000:10000..10000000:10000; cogs=600000:0..10000000:10000; netIncome=80000:-500000..2000000:5000" data-rows="gross profit = revenue - cogs; gross margin % = (revenue - cogs) / revenue * 100; net margin % = netIncome / revenue * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Comparing raw net income dollars across very differently-sized companies says little — compare margins instead.</li><li>A high gross margin can still end in a low net margin if operating expenses are large.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Earnings reports regularly discuss "margin expansion" or "margin compression" from one period to the next.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Why compare margins instead of raw profit dollars?</summary><div class="ans">Margins are percentages of revenue, which makes profitability comparable across companies of different sizes.</div></details>
+        <details class="check"><summary>2. Revenue $2,000,000, COGS $1,200,000. Gross margin?</summary><div class="ans">(2,000,000 − 1,200,000)/2,000,000 = 40%.</div></details>
+        <details class="check"><summary>3. Can a company have a high gross margin but a low net margin?</summary><div class="ans">Yes — large operating expenses, interest or taxes below the gross-profit line can erode a high gross margin down to a much lower net margin.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Income statements run from revenue down to net income.</li><li>Gross and net margin are percentage measures that allow fair comparison across company sizes.</li><li>A good gross margin doesn't guarantee a good net margin.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 3.3 ===================== -->
+    <section class="lesson" id="multiples" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">3.3</span><h2>P/E and other multiples</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock trades at $60 with $4 of earnings per share — "P/E of 15". What does that number actually mean, and is 15 good?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>multiple</b> expresses price relative to some fundamental figure. The <b>price-to-earnings (P/E)</b> ratio says how much investors are paying today per dollar of annual earnings; the <b>price-to-book (P/B)</b> ratio compares price to the company's accounting net worth per share. A multiple is only meaningful in comparison — to the company's own history, to peers in the same industry, or to its expected growth.</p>
+        <div class="worked"><b>Worked example</b><p>Price $60, EPS $4 → P/E = 60/4 = <b>15</b>, meaning investors pay $15 for every $1 of current annual earnings. If book value per share is $30, P/B = 60/30 = <b>2.0</b>.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">P/E=\frac{\text{Price}}{\text{EPS}}\qquad\qquad P/B=\frac{\text{Price}}{\text{Book value per share}}</div>
+        <table class="sym"><tr><td>EPS</td><td>earnings per share — net income divided by shares outstanding</td></tr><tr><td>Book value per share</td><td>equity (Lesson 3.1) divided by shares outstanding</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise EPS with price fixed: P/E falls — the same price now buys more earnings.</li></ol></div>
+      <div data-lab="calc" data-title="P/E and P/B calculator" data-params="price=60:1..1000:1; eps=4:0.1..50:0.1; book=30:0.1..500:0.5" data-rows="P/E = price / eps; P/B = price / book"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A "low" P/E can mean cheap, or it can mean the market expects earnings to fall — context matters.</li><li>Comparing P/E across very different industries without adjusting for typical growth and risk is misleading.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>P/E is commonly compared across companies in the same sector.</li><li>P/B is especially common for valuing financial companies like banks.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a P/E of 20 mean, in plain words?</summary><div class="ans">Investors are paying $20 today for every $1 of the company's current annual earnings.</div></details>
+        <details class="check"><summary>2. Price $45, EPS $3. P/E?</summary><div class="ans">45/3 = 15.</div></details>
+        <details class="check"><summary>3. Why isn't a low P/E automatically a "buy signal"?</summary><div class="ans">It can reflect the market genuinely expecting earnings to decline, not just an overlooked bargain.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A multiple expresses price relative to a fundamental like earnings or book value.</li><li>P/E and P/B are only meaningful compared to history, peers or growth expectations.</li><li>A low multiple is not automatically "cheap" in a good way.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 3.4 ===================== -->
+    <section class="lesson" id="dcf-intro" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">3.4</span><h2>Intro to discounted cash flow</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A project is expected to hand you $100,000 in 3 years. Worth $75,131 or $100,000 today — and why does the rate you pick change the answer so much?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Discounted cash flow (DCF)</b> extends Lesson 0.3's present-value idea from one future payment to a whole stream of projected cash flows: discount each one back to today and add them up. The arithmetic is simple; what actually drives the answer is the assumed discount rate and growth of future cash flows — small changes there can swing the result enormously.</p>
+        <div class="worked"><b>Worked example</b><p>A single $100,000 cash flow in 3 years, discounted at 10%: PV = 100,000/1.1³ ≈ <b>$75,131</b>. A full DCF just repeats this for each year's projected cash flow and sums the results.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">PV=\sum_{t=1}^{n}\frac{CF_t}{(1+r)^{t}}</div>
+        <table class="sym"><tr><td>CFₜ</td><td>the projected cash flow in year t</td></tr><tr><td>r</td><td>the discount rate</td></tr><tr><td>n</td><td>number of years projected</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the discount rate: present value falls — often sharply for cash flows further out.</li><li>Push the horizon (x-axis, the discount rate itself here) higher and watch how quickly PV decays even for a single, fixed future cash flow.</li></ol></div>
+      <div data-lab="fplot" data-title="Present value of $100,000 in 3 years, by discount rate" data-f="F/(1+x)^t" data-params="F=100000:10000..500000:1000; t=3:1..15:1" data-view="0,0.3,0,120000" data-readout="PV at r=10% = F/(1+0.1)^t"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Small changes in the assumed discount or growth rate can swing a DCF valuation enormously — "garbage in, garbage out".</li><li>Projecting cash flows many years into the future is inherently uncertain, even with careful work.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>DCF is a standard tool in equity research and company valuation.</li><li>The same present-value math underlies bond pricing (Lesson 2.2) and real-estate valuation.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a DCF do that single-period present value (Lesson 0.3) doesn't?</summary><div class="ans">It discounts and sums a whole stream of projected future cash flows, not just one.</div></details>
+        <details class="check"><summary>2. PV of $50,000 in 2 years at 8%?</summary><div class="ans">50,000/1.08² ≈ $42,867.</div></details>
+        <details class="check"><summary>3. Why is a DCF described as sensitive to assumptions?</summary><div class="ans">Because the discount rate and projected growth are estimates, and the formula raises them to a power over many years — small errors compound into large valuation differences.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>DCF sums the present value of a projected stream of cash flows.</li><li>The assumptions (rate, growth) dominate the result more than the arithmetic.</li><li>The same discounting idea underlies bonds and real estate too.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 3.5 ===================== -->
+    <section class="lesson" id="chart-reading-intro" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">3.5</span><h2>Intro to chart reading</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock moves from $40 to $55 over 10 weeks. Is that an "uptrend", and what does a chart actually show to make that obvious?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>candlestick</b> shows a period's open, high, low and close at a glance. A <b>trend</b> is a series of higher highs and higher lows (up) or lower highs and lower lows (down); a simple trend line connects them. <b>Support</b> is a price level buyers have repeatedly stepped in at; <b>resistance</b> is a level sellers have repeatedly capped the price at. (The dedicated Technical Analysis path goes much deeper into indicators and the evidence for and against this kind of analysis.)</p>
+        <div class="worked"><b>Worked example</b><p>From $40 to $55 over 10 weeks: slope = (55 − 40)/10 = <b>$1.50/week</b>, a positive slope — a simple, quantified way to describe an uptrend.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{slope}=\frac{P_1-P_0}{\text{weeks}}</div>
+        <table class="sym"><tr><td>P₀, P₁</td><td>price at the start and end of the window</td></tr><tr><td>slope</td><td>positive = uptrend, negative = downtrend, by this simple measure</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Make the slope a (parameter a) negative: the line becomes a downtrend.</li><li>Set a to 0: a flat, sideways trend — neither up nor down.</li></ol></div>
+      <div data-lab="fplot" data-title="Trend as a slope" data-f="a*x+b" data-params="a=1.5:-3..3:0.1; b=40:0..100:1" data-view="0,10,0,100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A trend line fit to a short window can look convincing and reverse immediately afterward.</li><li>Support and resistance are observed patterns from past behaviour, not guaranteed floors or ceilings.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Candlestick charts appear on virtually every trading platform.</li><li>Support and resistance are referenced constantly in technical-analysis discussions.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a candlestick show for one period?</summary><div class="ans">The open, high, low and close prices for that period.</div></details>
+        <details class="check"><summary>2. A stock falls from $90 to $72 over 6 weeks. Slope?</summary><div class="ans">(72 − 90)/6 = −$3/week — a downtrend.</div></details>
+        <details class="check"><summary>3. Is support a guaranteed floor for the price?</summary><div class="ans">No — it's a level where buyers have stepped in before; it can still be broken.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Candlesticks summarise a period's price action at a glance.</li><li>A trend can be roughly quantified as a slope.</li><li>Support and resistance are observed patterns, not guarantees.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Module 4 · Portfolio Basics & Capstone ties allocation, rebalancing, costs and behaviour into one final worked portfolio.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice. Illustrative figures throughout.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

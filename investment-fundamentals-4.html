@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 4 · Portfolio Basics & Capstone · Investment Fundamentals</title>
+<meta name="description" content="Asset allocation models, rebalancing, dollar-cost averaging, taxes and fees, and a capstone that builds and defends a sample first portfolio.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamentals.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamentals" data-module="4">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="investment-fundamentals.html">Investment Fundamentals</a> › Module 4</div>
+    <div class="hero">
+      <div class="big" style="background:#56d36426">📦</div>
+      <div style="flex:1">
+        <h1>Module 4 · Portfolio Basics & Capstone</h1>
+        <p>Allocation rules of thumb, rebalancing, dollar-cost averaging, taxes and fees, and a final capstone that combines everything in this path into one sample portfolio. Basic pass — concise for now, to be deepened later.</p>
+        <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span><span class="chip">Builds on Modules 0–3</span></div>
+      </div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <!-- ===================== 4.1 ===================== -->
+    <section class="lesson" id="allocation-models" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">4.1</span><h2>Asset allocation models</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>How much of a portfolio "should" be in stocks versus bonds at age 30 versus age 60?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Simple rules of thumb translate time horizon into an allocation: a longer horizon can better absorb the volatility from Lesson 0.5, since there's more time to recover from a downturn. One widely-cited (but rough) rule: <i>stock % = 110 − age</i>. These rules are starting points, not personalized advice — actual risk tolerance (0.6), goals and other income sources matter too.</p>
+        <div class="worked"><b>Worked example</b><p>At age 30: 110 − 30 = <b>80% stocks</b>, 20% bonds/cash. At age 60: 110 − 60 = <b>50% stocks</b>, 50% bonds/cash — a steadily more conservative mix over time.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{stock \%}=\max(0,\min(100,\,110-\text{age}))</div>
+        <table class="sym"><tr><td>age</td><td>the investor's current age</td></tr><tr><td>max/min</td><td>keep the result sensibly between 0% and 100%</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Slide age from 20 to 80: the suggested stock percentage steadily declines.</li></ol></div>
+      <div data-lab="calc" data-title="A simple age-based rule" data-params="age=30:18..100:1" data-rows="suggested stock % = max(0, min(100, 110 - age))"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>These are rough heuristics, not personalized financial advice — they ignore actual risk tolerance and circumstances.</li><li>Many variants exist (100−age, 120−age); none is uniquely "correct".</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Target-date retirement funds roughly follow an age-based glide path like this, automatically becoming more conservative over time.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Using 110−age, what's the suggested stock % at age 45?</summary><div class="ans">110 − 45 = 65%.</div></details>
+        <details class="check"><summary>2. Why does a longer horizon typically support a higher stock allocation?</summary><div class="ans">There's more time to recover from the volatility of stocks (Lesson 0.5) before the money is needed.</div></details>
+        <details class="check"><summary>3. Is 110−age a personalized recommendation?</summary><div class="ans">No — it's a rough starting heuristic; actual risk tolerance, goals and circumstances should adjust it.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Age/horizon-based rules are simple starting points, not laws.</li><li>Longer horizons can typically absorb more volatility.</li><li>Personal risk tolerance and goals should adjust any generic rule.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 4.2 ===================== -->
+    <section class="lesson" id="rebalancing" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">4.2</span><h2>Rebalancing</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You start at a 60/40 stocks/bonds split. Stocks then rise 20% while bonds stay flat. Are you still 60/40?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Price moves cause a portfolio to <b>drift</b> away from its target weights automatically, as winners grow to a larger share. <b>Rebalancing</b> — selling some of what grew and buying what lagged — restores the target mix. It also mechanically enforces "sell (relatively) high, buy (relatively) low", the opposite of the instinct described in Lesson 0.9.</p>
+        <div class="worked"><b>Worked example</b><p>Start: $60,000 stocks, $40,000 bonds. Stocks rise 20% → $72,000; bonds stay at $40,000; total $112,000. New weights: stocks 72,000/112,000 ≈ <b>64.3%</b>, bonds ≈ <b>35.7%</b> — drifted from the 60/40 target. To rebalance back to 60%, sell 72,000 − (0.60 × 112,000) = <b>$4,800</b> of stocks and move it into bonds.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{drifted weight}=\frac{\text{component value}}{\text{total value}}\qquad\qquad \text{trade}=\text{current value}-(\text{target weight}\times\text{total value})</div>
+        <table class="sym"><tr><td>component value</td><td>the current dollar value of one holding (e.g. stocks)</td></tr><tr><td>target weight</td><td>the originally chosen allocation percentage</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Confirm the drifted weights and trade amount match the worked example.</li><li>Raise the stock return further: drift and the rebalancing trade both grow.</li></ol></div>
+      <div data-lab="calc" data-title="Portfolio drift & rebalancing trade" data-params="stocks0=60000:1000..500000:1000; bonds0=40000:1000..500000:1000; stockReturn=0.20:-0.5..1:0.01; targetStockWeight=0.6:0.1..0.9:0.05" data-rows="stocks after move = stocks0 * (1 + stockReturn); total value = stocks0 * (1 + stockReturn) + bonds0; drifted stock weight % = (stocks0 * (1 + stockReturn)) / (stocks0 * (1 + stockReturn) + bonds0) * 100; rebalancing trade (sell stocks) = stocks0 * (1 + stockReturn) - targetStockWeight * (stocks0 * (1 + stockReturn) + bonds0)"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Rebalancing isn't free — trading costs and, in taxable accounts, potential taxes are real considerations.</li><li>Rebalancing on every tiny move can cost more than the drift it corrects; most plans use a schedule or a drift threshold instead.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Target-date funds rebalance automatically on an internal schedule.</li><li>"Calendar" (e.g. annual) and "threshold" (e.g. rebalance if drift exceeds 5%) are two common rebalancing policies.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Why does a portfolio drift from its target weights over time?</summary><div class="ans">Different holdings grow at different rates, so the faster-growing ones become a larger share of the total.</div></details>
+        <details class="check"><summary>2. Start $50,000 stocks/$50,000 bonds (50/50); stocks rise 30%, bonds flat. New stock weight?</summary><div class="ans">Stocks = 65,000; total = 115,000; weight = 65,000/115,000 ≈ 56.5%.</div></details>
+        <details class="check"><summary>3. Name one reason not to rebalance after every tiny price move.</summary><div class="ans">Trading costs (and potential taxes) can exceed the benefit of correcting a very small drift.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Prices moving at different rates causes portfolio drift.</li><li>Rebalancing restores the target mix and enforces a disciplined "sell high, buy low" pattern.</li><li>Rebalancing has real costs, so it's usually done on a schedule or threshold, not constantly.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 4.3 ===================== -->
+    <section class="lesson" id="dollar-cost-averaging" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">4.3</span><h2>Dollar-cost averaging</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You invest a fixed $100 every month for 3 months, at prices of $10, $8 and $12. Does investing the same dollar amount each time, regardless of price, help or hurt?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Dollar-cost averaging (DCA)</b> invests a fixed amount on a fixed schedule. Because a fixed dollar amount buys more shares when the price is low and fewer when it's high, the average cost per share can end up below the simple average of the prices paid. DCA's bigger benefit may be behavioural: it removes the "when should I invest?" decision that Lesson 0.9's biases tend to answer badly — but it is not a guarantee against loss, and simply investing a lump sum immediately has often outperformed spreading it out, in periods when markets trended upward.</p>
+        <div class="worked"><b>Worked example</b><p>$100 at $10 → 10 shares; $100 at $8 → 12.5 shares; $100 at $12 → 8.33 shares. Total: 30.83 shares for $300 invested, average cost = 300/30.83 ≈ <b>$9.73/share</b> — below the simple average price of the three, ($10 + $8 + $12)/3 = $10, because more shares were bought during the $8 dip.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Average cost}=\frac{\sum_i \text{investment}_i}{\sum_i \left(\text{investment}_i/\text{price}_i\right)}</div>
+        <table class="sym"><tr><td>investmentᵢ</td><td>the fixed amount invested in period i</td></tr><tr><td>priceᵢ</td><td>the price paid in period i</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Make all three prices equal: average cost equals that price exactly, and matches the simple average.</li><li>Make one price much lower than the others: average cost drops further below the simple average.</li></ol></div>
+      <div data-lab="calc" data-title="Dollar-cost averaging, 3 months of $100" data-params="p1=10:1..100:0.5; p2=8:1..100:0.5; p3=12:1..100:0.5" data-rows="total shares = 100/p1 + 100/p2 + 100/p3; average cost per share = 300 / (100/p1 + 100/p2 + 100/p3); simple average price = (p1+p2+p3)/3"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>DCA doesn't protect against a sustained decline — it changes the entry price pattern, not whether the underlying investment does well.</li><li>Holding cash on the sidelines specifically to "DCA in" has often underperformed investing it immediately, in periods when markets trended upward.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Automatic monthly contributions to a retirement account are a common real-world form of DCA.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Does DCA buy more or fewer shares when the price is low?</summary><div class="ans">More — the same fixed dollar amount buys more shares at a lower price.</div></details>
+        <details class="check"><summary>2. $100/month for 2 months at $5 and $20. Average cost per share?</summary><div class="ans">Shares = 100/5 + 100/20 = 20 + 5 = 25; average cost = 200/25 = $8.</div></details>
+        <details class="check"><summary>3. Does DCA guarantee a better outcome than investing a lump sum immediately?</summary><div class="ans">No — in periods when markets trend upward, investing immediately has often outperformed spreading contributions out, since DCA delays some money getting invested.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>DCA buys more shares when price is low, fewer when it's high, automatically.</li><li>Its main behavioural benefit is removing a hard, bias-prone timing decision.</li><li>It is not a guarantee against loss or a guaranteed outperformer versus a lump sum.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 4.4 ===================== -->
+    <section class="lesson" id="taxes-fees" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">4.4</span><h2>Taxes & fees basics</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Beyond the expense ratio from Lesson 2.7, what else quietly drags on long-term returns?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Taxes are a second, separate drag alongside fees. In a taxable account, dividends and realized capital gains can be taxed along the way; a <b>tax-advantaged retirement account</b> defers or reduces that drag, letting more of the return compound (Lesson 0.1) with less friction. Expense ratios and tax drag stack on top of each other — both matter, and both compound.</p>
+        <div class="worked"><b>Worked example</b><p>$50,000 at a 7% gross return for 25 years: at a 0.03% fee (net 6.97%) it grows to ≈ <b>$269,476</b>; at a 1% fee (net 6%) it grows to ≈ <b>$214,594</b> — a <b>$54,882</b> gap from fees alone, before even considering tax treatment.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">FV=P\,(1+r_{\text{gross}}-\text{fee})^{t}</div>
+        <table class="sym"><tr><td>r_gross</td><td>return before fees</td></tr><tr><td>fee</td><td>the annual expense ratio (a stand-in for any recurring drag)</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Confirm the two ending values and the gap match the worked example at the defaults.</li><li>Push years further out: the dollar gap keeps growing faster than years do.</li></ol></div>
+      <div data-lab="calc" data-title="Fee drag, recap at a different scale" data-params="principal=50000:1000..200000:1000; gross=0.07:0.02..0.12:0.005; feeLow=0.0003:0..0.01:0.0001; feeHigh=0.01:0..0.02:0.0005; years=25:1..40:1" data-rows="value at low fee = principal * (1 + gross - feeLow)^years; value at high fee = principal * (1 + gross - feeHigh)^years; difference = principal * (1 + gross - feeLow)^years - principal * (1 + gross - feeHigh)^years"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Fees and taxes each "feel small" year to year, which is exactly why their compounded effect is easy to underestimate.</li><li>Tax treatment varies by account type and is not identical everywhere — this lesson stays general rather than jurisdiction-specific.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Tax-advantaged retirement accounts versus ordinary taxable brokerage accounts is a foundational account-type decision.</li><li>Every fund discloses its expense ratio in its prospectus or fact sheet.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name the two drags on long-term returns discussed here.</summary><div class="ans">Fees (expense ratios) and taxes.</div></details>
+        <details class="check"><summary>2. Why can a tax-advantaged account meaningfully help long-term compounding?</summary><div class="ans">By deferring or reducing tax drag along the way, more of the return stays invested and compounds.</div></details>
+        <details class="check"><summary>3. Does a lower fee always fully offset less favorable tax treatment, or vice versa?</summary><div class="ans">Not necessarily — both are separate drags, and both should be considered together rather than assuming one compensates for the other.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Taxes and fees are two separate, compounding drags on returns.</li><li>Tax-advantaged accounts can reduce tax drag specifically.</li><li>Small annual percentages become large dollar amounts over decades.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 4.5 ===================== -->
+    <section class="lesson" id="capstone" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">4.5</span><h2>Capstone: build and defend a portfolio</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Age 30, moderate risk tolerance, a 35-year horizon, $10,000 to start and $300/month ongoing. Using everything in this path, what's a simple, defensible first portfolio and plan?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>This lesson doesn't introduce new math — it combines what came before into one decision, the same way Lesson 0.10 combined Module 0: start from an age/horizon-based allocation (4.1), diversify across asset classes so it isn't one concentrated bet (0.7), keep costs low (2.7, 4.4), automate contributions (4.3), rebalance on a schedule (4.2), and write the plan down so it survives the biases from 0.9.</p>
+        <div class="worked"><b>Worked example</b><p>Age 30 suggests roughly 80% stocks by the 110−age rule (4.1). A sample plan: 80% stocks, 15% bonds, 5% cash; $300/month auto-invested (4.3); reviewed and rebalanced once a year (4.2); low-cost index funds only (2.7). Set the lab below to 80/15/5/0 to see this mix's illustrative expected return and risk.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">E[R_p]=\sum_{i=1}^{n} w_i\,E[R_i]</div>
+        <table class="sym"><tr><td>wᵢ</td><td>the weight placed in asset class i</td></tr><tr><td>E[Rᵢ]</td><td>that class's expected return</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set the sliders to roughly 80% Stocks, 15% Bonds, 5% Cash, 0% Alternatives (matching the age-based suggestion) and read off the expected return and illustrative risk.</li><li>Compare that to a far more conservative 30/60/10/0 mix — notice both numbers fall together.</li></ol></div>
+      <div data-lab="allocpie"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Treating this one allocation as permanent, instead of a living plan to revisit as circumstances change.</li><li>Skipping the "write it down" step and relying on memory or mood during the next downturn (Lesson 0.9).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A short written <i>investment policy statement</i> — the plan, the allocation, and the rules for changing it — is commonly recommended by financial professionals.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name three ideas from this path that a finished portfolio plan should combine.</summary><div class="ans">Any three of: an age/horizon-based starting allocation, diversification, low costs, automated contributions, a rebalancing schedule, and a written plan to defend against biases.</div></details>
+        <details class="check"><summary>2. Why write the plan down rather than just "knowing" it?</summary><div class="ans">A written plan is harder to abandon impulsively during a stressful market move than an unwritten intention.</div></details>
+        <details class="check"><summary>3. Should a portfolio plan, once written, never change?</summary><div class="ans">No — it should be revisited periodically as goals, horizon and risk tolerance change, on a schedule rather than in reaction to short-term market moves.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A finished portfolio plan combines allocation, diversification, cost, automation and discipline.</li><li>Writing the plan down is itself a defence against behavioural mistakes.</li><li>A plan should be revisited on a schedule, not abandoned in a moment of stress.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Investment Fundamentals complete</b> You now have the shared vocabulary this entire site builds on. Economics, Financial Markets, Asset Classes, Fundamental Analysis, Technical Analysis, Behavioral Finance, Investment Strategies, Portfolio Management, Risk & Derivatives, Global & Current Events and Quant Investing each go deep on one slice of this map — coming soon.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice. Illustrative figures throughout.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

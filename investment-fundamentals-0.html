@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0 · Fundamentals · Investment Fundamentals</title>
+<meta name="description" content="What investing is, time value of money, measuring return, risk, the Sharpe ratio, diversification, how markets work, behavioural biases, and building a first portfolio — built from intuition, for general education only.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamentals.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamentals" data-module="0">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="investment-fundamentals.html">Investment Fundamentals</a> › Module 0</div>
+    <div class="hero">
+      <div class="big" style="background:#39c5cf26">🧭</div>
+      <div style="flex:1">
+        <h1>Module 0 · Fundamentals</h1>
+        <p>The vocabulary and mental models every investor needs before touching a dollar: what investing is, time value of money, measuring return, risk, diversification, how markets work, the biases that trip people up, and building a first portfolio. General education only — nothing here is a recommendation to buy, sell or hold any specific security.</p>
+        <div class="chips"><span class="chip">10 lessons</span><span class="chip">≈ 1.5 hours</span><span class="chip">No prerequisites</span></div>
+      </div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <!-- ===================== 0.1 ===================== -->
+    <section class="lesson" id="intro" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Introduction</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You have $1,000. You could leave it in a drawer, or put it to work. Thirty years from now, does it really matter which you choose?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p><b>Investing</b> means giving up the use of money now so that it can work for you — by lending it (bonds), owning a piece of a business (stocks), or owning a productive asset (property) — in exchange for the chance of more money later. The engine behind "more money later" is <b>compounding</b>: each year's growth earns its own growth the following year, like a snowball that picks up more snow as it rolls. Saving in a drawer earns nothing; investing lets time do part of the work.</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>$1,000 growing at 7% a year: with <b>simple</b> growth (interest paid out, not reinvested) you'd have 1000 + 1000×0.07×30 = <b>$3,100</b> after 30 years. With <b>compound</b> growth (each year's gain stays invested) you'd have 1000×1.07³⁰ ≈ <b>$7,612</b> — more than double, purely from letting gains generate their own gains.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Simple: } FV=P(1+rt) \qquad\qquad \text{Compound: } FV=P(1+r)^{t}</div>
+        <table class="sym">
+          <tr><td>P</td><td>principal — the amount invested today</td></tr>
+          <tr><td>r</td><td>the annual growth rate, as a decimal (7% = 0.07)</td></tr>
+          <tr><td>t</td><td>time in years</td></tr>
+          <tr><td>FV</td><td>future value — what the principal grows into</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Let the lab run at the default 8%, 20 years. Watch the gap between the orange (simple) and green (compound) lines widen — it is small early on and large late.</li>
+        <li>Lower the rate to 2%: compounding barely beats simple growth. Raise it to 15%: the gap becomes enormous. Compounding rewards <i>both</i> rate and time.</li>
+        <li>Set years to 5, then 40, at the same rate. The "extra from compounding" readout grows far faster than time itself — this is why starting early matters more than most people expect.</li></ol></div>
+      <div data-lab="compound" data-p="1000" data-r="0.07" data-y="20"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>Investing is not the same as speculating or gambling: investing buys a claim on real future cash flows (a company's profits, a bond's interest); speculating bets on price movement alone.</li>
+          <li>No real-world rate is guaranteed or perfectly steady every year — the formulas above describe the destination, not the bumpy path to get there (Lesson 0.5 covers that bumpiness).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>Broad stock market indices have historically compounded over long periods, though any specific future rate is never guaranteed.</li>
+          <li>Tax-advantaged retirement accounts let gains compound without yearly tax drag, which is part of why "contribute early" is repeated so often.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Which grows faster over many years: simple or compound growth, at the same rate?</summary><div class="ans">Compound growth, because each year's gain is reinvested and itself earns a return, while simple growth only ever earns a return on the original principal.</div></details>
+        <details class="check"><summary>2. Is investing the same thing as gambling?</summary><div class="ans">No. Investing buys a claim on a real future cash flow (profits, interest, rent); gambling is a bet on an outcome with no underlying productive asset.</div></details>
+        <details class="check"><summary>3. $2,000 grows at 5% compound for 10 years. Is the ending value closer to $2,500 or $3,250?</summary><div class="ans">2000×1.05¹⁰ ≈ $3,258, so closer to $3,250.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Investing trades the use of money now for a claim on more later.</li><li>Compounding is growth on growth — it rewards both a higher rate and more time.</li><li>Real returns are rarely smooth; "the formula" is the destination, not the ride.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.2 ===================== -->
+    <section class="lesson" id="asset-classes-overview" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Asset classes overview</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You want to invest $5,000 but "the stock market" is only one option. What else is actually out there?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>An <b>asset class</b> is a group of investments that behave similarly because they represent the same basic kind of claim. Lend money and you hold a <b>bond</b> (fixed interest, get your principal back). Own a slice of a business and you hold an <b>equity</b> (a stock) — no fixed payment, but a share of whatever profit (or loss) the business makes. Own a building and you hold <b>real estate</b>. Own a physical, interchangeable good like oil or gold and you hold a <b>commodity</b>. Hold a digital, decentralised asset and you hold a <b>cryptocurrency</b>. Hold money itself (or something that behaves like it) and you hold <b>cash & equivalents</b>.</p>
+        <p>Whatever you hold, its total return splits into two pieces: the <b>income</b> it pays out along the way (interest, dividends, rent) and the <b>price change</b> of the asset itself.</p>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">R=\frac{D+(P_1-P_0)}{P_0}</div>
+        <table class="sym">
+          <tr><td>P₀, P₁</td><td>price at the start and end of the period</td></tr>
+          <tr><td>D</td><td>income received during the period (dividend, coupon, rent)</td></tr>
+          <tr><td>R</td><td>total return over the period, as a decimal</td></tr>
+        </table>
+        <p>As a rough, historical ordering, cash is the lowest risk and lowest expected return; bonds sit above it; diversified equities above that; a single stock or crypto sit highest in typical risk. Lesson 0.5 makes "risk" precise.</p>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Drag the risk-tolerance line from the far left to the far right and watch which asset classes fall "within tolerance" at each setting.</li>
+        <li>Notice there is no dot in the top-left (high return, low risk) — that gap is the central trade-off of investing.</li></ol></div>
+      <div data-lab="riskreturn"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>"The stock market" and "investing" are not synonyms — equities are one asset class among several.</li>
+          <li>Holding only cash feels safe but historically has often lost purchasing power to inflation over long periods (Lesson 2.3 in the Asset Classes path covers this in depth).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>The S&P 500 and similar broad indices represent the equities asset class; a 10-year government bond represents fixed income; a money-market fund represents cash equivalents.</li>
+          <li>A diversified portfolio usually blends several of these classes rather than holding just one (Lesson 0.7).</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name the two pieces that make up an asset's total return.</summary><div class="ans">Income (dividends, interest, rent) and price change.</div></details>
+        <details class="check"><summary>2. A bond is a claim on what, exactly?</summary><div class="ans">A loan: the holder has lent money and is owed fixed interest payments plus the return of principal.</div></details>
+        <details class="check"><summary>3. Why might holding only cash be riskier than it feels?</summary><div class="ans">Its nominal value is stable, but inflation can erode what that money actually buys over time — a different kind of risk than price volatility.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Asset classes differ in what kind of claim you hold: lending, ownership, physical goods, or cash.</li><li>Total return = income + price change.</li><li>Risk and expected return have historically moved together across classes; there is no reliable free lunch.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.3 ===================== -->
+    <section class="lesson" id="time-value-of-money" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Time value of money</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A lottery advertises a "$1,000,000 jackpot" but offers you a smaller lump sum today instead of the full amount spread over 20 years. Why would the smaller number today ever be the fair choice?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>A dollar today can be invested and start growing immediately; a dollar promised years from now cannot. So the two are not equal — the future dollar is "worth less" today by however much growth you gave up waiting for it. Turning a future amount into its equivalent value today is called <b>discounting</b>, and the rate used is the <b>discount rate</b> — essentially the return you could otherwise have earned.</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>You're promised $1,000 in 5 years, and could otherwise earn 6% a year elsewhere. Its value today: 1000 / 1.06⁵ ≈ <b>$747.26</b>. That means you should be indifferent between $747.26 now and $1,000 in 5 years — assuming you could really earn 6%.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">PV=\frac{FV}{(1+r)^{t}}</div>
+        <table class="sym">
+          <tr><td>FV</td><td>future value — the amount received later</td></tr>
+          <tr><td>r</td><td>discount rate per year (the return given up by waiting)</td></tr>
+          <tr><td>t</td><td>years until the money arrives</td></tr>
+          <tr><td>PV</td><td>present value — today's equivalent of that future amount</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Keep r fixed and slide the viewing years out: present value shrinks the farther away the payment is.</li>
+        <li>Raise r: every future dollar becomes worth less today, because the opportunity you're giving up is bigger.</li></ol></div>
+      <div data-lab="fplot" data-title="Present value of a future $F" data-f="F/(1+r)^x" data-params="F=1000:100..5000:50; r=0.06:0.01..0.15:0.005" data-view="0,30,0,1200" data-readout="PV in 5 years = F/(1+r)^5"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>A higher discount rate makes the <i>present value</i> smaller, not bigger — it's easy to get this backwards.</li>
+          <li>Discounting and inflation are related but distinct: discounting also reflects risk and the opportunity cost of waiting, not just rising prices.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>Bond and mortgage pricing are built entirely from discounting future payments back to today.</li>
+          <li>Comparing a lump-sum payout to an annuity (Module 3's intro to discounted cash flow goes further).</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Does raising the discount rate increase or decrease present value?</summary><div class="ans">Decrease — a higher rate means more was given up by waiting, so the future amount is worth less today.</div></details>
+        <details class="check"><summary>2. Which is worth more today: $500 in 1 year or $500 in 10 years, at any positive discount rate?</summary><div class="ans">$500 in 1 year — the sooner payment is discounted less.</div></details>
+        <details class="check"><summary>3. What is the present value of $2,000 received in 3 years at an 8% discount rate?</summary><div class="ans">2000 / 1.08³ ≈ $1,587.66.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Money available sooner is worth more than the same amount available later.</li><li>Discounting converts a future amount into today's equivalent using PV = FV/(1+r)ᵗ.</li><li>A higher discount rate shrinks present value; more time away also shrinks it.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.4 ===================== -->
+    <section class="lesson" id="measuring-return" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Measuring return</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Fund A says it returned "34% total" over a few messy years. Fund B says it returned "a steady 10% a year" for 5 years. Which one actually grew your money more?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>simple return</b> describes one period: how much you gained or lost relative to what you put in, including any income received. To compare investments held for <i>different</i> lengths of time fairly, you need a single annual rate that would reproduce the same overall result — the <b>CAGR</b> (compound annual growth rate).</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>You bought a share at $50, collected $2 in dividends, and sold at $65: simple return = (65 − 50 + 2) / 50 = <b>34%</b> — but that's over however many years it took, not "per year".</p>
+          <p>Separately, $10,000 grew to $16,000 over 5 years. CAGR = (16000/10000)^(1/5) − 1 ≈ <b>9.86% per year</b> — this is the single steady annual rate that gets you from $10,000 to $16,000 in exactly 5 years.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">R=\frac{P_1-P_0+D}{P_0}\qquad\qquad CAGR=\left(\frac{FV}{PV}\right)^{1/t}-1</div>
+        <table class="sym">
+          <tr><td>R</td><td>simple (holding-period) return</td></tr>
+          <tr><td>PV, FV</td><td>beginning and ending value</td></tr>
+          <tr><td>t</td><td>number of years held</td></tr>
+          <tr><td>CAGR</td><td>the constant annual rate that turns PV into FV over t years</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Set PV and FV to match the worked example (10,000 → 16,000, 5 years) and confirm the CAGR readout matches 9.86%.</li>
+        <li>Keep the same PV and FV but raise years: CAGR falls — the same total growth spread over more time is a smaller annual rate.</li></ol></div>
+      <div data-lab="calc" data-title="CAGR calculator" data-params="PV=10000:1000..100000:500; FV=16000:1000..200000:500; t=5:1..30:1" data-rows="total growth = (FV-PV)/PV; CAGR = (FV/PV)^(1/t) - 1"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>Averaging yearly percentage returns with plain arithmetic overstates the true result — a +50% year followed by a −50% year is not "0% average", it's a 25% loss overall (1.5 × 0.5 = 0.75).</li>
+          <li>A "total return" headline figure is meaningless for comparison without also knowing the time period it covers.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>Fund fact sheets routinely quote "5-year annualized return" — that number is a CAGR.</li>
+          <li>Savings account and CD "APY" figures are the same annualising idea applied to interest.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Why isn't "34% total return" directly comparable to "10% per year"?</summary><div class="ans">They cover different (and in the first case, unstated) time periods; only an annualized rate like CAGR puts them on the same footing.</div></details>
+        <details class="check"><summary>2. $5,000 grows to $9,000 over 6 years. What is the CAGR (to one decimal place)?</summary><div class="ans">(9000/5000)^(1/6) − 1 ≈ 10.3%.</div></details>
+        <details class="check"><summary>3. A stock returns +40% one year and −40% the next. Is the 2-year result break-even?</summary><div class="ans">No: 1.4 × 0.6 = 0.84, an 16% loss overall — losses and gains are not symmetric in percentage terms.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Simple return describes one period; CAGR annualizes a multi-year result for fair comparison.</li><li>CAGR = (FV/PV)^(1/t) − 1.</li><li>Percentage gains and losses do not average arithmetically — compound them instead.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.5 ===================== -->
+    <section class="lesson" id="risk-and-volatility" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Risk & volatility</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two funds both average 8% a year. One bounces between −20% and +35% each year; the other stays between +4% and +12%. Are they really "the same" investment?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>The average return tells you the destination; it says nothing about how bumpy the ride was. <b>Volatility</b> — measured as the <b>standard deviation</b> of returns — captures how far actual yearly returns typically stray from the average. A low-volatility investment's returns cluster tightly around its average; a high-volatility one swings widely.</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>Five years of returns: 8%, −3%, 12%, 5%, −6%. Mean = (8−3+12+5−6)/5 = <b>3.2%</b>. Each deviation from the mean, squared, averaged, then square-rooted gives the standard deviation: ≈ <b>6.73%</b>.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\bar r=\frac1n\sum_{i=1}^{n}r_i \qquad\qquad \sigma=\sqrt{\frac1n\sum_{i=1}^{n}(r_i-\bar r)^2}</div>
+        <table class="sym">
+          <tr><td>rᵢ</td><td>the return in year i</td></tr>
+          <tr><td>n</td><td>number of years in the sample</td></tr>
+          <tr><td>r̄</td><td>the mean (average) return</td></tr>
+          <tr><td>σ</td><td>standard deviation of returns — the risk measure used throughout this path</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Enter the five worked-example returns and confirm mean ≈ 3.2% and σ ≈ 6.73%.</li>
+        <li>Make all five returns identical (e.g. all 5%): σ should drop to exactly 0 — no bounce, no risk by this measure.</li></ol></div>
+      <div data-lab="calc" data-title="Mean and standard deviation, by hand" data-params="r1=0.08:-0.3..0.4:0.01; r2=-0.03:-0.3..0.4:0.01; r3=0.12:-0.3..0.4:0.01; r4=0.05:-0.3..0.4:0.01; r5=-0.06:-0.3..0.4:0.01"
+           data-rows="mean = (r1+r2+r3+r4+r5)/5; std dev = sqrt(((r1-((r1+r2+r3+r4+r5)/5))^2+(r2-((r1+r2+r3+r4+r5)/5))^2+(r3-((r1+r2+r3+r4+r5)/5))^2+(r4-((r1+r2+r3+r4+r5)/5))^2+(r5-((r1+r2+r3+r4+r5)/5))^2)/5)"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>Standard deviation treats a surprise gain and a surprise loss of the same size identically — it does not by itself distinguish "good" volatility from "bad".</li>
+          <li>A short history (a few years) gives a noisy, unreliable σ estimate.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>ETF and mutual fund fact sheets commonly report a "standard deviation" or "volatility" figure.</li>
+          <li>The VIX index is often described as the market's expectation of near-term volatility.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Can two investments have the same average return but different risk?</summary><div class="ans">Yes — the average says nothing about how much individual years deviate from it.</div></details>
+        <details class="check"><summary>2. What does a standard deviation of 0 mean?</summary><div class="ans">Every return in the sample was identical to the mean — no variation at all.</div></details>
+        <details class="check"><summary>3. Why is σ from only 2 years of data unreliable?</summary><div class="ans">Too few data points to represent the investment's typical behaviour; a couple of unusual years can swing the estimate a lot.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Average return and risk are different questions — always ask both.</li><li>Standard deviation σ measures how much returns typically deviate from their average.</li><li>σ treats upside and downside swings symmetrically — it is not the whole risk story.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.6 ===================== -->
+    <section class="lesson" id="risk-adjusted-return" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.6</span><h2>Risk-adjusted return</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Fund X returned 9%/year with 15% volatility. Fund Y returned a lower 7%/year but with only 6% volatility. The risk-free rate (e.g. short-term government bills) is 2%. Which fund did the better job?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>Raw return alone can't answer "which investment was better managed", because a bigger number is easy to get by simply taking more risk. The <b>Sharpe ratio</b> measures reward <i>per unit of risk taken</i> — like miles per gallon instead of just miles.</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>Fund X: (0.09 − 0.02) / 0.15 ≈ <b>0.467</b>. Fund Y: (0.07 − 0.02) / 0.06 ≈ <b>0.833</b>. Despite the lower raw return, Fund Y earned nearly double the reward per unit of risk.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">S=\frac{R_p-R_f}{\sigma_p}</div>
+        <table class="sym">
+          <tr><td>Rp</td><td>the portfolio's (or fund's) return</td></tr>
+          <tr><td>Rf</td><td>the risk-free rate — the return of a very low-risk benchmark</td></tr>
+          <tr><td>σp</td><td>the portfolio's standard deviation (Lesson 0.5)</td></tr>
+          <tr><td>S</td><td>the Sharpe ratio — higher means more reward per unit of risk</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Enter Fund X's numbers, then Fund Y's, and confirm the Sharpe ratios match the worked example.</li>
+        <li>Keep return and risk-free rate fixed and lower σ: the Sharpe ratio rises — less risk for the same reward is strictly better.</li></ol></div>
+      <div data-lab="calc" data-title="Sharpe ratio calculator" data-params="Rp=0.09:-0.1..0.3:0.005; Rf=0.02:0..0.08:0.001; sigma=0.15:0.01..0.5:0.01" data-rows="excess return = Rp - Rf; Sharpe ratio = (Rp - Rf) / sigma"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>The Sharpe ratio penalises <i>all</i> volatility, including sharp upside moves, which is not always what an investor actually minds.</li>
+          <li>Comparing Sharpe ratios computed over different, non-overlapping time periods can be misleading.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>Fund comparison tools and manager performance reviews routinely list Sharpe ratio alongside raw return.</li>
+          <li>Short-term government Treasury bills are a common stand-in for the risk-free rate.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. A fund with a higher return always has a higher Sharpe ratio. True or false?</summary><div class="ans">False — a high enough volatility can make the Sharpe ratio lower despite a higher raw return.</div></details>
+        <details class="check"><summary>2. Compute the Sharpe ratio for return 11%, risk-free rate 3%, σ 20%.</summary><div class="ans">(0.11 − 0.03) / 0.20 = 0.40.</div></details>
+        <details class="check"><summary>3. If σ doubles with return and the risk-free rate unchanged, what happens to the Sharpe ratio?</summary><div class="ans">It is cut in half — the numerator is unchanged while the denominator doubles.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Raw return alone doesn't tell you if the risk taken was worth it.</li><li>Sharpe ratio = excess return over the risk-free rate, divided by volatility.</li><li>A higher Sharpe ratio means more reward per unit of risk, not necessarily a higher return.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.7 ===================== -->
+    <section class="lesson" id="diversification" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.7</span><h2>Diversification & correlation</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You hold one stock with 20% volatility. A friend says "add a second stock, also 20% volatile, and your overall risk will actually go <i>down</i>." How can adding a risky asset reduce risk?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>If two assets don't move in perfect lockstep, their bad days don't always coincide — one asset's dip is partly offset by the other holding up. How closely two assets move together is their <b>correlation</b> (from −1, perfectly opposite, to +1, perfectly together). The less correlated two assets are, the more their combination's ups and downs cancel out, even though each individually is just as volatile as before.</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>Two assets, each with σ = 20%, correlation ρ = 0.3, blended 50/50: portfolio variance = 0.5²×0.2² + 0.5²×0.2² + 2×0.5×0.5×0.3×0.2² = 0.026, so portfolio σ = √0.026 ≈ <b>16.1%</b> — lower than either asset alone, simply from combining them.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\sigma_p=\sqrt{w_1^2\sigma_1^2+w_2^2\sigma_2^2+2w_1w_2\rho\,\sigma_1\sigma_2}</div>
+        <table class="sym">
+          <tr><td>w₁, w₂</td><td>the weight (share of the portfolio) held in each asset</td></tr>
+          <tr><td>σ₁, σ₂</td><td>each asset's own standard deviation</td></tr>
+          <tr><td>ρ</td><td>the correlation between the two assets' returns</td></tr>
+          <tr><td>σp</td><td>the resulting portfolio's standard deviation</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Set correlation to 1: the two simulated series move in lockstep and portfolio σ equals the individual σ — no diversification benefit at all.</li>
+        <li>Lower correlation toward −1: the simulated green portfolio line flattens dramatically as the assets' moves cancel.</li></ol></div>
+      <div data-lab="diversify"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>Owning twenty stocks in the same industry is not real diversification — they tend to move together (high ρ).</li>
+          <li>Correlations between assets often rise toward 1 exactly during market crises, reducing the protection diversification normally provides when it's needed most.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>A classic 60/40 stocks-and-bonds portfolio relies on stocks and bonds historically having relatively low (sometimes negative) correlation.</li>
+          <li>Adding international stocks or other asset classes is a common way to lower correlation further.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Does diversification reduce each asset's own volatility?</summary><div class="ans">No — each asset's own σ is unchanged; diversification reduces the <i>combined portfolio's</i> volatility through partial cancellation.</div></details>
+        <details class="check"><summary>2. At correlation ρ = 1, does combining two equally volatile assets lower risk?</summary><div class="ans">No — with perfect correlation the portfolio's σ equals the individual σ; there is no cancellation.</div></details>
+        <details class="check"><summary>3. Why might diversification "fail" exactly when you need it most, during a crash?</summary><div class="ans">Correlations across many assets often rise sharply toward 1 during crises, so the usual partial cancellation shrinks right when protection matters most.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Correlation measures how closely two assets' returns move together.</li><li>Combining imperfectly correlated assets lowers portfolio risk without lowering the weighted-average expected return.</li><li>Diversification benefit shrinks as correlation rises toward 1, and tends to shrink in crises.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.8 ===================== -->
+    <section class="lesson" id="how-markets-work" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.8</span><h2>How markets work</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You click "buy" on a $50 stock. Who's actually on the other side of that trade, and why might your order fill at $50.05 instead of exactly $50.00?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>Markets match buyers and sellers — retail investors, institutions and professional <b>market makers</b> who stand ready to trade. A <b>market order</b> says "fill me now at the best available price"; a <b>limit order</b> says "only fill me at my chosen price or better", which might not fill at all. The gap between the best available buy price and sell price is the <b>bid-ask spread</b> — a small built-in cost of trading.</p>
+        <p>An <b>index</b> summarises "the market" as one number from many stocks. Two common designs: <b>price-weighted</b> (simply average the prices) and <b>capitalization-weighted</b> (weight each stock by the total value of all its shares).</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>Three toy stocks — A: $100 × 10 shares (cap $1,000); B: $20 × 100 shares (cap $2,000); C: $10 × 500 shares (cap $5,000). Price-weighted index = (100+20+10)/3 ≈ <b>43.3</b>. Cap-weighted weights: A 12.5%, B 25%, C 62.5%. If A's price <i>doubles</i> to $200, the price-weighted index jumps 76.9% — dominated by the one high-priced stock — while the cap-weighted total value rises only 12.5%, reflecting A's actual (small) share of total size.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Price-weighted: } I=\frac{\sum_i P_i}{d} \qquad\qquad \text{Cap-weighted: } w_i=\frac{P_i\times S_i}{\sum_j P_j\times S_j}</div>
+        <table class="sym">
+          <tr><td>Pᵢ, Sᵢ</td><td>the price and shares outstanding of stock i</td></tr>
+          <tr><td>d</td><td>the index divisor (adjusted over time for splits and changes)</td></tr>
+          <tr><td>wᵢ</td><td>stock i's weight in a cap-weighted index</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Move only pa (stock A's price) up a lot: the price-weighted index swings hard while the cap-weighted total barely moves, since A is the smallest company by market cap here.</li>
+        <li>Move pc (the biggest company) instead: now the cap-weighted total moves the most — it responds to <i>size</i>, not price level.</li></ol></div>
+      <div data-lab="calc" data-title="Price-weighted vs. cap-weighted toy index" data-params="pa=100:10..300:1; pb=20:5..100:1; pc=10:2..50:1" data-rows="price-weighted index = (pa+pb+pc)/3; cap-weighted total value = pa*10+pb*100+pc*500; A's cap-weight % = (pa*10)/(pa*10+pb*100+pc*500)*100"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>A stock's price level says nothing about how big the company is — it depends entirely on how many shares exist.</li>
+          <li>A price-weighted index (like the classic Dow Jones style) lets expensive stocks dominate, unlike a cap-weighted index (like the S&P 500 style).</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>The Dow Jones Industrial Average is price-weighted; the S&P 500 is capitalization-weighted — the same underlying stocks can move each index differently.</li>
+          <li>NYSE and Nasdaq are examples of exchanges where this matching happens.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is the bid-ask spread?</summary><div class="ans">The gap between the best available buy (bid) and sell (ask) price — effectively a small cost of trading.</div></details>
+        <details class="check"><summary>2. In a cap-weighted index, which matters more: a stock's price or its total market value?</summary><div class="ans">Total market value (price × shares outstanding) — that's what determines its weight.</div></details>
+        <details class="check"><summary>3. A market order vs. a limit order — which guarantees a fill, and which guarantees a price?</summary><div class="ans">A market order is very likely to fill (at whatever the current price is); a limit order guarantees a price (or better) but may not fill at all.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Markets match buyers and sellers through orders; the bid-ask spread is a small built-in trading cost.</li><li>An index is just one way of summarising many stocks into one number — price-weighted and cap-weighted give different pictures.</li><li>A stock's price level is not the same as the company's size.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.9 ===================== -->
+    <section class="lesson" id="behavioral-biases" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.9</span><h2>Behavioral biases</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>The market drops 20% in a month. Every instinct says "sell before it gets worse." Why does acting on that instinct often cost more than riding it out?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>Humans aren't wired to process market swings calmly. <b>Loss aversion</b> makes losses feel worse than equivalent gains feel good, pushing people to sell at the worst moments. <b>Recency bias</b> overweights whatever just happened, extrapolating a bad month into "it will keep getting worse". <b>Herding</b> makes "everyone is selling" feel like information, even when it's just panic feeding on itself. Together they push people toward the opposite of "buy low, sell high".</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>Investor A rides out a 20% drop, then a 25% recovery: 1 × 0.80 × 1.25 = <b>1.00</b> — back to even. Investor B panic-sells at the bottom (locking in −20%, down to $8,000 from $10,000), waits in cash while the market claws back the first 15% from the bottom, then buys back in. B still only has <b>$8,000</b> working for them going forward — a 20% permanent gap versus A, purely from the timing of selling and re-entering, even though B wasn't "wrong" that there was a drop.</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">g=\frac{L}{1-L}</div>
+        <table class="sym">
+          <tr><td>L</td><td>a loss, as a fraction (a 20% loss is L = 0.20)</td></tr>
+          <tr><td>g</td><td>the gain needed afterward just to get back to even</td></tr>
+        </table>
+        <p>This asymmetry is mathematical, not just psychological: a 20% loss needs a 25% gain to recover (0.2/0.8), and a 50% loss needs a 100% gain — one more reason panic-selling into a loss is costly.</p>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Set L to 0.1 (a 10% loss): the gain needed to recover is only slightly more, 11.1%.</li>
+        <li>Push L to 0.5 (a 50% loss): the required recovery gain jumps to 100% — the asymmetry grows sharply for bigger losses.</li></ol></div>
+      <div data-lab="calc" data-title="Breakeven gain after a loss" data-params="L=0.2:0.01..0.8:0.01" data-rows="gain needed to break even = L / (1 - L)"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>"I'll get back in once things calm down" often means re-entering only after much of the recovery has already happened.</li>
+          <li>Treating a familiar news headline as a sound reason for a specific trade, rather than part of a planned process.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>Sharp historical drawdowns (e.g. 2008, 2020) were followed by recoveries that caught many who had sold near the bottom.</li>
+          <li>Automatic, scheduled contributions (dollar-cost averaging, Module 4) are a rule-based defence precisely because they remove the in-the-moment decision.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Name two of the biases described here.</summary><div class="ans">Any two of: loss aversion, recency bias, herding.</div></details>
+        <details class="check"><summary>2. What gain is needed to recover from a 40% loss?</summary><div class="ans">0.4 / 0.6 ≈ 66.7%.</div></details>
+        <details class="check"><summary>3. Why can panic-selling hurt even an investor who correctly predicted a downturn?</summary><div class="ans">Because exiting locks in the loss and the investor must also correctly time re-entry; missing even part of the subsequent recovery while in cash creates a lasting gap versus simply staying invested.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Loss aversion, recency bias and herding push decisions in exactly the wrong direction at market extremes.</li><li>Recovering from a loss requires a proportionally larger gain — losses and gains are not symmetric.</li><li>Rule-based, automated approaches defend against acting on these biases in the moment.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 0.10 ===================== -->
+    <section class="lesson" id="first-portfolio" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">0.10</span><h2>Building your first portfolio</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You're saving for a goal decades away and have a moderate risk tolerance. Using everything in this module, what does a simple first portfolio actually look like?</div>
+
+        <h3 class="sec">Intuition</h3>
+        <p>Building a portfolio means combining the module's ideas into one decision: pick asset classes (0.2) weighted so the blended expected return and risk (0.5–0.6) match your horizon and risk tolerance, diversify across them so they aren't all the same bet (0.7), and write the plan down so the biases in 0.9 are less likely to derail it.</p>
+
+        <div class="worked"><b>Worked example</b>
+          <p>A simple starting mix — 55% broad stock index, 30% broad bond index, 10% cash, 5% alternatives — has an expected return of 0.55×9% + 0.30×4.5% + 0.10×2% + 0.05×7% ≈ <b>6.85%</b> (a weighted average of each class's assumed expected return; the lab below computes an illustrative risk figure the same way the diversification lesson did, extended to four assets).</p></div>
+
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">E[R_p]=\sum_{i=1}^{n} w_i\,E[R_i]</div>
+        <table class="sym">
+          <tr><td>wᵢ</td><td>the weight (share of the portfolio) in asset class i</td></tr>
+          <tr><td>E[Rᵢ]</td><td>the expected return of asset class i</td></tr>
+          <tr><td>E[Rp]</td><td>the portfolio's expected return — a weighted average, unlike risk, which benefits from diversification (0.7)</td></tr>
+        </table>
+      </div>
+
+      <div class="try"><b>Try this</b><ol>
+        <li>Start from the default weights and confirm expected return ≈ 6.85%.</li>
+        <li>Push weight toward Stocks: expected return rises, and so does the illustrative risk figure — there is no way to raise expected return here without raising risk.</li>
+        <li>Push weight toward Cash: both expected return and risk fall toward the cash asset's own numbers.</li></ol></div>
+      <div data-lab="allocpie"></div>
+
+      <div class="prose">
+        <div class="trap"><b>Common traps</b>
+          <ul><li>Picking an allocation once and never revisiting it, even as goals, horizon or risk tolerance change.</li>
+          <li>Chasing whichever asset class performed best last year into next year's allocation — recency bias from Lesson 0.9 in portfolio form.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul>
+          <li>Target-date retirement funds automate this kind of blend, gradually shifting the mix as the target date approaches.</li>
+          <li>A simple "three-fund portfolio" (a broad domestic stock index, an international stock index, and a bond index) is a commonly cited beginner structure.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Is a portfolio's expected return a weighted average, like risk is?</summary><div class="ans">Expected return is a simple weighted average of the components' expected returns; risk is not — diversification can make portfolio risk lower than the weighted average of the individual risks (Lesson 0.7).</div></details>
+        <details class="check"><summary>2. Name two ideas from this module that feed into building a portfolio.</summary><div class="ans">Any two of: asset classes, risk/return, risk-adjusted return, diversification, how markets work, behavioural biases.</div></details>
+        <details class="check"><summary>3. Why is "pick an allocation once and forget it" a trap?</summary><div class="ans">Risk tolerance, time horizon and goals change over time, and an allocation that fit years ago may no longer fit now.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A portfolio turns the module's ideas into one concrete, written decision.</li><li>Expected return is a weighted average; risk is not, thanks to diversification.</li><li>A good process (write it down, revisit periodically) defends against the biases from 0.9.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Module 1 · Markets & Trading Mechanics goes deeper on orders, spreads, exchanges and how a trade actually settles.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice. Illustrative figures throughout.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

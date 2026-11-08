@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investment Fundamentals · Invest Buddy</title>
+<meta name="description" content="A zero-to-basics investing curriculum: what investing is, time value of money, measuring return, risk, diversification, how markets work, behavioural biases, asset classes, valuation basics, and building a first portfolio.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamentals.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-pipeline.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamentals">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › Investment Fundamentals</div>
+    <div class="hero">
+      <div class="big" style="background:#39c5cf26">🧭</div>
+      <div style="flex:1">
+        <h1>Investment Fundamentals — the shared starting point</h1>
+        <p>Build the knowledge, tools and mindset to invest with confidence. Every idea here is built from intuition first, then a worked example, then the formal statement — and then you play with it. This path is the foundation every deeper path on this site builds on.</p>
+        <div class="chips"><span class="chip">Markets</span><span class="chip">Assets</span><span class="chip">Risk</span><span class="chip">Returns</span><span class="chip">Strategies</span><span class="chip">Economics</span><span class="chip">+ More</span></div>
+      </div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <section class="lesson" id="start" style="border:0;margin-top:10px;padding-top:0">
+      <div class="lesson-head"><h2>How to learn from this</h2></div>
+      <div class="prose">
+        <p>Go in order the first time: each lesson only uses ideas from the ones before it. Inside a lesson the rhythm is always the same:</p>
+        <ol>
+          <li><b>The question</b> — a concrete problem that makes the idea necessary.</li>
+          <li><b>Intuition</b> — the idea in plain words, before any formula.</li>
+          <li><b>Worked example</b> — real numbers, computed and checked, then the formal definition with every symbol explained.</li>
+          <li><b>Lab</b> — change numbers and watch the result respond. Following the "try this" steps is the fastest way to understand.</li>
+          <li><b>Common traps</b>, <b>where it shows up in real investing</b>, and three <b>check yourself</b> questions.</li>
+        </ol>
+        <div class="callout"><b>This path is a basic pass.</b> Lessons are deliberately concise right now — every required part is present, but depth will be added module by module later, the same way Mathematics was deepened in the sibling AI-Hub project.</div>
+        <div class="callout warn"><b>Not investment advice.</b> Everything here is general education, with illustrative or historical figures clearly labelled. Nothing on this site is a recommendation to buy, sell or hold any specific security.</div>
+      </div>
+    </section>
+
+    <section class="lesson" id="map">
+      <div class="lesson-head"><h2>The investment learning pipeline</h2></div>
+      <div class="pathbar" id="pathbar"></div>
+      <div class="prose">
+        <p>Every topic on this site walks the same six stages, made concrete for investing: understand the core ideas, analyze markets and businesses, turn that into a strategy, build a portfolio, manage it over time, and let it grow. Click a stage below, or press Animate Flow to watch it move.</p>
+      </div>
+      <div data-lab="pipeline" data-id="fundamentals"></div>
+    </section>
+
+    <section class="lesson" id="curriculum">
+      <div class="lesson-head"><h2>The curriculum</h2></div>
+      <div class="mods" id="mod-list"></div>
+      <p style="color:var(--muted);font-size:13px">The full specification of every lesson is in <a href="https://github.com/AbdelrahmanKatkat/Invest-Hub/blob/main/curriculum/investment-fundamentals.md" target="_blank" rel="noopener">curriculum/investment-fundamentals.md</a>.</p>
+    </section>
+
+    <section class="lesson" id="widgets">
+      <div class="lesson-head"><h2>Dashboard preview</h2></div>
+      <div class="prose"><p>A preview of the wider dashboard this site is growing into. These widgets use sample data for illustration — see the home page for the live versions.</p></div>
+      <div class="grid">
+        <div class="lab" id="markets-widget"></div>
+        <div class="lab" id="portfolio-widget"><div class="lab-head"><b>Portfolio simulator</b><span>try the allocation lab from Lesson 0.10</span></div><div data-lab="allocpie" style="padding:12px"></div></div>
+      </div>
+    </section>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

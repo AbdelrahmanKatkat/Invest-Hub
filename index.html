@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invest Buddy</title>
+<meta name="description" content="Interactive, animated lessons that take you from the basics to confident investing — learn, analyze, invest, grow. General education only, not investment advice.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-pipeline.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="home">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="hero">
+      <div class="big" style="background:#d2992226">📈</div>
+      <div>
+        <h1>Learn how investing really works — by doing the math yourself</h1>
+        <p>Each path is one or more pages that climb from beginner toward confident investing. Every path walks the same pipeline — understand, analyze, strategy, build, manage, grow — and lets you edit the numbers and watch the result respond. General education only; nothing here is a recommendation to buy, sell or hold any specific security.</p>
+        <div class="chips"><a class="btn primary" href="investment-fundamentals.html">Start with Investment Fundamentals</a></div>
+      </div>
+    </div>
+
+    <section class="lesson" id="pipeline" style="border:0;margin-top:10px;padding-top:0">
+      <div class="lesson-head"><h2>The pipeline every path follows</h2></div>
+      <div class="prose"><p>From core concepts to building and managing a real portfolio. Click any stage to see what happens there, or press Animate Flow.</p></div>
+      <div data-lab="pipeline" data-id="hub"></div>
+    </section>
+
+    <section class="lesson" id="topics">
+      <div class="lesson-head"><h2>Paths</h2></div>
+      <div class="prose"><p>Paths marked live are ready to learn from; the others are planned, in this order, and will appear as they are written.</p></div>
+      <div class="grid" id="topic-grid"></div>
+    </section>
+
+    <section class="lesson" id="dashboard">
+      <div class="lesson-head"><h2>Dashboard preview</h2></div>
+      <div class="prose"><p>A preview of the wider dashboard this site is growing into — <b>sample data throughout</b>, not a live feed, and never a recommendation on any specific security.</p></div>
+      <div class="grid">
+        <div class="lab" id="markets-widget"></div>
+        <div class="lab" id="watchlist-widget"></div>
+        <div class="lab" id="insights-widget"></div>
+        <div class="lab" id="alerts-widget"></div>
+      </div>
+    </section>
+
+    <section class="lesson" id="portfolio-widget">
+      <div class="lesson-head"><h2>Portfolio simulator</h2></div>
+      <div class="prose"><p>The same allocation lab used in Investment Fundamentals Lesson 0.10 — drag the weights and watch expected return and illustrative risk respond.</p></div>
+      <div data-lab="allocpie"></div>
+    </section>
+
+    <section class="lesson" id="how">
+      <div class="lesson-head"><h2>How a path is organised</h2></div>
+      <table class="tbl">
+        <tr><th>Level</th><th>You learn</th><th>You play with</th></tr>
+        <tr><td>0 · Fundamentals</td><td>The idea and the pipeline</td><td>Animated pipeline, compounding race</td></tr>
+        <tr><td>1 · Mechanics</td><td>How markets and trades actually work</td><td>Order, spread and index calculators</td></tr>
+        <tr><td>2 · Asset classes</td><td>Equities, bonds, cash, real estate, commodities, crypto, funds</td><td>Yield, basis and fee-drag calculators</td></tr>
+        <tr><td>3 · Valuation</td><td>Financial statements, multiples, DCF, charts</td><td>Margin, multiple and present-value tools</td></tr>
+        <tr><td>4 · Portfolio & capstone</td><td>Allocation, rebalancing, costs, behaviour</td><td>Drift, DCA and allocation labs</td></tr>
+      </table>
+    </section>
+  </main>
+</div>
+<footer><span>General education only — not investment advice. Open source.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

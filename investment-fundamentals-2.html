@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 2 · Asset Classes in Depth · Investment Fundamentals</title>
+<meta name="description" content="Equities, bonds, cash and money market, real estate, commodities, cryptocurrencies, and mutual funds & ETFs — how each is priced and what drives its return.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamentals.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamentals" data-module="2">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="investment-fundamentals.html">Investment Fundamentals</a> › Module 2</div>
+    <div class="hero">
+      <div class="big" style="background:#db6d2826">🧱</div>
+      <div style="flex:1">
+        <h1>Module 2 · Asset Classes in Depth</h1>
+        <p>A closer look at each asset class from Lesson 0.2: equities, bonds, cash and money market, real estate, commodities, cryptocurrencies, and the funds that package them. Basic pass — concise for now, to be deepened later.</p>
+        <div class="chips"><span class="chip">7 lessons</span><span class="chip">≈ 50 min</span><span class="chip">Builds on Module 0</span></div>
+      </div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <!-- ===================== 2.1 ===================== -->
+    <section class="lesson" id="equities-deep" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.1</span><h2>Equities in depth</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two companies both trade at $80 a share. One pays $2.40 a year in dividends; the other pays none. How do you compare the income piece of their return?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Common stock</b> carries voting rights and a residual claim on profits — whatever is left after everyone else is paid, including nothing in a bad year. <b>Preferred stock</b> pays a more fixed-like dividend and sits ahead of common stock in priority, usually without voting rights. For any dividend-paying stock, the <b>dividend yield</b> measures the income piece of return (recall Lesson 0.2's R = income + price change) as a percentage of price.</p>
+        <div class="worked"><b>Worked example</b><p>A stock at $80 paying $2.40/year: dividend yield = 2.40 / 80 = <b>3%</b>. That's the income portion only — price change still adds or subtracts on top.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Dividend yield}=\frac{\text{Annual dividend}}{\text{Price}}</div>
+        <table class="sym"><tr><td>Annual dividend</td><td>total dividends paid per share over a year</td></tr><tr><td>Price</td><td>current share price</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Hold the dividend fixed and lower the price: yield rises mechanically — a falling price alone can make yield look more generous.</li></ol></div>
+      <div data-lab="calc" data-title="Dividend yield" data-params="dividend=2.40:0..20:0.05; price=80:1..500:1" data-rows="dividend yield % = dividend / price * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A high dividend yield can simply reflect a falling price, not a generous or sustainable payout.</li><li>Preferred dividends have priority over common, but are still not legally guaranteed the way a bond's coupon is.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Blue-chip dividend payers vs. non-dividend growth stocks are a common contrast in equity investing.</li><li>Some companies and banks issue preferred shares alongside common stock.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What's the key difference between common and preferred stock?</summary><div class="ans">Common has voting rights and a residual (last-in-line) claim; preferred has priority over common for dividends but usually no voting rights.</div></details>
+        <details class="check"><summary>2. A $50 stock pays $1.50/year in dividends. Yield?</summary><div class="ans">1.50/50 = 3%.</div></details>
+        <details class="check"><summary>3. Why can a rising dividend yield be a warning sign rather than good news?</summary><div class="ans">If the dividend amount is unchanged, a rising yield means the price has fallen — which could reflect a deteriorating business.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Dividend yield is the income portion of a stock's total return.</li><li>Yield rises automatically when price falls, with no change in the dividend.</li><li>Preferred stock has priority but no guarantee.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 2.2 ===================== -->
+    <section class="lesson" id="bonds-yield" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.2</span><h2>Bonds & yield</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You buy a bond with a 4% coupon on $1,000 face value for $950. Interest rates then move. Why does the bond's price change at all if the coupon payment never changes?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A bond pays a fixed <b>coupon</b> (based on its face value) regardless of what happens to interest rates. If rates elsewhere rise, new bonds offer more, so an existing bond with a now-less-attractive fixed coupon must trade at a lower price to offer a competitive yield — and vice versa. Price and yield move <b>inversely</b>.</p>
+        <div class="worked"><b>Worked example</b><p>$1,000 face value, 4% coupon = $40/year. Bought at $950: current yield = 40/950 ≈ <b>4.21%</b>. If the price later rises to $1,050 (rates fell): current yield = 40/1050 ≈ <b>3.81%</b> — same $40 coupon, lower yield, because you paid more for it.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Current yield}=\frac{\text{Coupon}}{\text{Price}}</div>
+        <table class="sym"><tr><td>Coupon</td><td>the fixed annual dollar payment, set when the bond is issued</td></tr><tr><td>Price</td><td>the bond's current market price</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the price while the coupon stays fixed: current yield falls, demonstrating the inverse relationship.</li></ol></div>
+      <div data-lab="calc" data-title="Bond current yield" data-params="coupon=40:0..200:1; price=950:500..2000:5" data-rows="current yield % = coupon / price * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Current yield isn't the same as yield to maturity, which also accounts for the bond's price converging to face value by maturity.</li><li>Rising interest rates push existing bond prices down, not up.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A central bank interest-rate hike tends to reprice already-issued bonds downward.</li><li>Bond fund fact sheets commonly report a current or distribution yield figure.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. If market interest rates rise, what typically happens to existing bond prices?</summary><div class="ans">They fall — their fixed coupon becomes less attractive relative to new, higher-paying bonds.</div></details>
+        <details class="check"><summary>2. A bond pays a $30 coupon and trades at $600. Current yield?</summary><div class="ans">30/600 = 5%.</div></details>
+        <details class="check"><summary>3. Does the coupon payment change when the bond's price changes?</summary><div class="ans">No — the coupon is fixed at issuance; only the yield (coupon ÷ price) changes as price changes.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A bond's coupon is fixed; its price and yield are not.</li><li>Bond prices and yields move inversely.</li><li>Current yield is a simple approximation, not the full yield-to-maturity picture.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 2.3 ===================== -->
+    <section class="lesson" id="cash-money-market" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.3</span><h2>Cash & money market</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A money-market fund yields 5% while inflation runs at 3%. Are you really 5% ahead?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Cash and near-cash instruments — <b>T-bills</b>, <b>CDs</b>, <b>money-market funds</b> — are very low risk in nominal dollar terms. But what those dollars can actually buy also matters: the <b>real return</b> adjusts the nominal return for inflation. A simple approximation subtracts inflation from the nominal rate; the exact calculation divides.</p>
+        <div class="worked"><b>Worked example</b><p>Nominal 5%, inflation 3%: the quick approximation gives 5% − 3% = 2%. The more exact figure is (1.05/1.03) − 1 ≈ <b>1.94%</b> — close to the approximation, but not identical.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Real return}=\frac{1+\text{nominal}}{1+\text{inflation}}-1</div>
+        <table class="sym"><tr><td>nominal</td><td>the stated return, before adjusting for inflation</td></tr><tr><td>inflation</td><td>the rate at which prices in general are rising</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set nominal equal to inflation: real return goes to exactly 0% — you've only kept pace, not gotten ahead.</li></ol></div>
+      <div data-lab="calc" data-title="Nominal vs. real return" data-params="nominal=0.05:0..0.15:0.005; inflation=0.03:0..0.12:0.005" data-rows="approx real return % = (nominal - inflation) * 100; exact real return % = ((1+nominal)/(1+inflation) - 1) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>"Low volatility" is not the same as "good after inflation" — cash can lose purchasing power steadily even while its nominal value never drops.</li><li>The subtraction approximation slightly overstates real return compared to the exact formula.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>T-bills, CDs and money-market funds are commonly used as the cash-equivalent allocation discussed in Lesson 0.2.</li><li>Inflation-protected securities are often quoted directly in "real yield" terms.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Can a cash investment have a negative real return even with a positive nominal return?</summary><div class="ans">Yes — if inflation exceeds the nominal rate, purchasing power falls even though the dollar amount grew.</div></details>
+        <details class="check"><summary>2. Nominal return 6%, inflation 4%. Approximate real return?</summary><div class="ans">6% − 4% = 2%.</div></details>
+        <details class="check"><summary>3. Why is cash still useful despite low real returns?</summary><div class="ans">It offers stability and immediate liquidity — a very different job from growth, useful for near-term needs and emergency funds.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Real return adjusts nominal return for inflation.</li><li>Cash can lose purchasing power even while staying nominally stable.</li><li>Low risk and low (or negative) real return often go together for cash.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 2.4 ===================== -->
+    <section class="lesson" id="real-estate" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.4</span><h2>Real estate & REITs</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A REIT trades at $25 and pays $1.50/year in distributions. Is that the same kind of number as the dividend yield from Lesson 2.1?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>Direct property ownership is illiquid, management-intensive, and often financed with a mortgage. A <b>REIT</b> (real estate investment trust) is a company that owns income-producing property and trades like a stock on an exchange, while being required to distribute most of its taxable income to shareholders — giving real-estate-like income exposure with stock-like liquidity. The math is the same income/price-change split from Lesson 0.2.</p>
+        <div class="worked"><b>Worked example</b><p>A REIT at $25 paying $1.50/year: distribution yield = 1.50/25 = <b>6%</b> — computed exactly like the dividend yield in Lesson 2.1.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Distribution yield}=\frac{\text{Annual distribution}}{\text{Price}}</div>
+        <table class="sym"><tr><td>Annual distribution</td><td>cash paid out per share over a year</td></tr><tr><td>Price</td><td>current share price of the REIT</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the price with the distribution fixed: yield falls, the same pattern as Lesson 2.1's dividend yield.</li></ol></div>
+      <div data-lab="calc" data-title="REIT distribution yield" data-params="distribution=1.50:0..10:0.05; price=25:1..200:1" data-rows="distribution yield % = distribution / price * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A REIT's share price can be volatile like a stock even when the underlying buildings' value is comparatively stable.</li><li>A high distribution yield can reflect a falling price rather than rising income, same as any dividend yield.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Publicly-traded REIT index funds are a common way to access real estate without buying property directly.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What makes a REIT more liquid than owning property directly?</summary><div class="ans">It trades like a stock on an exchange, so shares can be bought and sold quickly, unlike selling a physical building.</div></details>
+        <details class="check"><summary>2. A REIT distributes $2.00/year at a $40 price. Yield?</summary><div class="ans">2.00/40 = 5%.</div></details>
+        <details class="check"><summary>3. Does a REIT's price move independently of the broader stock market?</summary><div class="ans">Not entirely — REIT shares can still be influenced by overall stock-market sentiment, even though the underlying asset is real estate.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>A REIT trades real-estate income exposure for stock-like liquidity.</li><li>Distribution yield is computed the same way as dividend yield.</li><li>REIT share prices can still be volatile.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 2.5 ===================== -->
+    <section class="lesson" id="commodities" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.5</span><h2>Commodities</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Gold trades at $2,400/oz today. A contract for delivery in 3 months is priced at $2,430/oz. Why would the "same" gold cost more later?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>The <b>spot price</b> is for buying and taking delivery now; the <b>futures price</b> is an agreement today to exchange at a set price later. The gap between them (the <b>basis</b>) reflects storage costs, financing costs and expectations about supply and demand. Commodities are physical, largely interchangeable goods often held for diversification or as a historical, imperfect inflation hedge.</p>
+        <div class="worked"><b>Worked example</b><p>Spot $2,400, 3-month futures $2,430: basis = 2430 − 2400 = <b>$30</b> — the futures price sits above spot, a pattern often called "contango".</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Basis}=\text{Futures price}-\text{Spot price}</div>
+        <table class="sym"><tr><td>Spot price</td><td>price for immediate delivery</td></tr><tr><td>Futures price</td><td>agreed price for delivery at a future date</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set futures below spot: basis goes negative — a pattern often called "backwardation".</li></ol></div>
+      <div data-lab="calc" data-title="Spot vs. futures basis" data-params="spot=2400:1..5000:5; futures=2430:1..5000:5" data-rows="basis = futures - spot"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Commodities generally pay no income — unlike stocks or bonds, their return comes entirely from price change (and, for funds, futures-rolling mechanics).</li><li>"Inflation hedge" describes a historical tendency, not a guarantee in any given period.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Gold and oil are widely held commodities; many commodity ETFs gain exposure through futures contracts rather than physical storage.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What's the difference between a spot price and a futures price?</summary><div class="ans">Spot is for immediate delivery; futures is an agreed price for delivery at a later date.</div></details>
+        <details class="check"><summary>2. Spot is $80, futures is $77. What's the basis, and what is this pattern called?</summary><div class="ans">77 − 80 = −$3; futures below spot is called backwardation.</div></details>
+        <details class="check"><summary>3. Do commodities typically pay dividends or interest?</summary><div class="ans">No — their return comes from price change alone (plus fund-specific futures-roll effects), unlike stocks or bonds.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Basis is the gap between futures and spot prices.</li><li>Commodities pay no income; return comes from price change.</li><li>"Inflation hedge" is a historical tendency, not a guarantee.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 2.6 ===================== -->
+    <section class="lesson" id="crypto" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.6</span><h2>Cryptocurrencies</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Cryptocurrencies have historically swung in price far more than the stock market. How much more, roughly, and why should that change how large a position you'd hold?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>cryptocurrency</b> is a digital, decentralized asset with no central issuer. Historically, major cryptocurrencies have been among the most volatile widely-held asset classes — recall the risk/return map from Lesson 0.2, where crypto sat far to the right. Extreme volatility means both potential gains <i>and</i> potential losses are larger, so position size (how much of a portfolio is exposed to it) matters more than for calmer assets.</p>
+        <div class="worked"><b>Worked example</b><p>Using the illustrative figures from Lesson 0.2's map — diversified stocks at 16% volatility, crypto at 65% — crypto's volatility there is 0.65/0.16 ≈ <b>4.1 times</b> that of diversified stocks.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Relative volatility}=\frac{\sigma_A}{\sigma_B}</div>
+        <table class="sym"><tr><td>σA, σB</td><td>the standard deviation of returns for asset A and asset B (Lesson 0.5)</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Return to the Lesson 0.2 risk-return map and compare how far right Crypto sits versus Diversified stocks and Cash.</li></ol></div>
+      <div data-lab="riskreturn"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>High volatility cuts both ways — large gains and large losses are both more likely than in a lower-volatility asset.</li><li>Past volatility is not a guarantee of future volatility, in either direction.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Bitcoin and other major cryptocurrencies have historically shown large price swings relative to broad equity indices.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Does "highly volatile" mean "more likely to lose money"?</summary><div class="ans">Not exactly — it means outcomes are more spread out in both directions, so both larger gains and larger losses are more likely than with a calmer asset.</div></details>
+        <details class="check"><summary>2. If σA = 40% and σB = 10%, how many times more volatile is A?</summary><div class="ans">40/10 = 4 times.</div></details>
+        <details class="check"><summary>3. Why does high volatility argue for smaller position sizing?</summary><div class="ans">A larger share of the portfolio in a highly volatile asset means the whole portfolio's value swings more, which can also tempt the behavioural mistakes from Lesson 0.9.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Cryptocurrencies have historically been among the most volatile widely-held asset classes.</li><li>Higher volatility means both larger possible gains and larger possible losses.</li><li>Position sizing matters more for highly volatile assets.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 2.7 ===================== -->
+    <section class="lesson" id="funds-etfs" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">2.7</span><h2>Mutual funds & ETFs</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two funds track the same index. One charges a 0.03% annual fee; the other charges 1%. Does that tiny-looking gap actually matter?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Mutual funds</b> and <b>ETFs</b> pool many investors' money into one diversified basket. <b>Active</b> funds try to beat a benchmark and typically charge more for the attempt; <b>passive (index)</b> funds simply track a benchmark, usually far more cheaply. The annual <b>expense ratio</b> is deducted every year, which means it compounds against you — the same compounding engine from Lesson 0.1, now working in reverse.</p>
+        <div class="worked"><b>Worked example</b><p>$10,000 at a 7% gross annual return for 30 years: with a 0.03% fee (net 6.97%) it grows to ≈ <b>$75,485</b>; with a 1% fee (net 6%) it grows to ≈ <b>$57,435</b> — an $18,050 gap, purely from a fee difference that sounds small year to year.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">FV=P\,(1+r_{\text{gross}}-\text{fee})^{t}</div>
+        <table class="sym"><tr><td>r_gross</td><td>the investment's return before fees</td></tr><tr><td>fee</td><td>the annual expense ratio</td></tr><tr><td>t</td><td>years invested</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set both fees equal: the ending-value gap drops to zero.</li><li>Stretch years out further: the gap between the two fee scenarios grows faster than years do.</li></ol></div>
+      <div data-lab="calc" data-title="Fee drag over time" data-params="principal=10000:1000..100000:500; gross=0.07:0.02..0.12:0.005; feeLow=0.0003:0..0.01:0.0001; feeHigh=0.01:0..0.02:0.0005; years=30:1..40:1" data-rows="value at low fee = principal * (1 + gross - feeLow)^years; value at high fee = principal * (1 + gross - feeHigh)^years; difference = principal * (1 + gross - feeLow)^years - principal * (1 + gross - feeHigh)^years"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A "1% fee" is not 1% of your money once — it's 1% of your money every single year, compounding.</li><li>Paying for active management doesn't reliably mean beating the benchmark after fees.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Low-cost broad-market index ETFs vs. higher-fee actively managed mutual funds is a common comparison in fund research.</li><li>Every fund discloses its expense ratio in its fact sheet or prospectus.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Is an expense ratio charged once or every year?</summary><div class="ans">Every year, as long as the fund is held — which is what makes it compound against the investor over time.</div></details>
+        <details class="check"><summary>2. Two funds both return 8% gross; one charges 0.1%, the other 0.8%. What are the net rates?</summary><div class="ans">7.9% and 7.2%.</div></details>
+        <details class="check"><summary>3. Why does a 1% fee cost more than "1% of the final balance"?</summary><div class="ans">It reduces the growth rate every year, so the lost amount itself would have compounded — the true cost is larger than a one-time 1% deduction.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Active funds try to beat a benchmark and typically cost more; passive funds track it cheaply.</li><li>Fees compound against you the same way returns compound for you.</li><li>A small-looking annual fee difference can become large over decades.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Module 3 · Valuation Basics introduces reading financial statements and simple valuation tools.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice. Illustrative figures throughout.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

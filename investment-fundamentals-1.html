@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 1 · Markets & Trading Mechanics · Investment Fundamentals</title>
+<meta name="description" content="Order types, bid-ask spread and liquidity, exchanges and indices, brokers and account types, clearing and settlement, and market hours — the mechanics behind every trade.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="assets/topics.js"></script>
+<script defer src="assets/curriculum-fundamentals.js"></script>
+<script defer src="assets/lib.js"></script>
+<script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
+<script defer src="assets/shell.js"></script>
+</head>
+<body data-topic="fundamentals" data-module="1">
+<header id="hdr"></header>
+<div class="app">
+  <aside id="side"></aside>
+  <main>
+    <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="investment-fundamentals.html">Investment Fundamentals</a> › Module 1</div>
+    <div class="hero">
+      <div class="big" style="background:#2f81f726">🏦</div>
+      <div style="flex:1">
+        <h1>Module 1 · Markets & Trading Mechanics</h1>
+        <p>What actually happens between clicking "buy" and owning a share: order types, the bid-ask spread, exchanges and indices, brokerage vs. margin accounts, clearing and settlement, and why trading hours matter. Basic pass — concise for now, to be deepened later.</p>
+        <div class="chips"><span class="chip">6 lessons</span><span class="chip">≈ 45 min</span><span class="chip">Builds on Module 0</span></div>
+      </div>
+      <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
+    </div>
+
+    <!-- ===================== 1.1 ===================== -->
+    <section class="lesson" id="order-types" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">1.1</span><h2>Order types in depth</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A stock is trading around $50. Should you always just click "buy now"?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>market order</b> says "fill me immediately at the best available price" — fast, but the exact price isn't guaranteed. A <b>limit order</b> says "only fill me at my price or better" — the price is guaranteed, the fill is not. A <b>stop order</b> sits dormant until a trigger price is touched, then becomes a market order — commonly used to cap a loss or lock in a gain, but once triggered it inherits a market order's "price not guaranteed" behaviour.</p>
+        <div class="worked"><b>Worked example</b><p>You place a market order on a stock quoted near $50; it fills at $50.10 after a brief price move. A limit order capped at $50.00 would have either filled at $50.00 or not filled at all. On 100 shares, the market order cost 100 × ($50.10 − $50.00) = <b>$10 more</b>.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{extra cost}=\text{shares}\times(\text{fill price}-\text{limit price})</div>
+        <table class="sym"><tr><td>fill price</td><td>the price a market order actually executes at</td></tr><tr><td>limit price</td><td>the price a limit order was capped at</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise the fill price while keeping the limit price fixed: the extra cost of using a market order grows.</li></ol></div>
+      <div data-lab="calc" data-title="Cost of a market order vs. a limit order" data-params="shares=100:1..1000:1; fill=50.10:40..60:0.01; limit=50.00:40..60:0.01" data-rows="extra cost = shares * (fill - limit)"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A stop order's trigger price is not a guaranteed fill price — in a fast-moving market it can execute far from where it was set.</li><li>A limit order can simply never fill if the market never reaches it.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Stop-loss orders used to cap downside during a sharp sell-off.</li><li>Limit orders used around earnings announcements, when prices often gap sharply.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Which order type guarantees a fill, and which guarantees a price?</summary><div class="ans">A market order is very likely to fill but not at a guaranteed price; a limit order guarantees a price (or better) but may not fill.</div></details>
+        <details class="check"><summary>2. Once a stop order triggers, what does it become?</summary><div class="ans">A market order — so it inherits "fills immediately, price not guaranteed".</div></details>
+        <details class="check"><summary>3. Why might a stop-loss not protect you from a 15% overnight gap down?</summary><div class="ans">It only triggers when the market trades at that price; an overnight gap can skip straight past the trigger, so the order fills well below it.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Market orders prioritise speed; limit orders prioritise price.</li><li>Stop orders become market orders once triggered.</li><li>Neither order type guarantees both price and fill at once.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 1.2 ===================== -->
+    <section class="lesson" id="spreads-liquidity" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">1.2</span><h2>Bid-ask spread & liquidity</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Does it matter whether you trade a stock with a $0.02 spread or one with a $0.50 spread?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>The <b>bid</b> is the best price a buyer currently offers; the <b>ask</b> is the best price a seller currently offers. The gap between them — the <b>spread</b> — is paid simply by trading: buy at the ask, sell at the bid. <b>Liquidity</b> describes how easily a reasonably large order trades without moving the price; thin, illiquid markets tend to have wider spreads and more price impact ("slippage") per trade.</p>
+        <div class="worked"><b>Worked example</b><p>Bid $49.95, ask $50.05 → spread $0.10. Buying then selling 200 shares costs roughly 200 × $0.10 = <b>$20</b>, about 0.2% of a $10,000 trade — a real, if small, cost before any price movement at all.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{round-trip cost}\approx \text{shares}\times(\text{ask}-\text{bid})</div>
+        <table class="sym"><tr><td>bid / ask</td><td>best current buy / sell price</td></tr><tr><td>round-trip</td><td>buying then later selling the same position</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Widen the spread and watch the round-trip cost and its percentage of trade value both grow.</li></ol></div>
+      <div data-lab="calc" data-title="Cost of the spread" data-params="shares=200:10..2000:10; bid=49.95:1..500:0.01; ask=50.05:1..500:0.01" data-rows="spread = ask - bid; round-trip cost = shares * (ask - bid); trade value = shares * ((ask+bid)/2); cost as % of trade value = (shares * (ask - bid)) / (shares * ((ask+bid)/2)) * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A "cheap-looking" thinly-traded stock can be expensive to actually trade once the spread is counted.</li><li>Spread costs compound with trading frequency — frequent in-and-out trading pays the spread every time.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Large, heavily-traded stocks typically have spreads of a few cents; thinly-traded micro-cap stocks can have spreads of several percent of the price.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is the bid-ask spread, in one sentence?</summary><div class="ans">The gap between the best available buy price (bid) and sell price (ask).</div></details>
+        <details class="check"><summary>2. A stock has bid $19.90, ask $20.10. What's the round-trip cost on 50 shares?</summary><div class="ans">50 × ($20.10 − $19.90) = 50 × $0.20 = $10.</div></details>
+        <details class="check"><summary>3. Why do illiquid stocks tend to have wider spreads?</summary><div class="ans">Fewer participants are offering to trade, so market makers widen the spread to compensate for the extra risk and difficulty of finding the other side of a trade.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>The spread is a real, built-in cost of trading, separate from any price movement.</li><li>Liquidity and spread width tend to move together.</li><li>Frequent trading pays the spread repeatedly.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 1.3 ===================== -->
+    <section class="lesson" id="exchanges-indices" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">1.3</span><h2>Exchanges & indices</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company sells new shares to the public for the first time at $20 each, raising money for itself. Later, investors trade those shares at $35. Does the company get that extra $15 per share?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>The <b>primary market</b> is where a company sells new securities directly and receives the proceeds (an IPO, for example). The <b>secondary market</b> — what people usually mean by "the stock market" or "an exchange" — is investors trading existing shares among themselves; the company isn't a party to those trades and doesn't receive the money. A company's <b>market capitalization</b> is its price times total shares, but the shares actually available to trade (excluding large insider or founder stakes) are the <b>float</b>, and major indices typically weight by <i>float-adjusted</i> market cap (recall the price-weighted vs. cap-weighted comparison from Lesson 0.8).</p>
+        <div class="worked"><b>Worked example</b><p>A company trades at $40 with 100 million total shares (market cap $40 × 100M = <b>$4.0B</b>), but insiders hold 40 million of those shares. Float = 60 million shares, so the float-adjusted cap used by many indices is $40 × 60M = <b>$2.4B</b> — 40% smaller than the headline figure.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Market cap}=P\times S \qquad\qquad \text{Float-adjusted cap}=P\times(S-S_{\text{insider}})</div>
+        <table class="sym"><tr><td>P</td><td>share price</td></tr><tr><td>S</td><td>total shares outstanding</td></tr><tr><td>S_insider</td><td>shares held by insiders/founders, not freely tradable</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Raise insider-held shares toward the total share count: float-adjusted cap shrinks toward zero even though the headline market cap is unchanged.</li></ol></div>
+      <div data-lab="calc" data-title="Market cap vs. float-adjusted market cap" data-params="price=40:1..500:0.5; shares=100:1..2000:1; insider=40:0..2000:1" data-rows="market cap ($M) = price * shares; float shares (M) = shares - insider; float-adjusted cap ($M) = price * (shares - insider)"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A "market cap" headline figure usually uses total shares, not the float that indices actually weight by.</li><li>Secondary-market trading does not send money to the company, no matter how high the price goes.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>NYSE and Nasdaq host both IPOs (primary market) and ongoing trading (secondary market).</li><li>Major cap-weighted indices commonly use float-adjusted weighting, which matters most for companies with large insider stakes.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. In which market does a company actually receive money from selling shares?</summary><div class="ans">The primary market (e.g. an IPO) — not the secondary market, where investors trade existing shares among themselves.</div></details>
+        <details class="check"><summary>2. A company has price $25, 200M total shares, 150M insider-held. What is its float-adjusted cap?</summary><div class="ans">25 × (200M − 150M) = 25 × 50M = $1.25B.</div></details>
+        <details class="check"><summary>3. Why do float-adjusted and headline market cap diverge most for founder-heavy companies?</summary><div class="ans">A large insider stake removes a big chunk of shares from the float, so float-adjusted cap can be much smaller than price × total shares.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Primary market = company raises money; secondary market = investors trade among themselves.</li><li>Market cap = price × shares; float-adjusted cap excludes insider-held shares.</li><li>Indices commonly weight by float-adjusted cap, not headline market cap.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 1.4 ===================== -->
+    <section class="lesson" id="brokers-accounts" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">1.4</span><h2>Brokers & account types</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>Two accounts each hold $10,000 of the same stock. One paid for it entirely in cash; the other borrowed half the purchase price. Do they behave the same way?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A <b>cash account</b> only lets you buy what you've actually paid for. A <b>margin account</b> lets you borrow part of the purchase price from the broker, using your securities as collateral — this amplifies both gains and losses, and the broker charges interest on the borrowed amount regardless of how the position performs. Separately, a <b>taxable brokerage account</b> is flexible but offers no special tax treatment, while a <b>tax-advantaged retirement account</b> trades some flexibility (contribution limits, withdrawal rules) for better tax treatment of the gains inside it.</p>
+        <div class="worked"><b>Worked example</b><p>Borrowing $5,000 on margin at an 8% annual rate for 3 months costs 5000 × 0.08 × (3/12) = <b>$100</b> in interest — due whether the stock went up, down, or sideways.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Interest}=\text{Principal}\times r\times\frac{\text{months}}{12}</div>
+        <table class="sym"><tr><td>Principal</td><td>the amount borrowed on margin</td></tr><tr><td>r</td><td>the annual margin interest rate</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Double the borrowed amount: the interest cost doubles, independent of how the stock performs.</li></ol></div>
+      <div data-lab="calc" data-title="Margin interest cost" data-params="principal=5000:500..50000:100; rate=0.08:0.01..0.15:0.005; months=3:1..12:1" data-rows="interest cost = principal * rate * (months/12)"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>Margin amplifies losses exactly as much as gains — a given percentage drop in the stock produces a larger percentage drop in your own equity.</li><li>Margin interest accrues even on a losing position.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Margin calls, where a broker demands more collateral or force-sells a position, tend to cluster during sharp downturns.</li><li>Tax-advantaged retirement accounts are a common vehicle for the compounding benefit discussed in Lesson 0.1.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What does a margin account let you do that a cash account doesn't?</summary><div class="ans">Borrow part of the purchase price from the broker, using your securities as collateral.</div></details>
+        <details class="check"><summary>2. Interest cost on $8,000 borrowed at 6% for 6 months?</summary><div class="ans">8000 × 0.06 × (6/12) = $240.</div></details>
+        <details class="check"><summary>3. Does margin interest depend on whether the position is profitable?</summary><div class="ans">No — it accrues on the borrowed amount regardless of the position's performance.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Margin borrowing amplifies both gains and losses.</li><li>Margin interest is owed regardless of performance.</li><li>Account type (cash/margin, taxable/tax-advantaged) is a separate choice from what you actually buy.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 1.5 ===================== -->
+    <section class="lesson" id="clearing-settlement" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">1.5</span><h2>Clearing & settlement</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>You sell a stock today. Can you spend the cash tomorrow?</div>
+        <h3 class="sec">Intuition</h3>
+        <p>A trade has a <b>trade date</b> (when you and the other side agree on price and quantity) and a later <b>settlement date</b> (when ownership and cash actually change hands). In between, a <b>clearinghouse</b> guarantees both sides will perform, even if one party were to default. Many equity markets today commonly settle one business day after the trade (often written "T+1").</p>
+        <div class="worked"><b>Worked example</b><p>You sell on a Monday with T+1 settlement: the trade settles Tuesday (assuming no holiday), and that's when the cash is formally yours to withdraw or reinvest without timing restriction.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{Settlement date}=\text{Trade date}+N\text{ business days}</div>
+        <table class="sym"><tr><td>N</td><td>the settlement cycle length (e.g. 1 for "T+1")</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Change N and see how many business days pass before funds are considered settled.</li></ol></div>
+      <div data-lab="calc" data-title="Settlement timeline" data-params="N=1:0..3:1" data-rows="business days until settlement = N"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A sale isn't instantly "final" the moment you click — the clearinghouse is still completing the exchange until settlement.</li><li>Some account types restrict rapidly reusing unsettled proceeds for new trades.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>US equities moved from a T+2 to a T+1 settlement cycle, shortening the gap between trade and settlement.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. What is the difference between a trade date and a settlement date?</summary><div class="ans">The trade date is when the deal is agreed; the settlement date is when ownership and cash actually change hands.</div></details>
+        <details class="check"><summary>2. What does a clearinghouse do?</summary><div class="ans">Guarantees both sides of a trade will perform, reducing the risk that one party defaults before settlement.</div></details>
+        <details class="check"><summary>3. Under T+1, if you sell on a Wednesday, when does it settle (no holidays)?</summary><div class="ans">Thursday — one business day later.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Trade date and settlement date are different moments.</li><li>A clearinghouse guarantees both sides of a trade.</li><li>Shorter settlement cycles reduce the time counterparty risk exists.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ===================== 1.6 ===================== -->
+    <section class="lesson" id="market-hours" data-lesson>
+      <div class="lesson-head"><span class="level" style="color:var(--blue)">1.6</span><h2>Market hours & circuit breakers</h2><button class="btn small mark"></button></div>
+      <div class="prose">
+        <div class="question"><b>The question</b>A company reports bad earnings right after the regular trading session ends, with its stock at $50. What happens to the price overnight?</div>
+        <h3 class="sec">Intuition</h3>
+        <p><b>Regular trading hours</b> are when the bulk of volume and the tightest spreads occur; <b>extended hours</b> (pre-market and after-hours) exist but typically have much thinner liquidity and wider spreads. Because news doesn't wait for the market to open, prices can <b>gap</b> between one session's close and the next session's open. <b>Circuit breakers</b> are temporary, market-wide trading halts triggered by very large, fast index declines, meant to give the market time to find an orderly price rather than free-fall.</p>
+        <div class="worked"><b>Worked example</b><p>The stock closes regular hours at $50; after-hours news pushes it to $47 — a gap of (47 − 50)/50 = <b>−6%</b> before the next regular session even opens. A stop order set at $49 for the regular session would not have triggered during the after-hours move and would not have protected against this gap.</p></div>
+        <h3 class="sec">The formal definition</h3>
+        <div class="eq">\text{gap \%}=\frac{P_{\text{new}}-P_{\text{old}}}{P_{\text{old}}}</div>
+        <table class="sym"><tr><td>P_old</td><td>the prior session's closing price</td></tr><tr><td>P_new</td><td>the price at or near the next session's open</td></tr></table>
+      </div>
+      <div class="try"><b>Try this</b><ol><li>Set the new price below the old price and watch the gap go negative; above it, positive.</li></ol></div>
+      <div data-lab="calc" data-title="Overnight gap" data-params="old=50:1..500:0.5; new=47:1..500:0.5" data-rows="gap % = (new - old) / old * 100"></div>
+      <div class="prose">
+        <div class="trap"><b>Common traps</b><ul><li>A stop order does not protect against a gap that jumps straight past its trigger price.</li><li>Extended-hours trading usually has far less liquidity than the regular session, so the same order can move the price much more.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Earnings reported after the close routinely cause a gapped opening the next session.</li><li>Market-wide circuit breakers have historically triggered during unusually fast, sharp index declines.</li></ul></div>
+        <h3 class="sec">Check yourself</h3>
+        <details class="check"><summary>1. Why can a stock "gap" between sessions?</summary><div class="ans">News or events can occur while the regular session is closed, and the next session's price reflects that information all at once rather than gradually.</div></details>
+        <details class="check"><summary>2. A stock gaps from $80 to $86. What's the gap percentage?</summary><div class="ans">(86 − 80)/80 = 7.5%.</div></details>
+        <details class="check"><summary>3. What is the purpose of a circuit breaker?</summary><div class="ans">To pause trading temporarily after a very large, fast decline, giving the market time to reassess rather than trading in a disorderly free-fall.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Prices can gap between sessions when news arrives while markets are closed.</li><li>Extended-hours trading has thinner liquidity than the regular session.</li><li>Circuit breakers pause trading after extreme, fast moves.</li></ul></div>
+      </div>
+    </section>
+
+    <div class="callout"><b>Module complete</b> Module 2 · Asset Classes in Depth goes further into equities, bonds, cash, real estate, commodities, crypto and funds.</div>
+  </main>
+  <aside id="outline"></aside>
+</div>
+<footer><span>General education only — not investment advice. Illustrative figures throughout.</span><a href="https://github.com/AbdelrahmanKatkat/Invest-Hub" target="_blank" rel="noopener">Contribute on GitHub</a></footer>
+</body>
+</html>

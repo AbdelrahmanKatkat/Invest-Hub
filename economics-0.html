@@ -22,121 +22,162 @@
     <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="economics.html">Economics</a> › Module 0</div>
     <div class="hero">
       <div class="big" style="background:#2f81f726">0</div>
-      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Supply and demand, inflation, interest rates, GDP and growth, and the business cycle. Basic pass — concise for now.</p>
-        <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Supply and demand, inflation, interest rates, GDP and growth, and the business cycle.</p>
+        <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 70 min</span></div></div>
       <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
     </div>
 
     <section class="lesson" id="supply-and-demand" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Supply & demand</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A bad harvest cuts the coffee supply. What happens to coffee prices?</div>
+        <div class="question"><b>The question</b>A bad harvest cuts the coffee supply by a third. Coffee shops raise prices 10% and still sell almost as many cups as before — while a 10% airfare hike empties half the seats on a route. Why do the same-sized price moves land so differently?</div>
         <h3 class="sec">Intuition</h3>
-        <p>The <b>demand curve</b> slopes down (lower price, more is bought); the <b>supply curve</b> slopes up (higher price, more is offered). They cross at an <b>equilibrium</b> price and quantity. A <b>shift</b> of a curve (the harvest fails, supply shrinks at every price) moves that equilibrium; a <b>movement along</b> a curve is just price responding to the existing curves.</p>
-        <div class="eq">Q_d(P)=Q_s(P)\ \text{at equilibrium}</div>
-        <table class="sym"><tr><td>Qd(P), Qs(P)</td><td>quantity demanded / supplied at price P</td></tr></table>
+        <p>Picture two curves on a price/quantity chart. The <b>demand curve</b> slopes down: as price falls, buyers want more (cheaper coffee → more cups bought). The <b>supply curve</b> slopes up: as price rises, sellers offer more (higher prices justify paying farmers more to plant, or running a mine's marginal, costlier shaft). Where the two curves cross is the <b>equilibrium</b> — the one price at which the quantity buyers want to buy exactly equals the quantity sellers want to sell. Nobody sets this price directly; it's what emerges when millions of independent decisions settle into balance.</p>
+        <p>Two very different things can move that crossing point, and mixing them up is the single most common error in this topic:</p>
+        <ul>
+          <li>A <b>shift of a curve</b> — something changes <i>other than price</i> that makes buyers or sellers behave differently at every price level. Demand shifts with income, tastes, the price of substitutes/complements, or expectations of future prices. Supply shifts with input costs, technology, the number of sellers, or a harvest failure.</li>
+          <li>A <b>movement along a curve</b> — price itself changes, and quantity responds exactly as the (unchanged) curve says it should.</li>
+        </ul>
+        <p>A harvest failure is a <b>supply shift</b>: at every price, less coffee is now available, so the whole supply curve moves left. The new crossing point sits at a higher price <i>and</i> a lower quantity than before — but how much of each depends on a second idea: how steeply the curves are drawn.</p>
+        <h3 class="sec">Build it up: how sharply does quantity react?</h3>
+        <p><b>Price elasticity of demand</b> measures how sensitive quantity demanded is to a price change — the percentage change in quantity divided by the percentage change in price. A good is <b>inelastic</b> (coffee, insulin, salt) when people keep buying it even as price rises — few substitutes, or it's a small share of the budget. A good is <b>elastic</b> (a specific airline route, a discretionary vacation) when a price rise sends buyers elsewhere fast — close substitutes exist, or the purchase is easy to delay.</p>
+        <div class="worked"><b>Worked example 1 — the harvest shift</b><p>Before the harvest fails, demand and supply cross at $4.00/cup, 20 million cups/day. The harvest cuts supply at every price, so the supply curve shifts left; the new crossing point sits at a higher price and lower quantity — exactly the "price up, quantity down" pattern the question described.</p></div>
+        <div class="worked"><b>Worked example 2 — elasticity</b><p>Coffee shops raise price 10% ($4.00 → $4.40) and quantity demanded falls only 8% (100 → 92 units): elasticity = −8% ÷ 10% = <b>−0.8</b> (inelastic — demand falls less than proportionally). If the same 10% price rise instead cut quantity by 25%, elasticity would be −2.5 (elastic) — the airfare case.</p></div>
+        <div class="eq">Q_d(P)=Q_s(P)\ \text{at equilibrium}\qquad E_d=\frac{\%\,\Delta Q_d}{\%\,\Delta P}</div>
+        <table class="sym"><tr><td>Qd(P), Qs(P)</td><td>quantity demanded / supplied at price P</td></tr><tr><td>Ed</td><td>price elasticity of demand (negative: price up, quantity down); |Ed| &lt; 1 is inelastic, |Ed| &gt; 1 is elastic</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise the supply line's intercept (a worse harvest): the crossing point moves to a higher price, lower quantity.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise the supply line's intercept (a worse harvest): the crossing point moves to a higher price, lower quantity.</li><li>In the elasticity calculator below, keep the price change fixed and shrink the quantity change toward 0 — elasticity shrinks toward 0 (near-perfectly inelastic, like insulin).</li></ol></div>
       <div data-lab="fplot" data-title="Supply meets demand" data-names="Demand;Supply" data-f="20-0.5*x; b+0.5*x" data-params="b=2:0..12:0.5" data-view="0,24,0,22" data-roots></div>
+      <div data-lab="calc" data-title="Price elasticity of demand" data-params="p0=4.00:1..20:0.1; p1=4.40:1..20:0.1; q0=100:1..1000:1; q1=92:1..1000:1" data-rows="% price change = (p1 - p0) / p0 * 100; % quantity change = (q1 - q0) / q0 * 100; elasticity = ((q1 - q0) / q0) / ((p1 - p0) / p0)"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Confusing a shift of a curve with a movement along it.</li><li>Price controls (floors/ceilings) can prevent a market from ever reaching its natural equilibrium.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Commodity price shocks (coffee, oil) from supply disruptions.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Confusing a shift of a curve with a movement along it — a shift changes <i>something other than price</i>; a movement is price doing the work the curve already describes.</li><li>Price controls (floors/ceilings) can prevent a market from ever reaching its natural equilibrium — a ceiling below equilibrium creates a shortage; a floor above it creates a surplus.</li><li>Assuming every good has similar elasticity — necessities with few substitutes are far less price-sensitive than discretionary goods with close substitutes.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Commodity price shocks (coffee, oil, wheat) from supply disruptions like OPEC production decisions or weather-driven harvest failures.</li><li>Pricing power: companies selling inelastic goods can raise prices with little volume loss — a factor equity analysts weigh when judging a business's margins (Fundamental Analysis path).</li><li>Housing markets, where supply is slow to shift (new construction takes years) even when demand shifts quickly — a structural reason home prices can swing sharply.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. A bumper harvest shifts supply which way?</summary><div class="ans">Right/outward — more is offered at every price, pushing the equilibrium price down.</div></details>
-        <details class="check"><summary>2. Is a price rise caused by rising demand a "shift" or a "movement along" the supply curve?</summary><div class="ans">A movement along the supply curve — suppliers respond to the new price; the supply curve itself hasn't moved.</div></details>
-        <details class="check"><summary>3. What keeps a price ceiling from working as intended?</summary><div class="ans">If set below equilibrium it creates a shortage — quantity demanded exceeds quantity supplied at that price.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Equilibrium is where supply and demand curves cross.</li><li>Shifts move the equilibrium; movements along a curve don't.</li></ul></div>
+        <details class="check"><summary>1. A bumper harvest shifts supply which way, and what happens to equilibrium price?</summary><div class="ans">Right/outward — more is offered at every price, which pushes the equilibrium price down (and quantity up).</div></details>
+        <details class="check"><summary>2. Price rises 5%, quantity demanded falls 2%. Elasticity, and is this good elastic or inelastic?</summary><div class="ans">−2%/5% = −0.4; |0.4| &lt; 1, so inelastic.</div></details>
+        <details class="check"><summary>3. Why might a price ceiling set below equilibrium cause shortages rather than just "cheaper goods for everyone"?</summary><div class="ans">Below equilibrium, quantity demanded exceeds quantity supplied at that price — sellers aren't willing to offer as much as buyers want, so some buyers simply can't find the good at all.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Equilibrium is where supply and demand curves cross — set by the market, not a single actor.</li><li>Shifts (a curve itself moves) and movements along a curve (price alone changes) are different things with different causes.</li><li>Elasticity measures how sharply quantity reacts to price — it varies a lot across goods and matters for both economics and company pricing power.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="inflation" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Inflation</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A basket of goods costs $200 this year and $206 next year. What's the inflation rate, and why does it matter to an investor?</div>
+        <div class="question"><b>The question</b>A basket of goods costs $200 this year and $206 next year — 3% inflation. If that 3% keeps up for 5 years, and your savings account pays 7% interest, how much better off are you really?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>Inflation</b> is the rate of change of a basket of goods' price (tracked as the CPI). It erodes the purchasing power of a fixed amount of cash — the same idea behind the real-return calculation in Investment Fundamentals Lesson 2.3.</p>
-        <div class="worked"><b>Worked example</b><p>(206 − 200)/200 = <b>3%</b> inflation.</p></div>
-        <div class="eq">\text{Inflation}=\frac{\text{Basket}_1-\text{Basket}_0}{\text{Basket}_0}</div>
-        <table class="sym"><tr><td>Basket₀, Basket₁</td><td>the price of the same fixed basket of goods, one year apart</td></tr></table>
+        <p><b>Inflation</b> is the rate of change of a basket of goods' price. Statistical agencies price a fixed, representative "shopping basket" (rent, food, fuel, healthcare, and more, weighted by how much a typical household spends on each) every month and track how its total cost changes — that's the <b>CPI</b> (Consumer Price Index). Inflation doesn't make you poorer in dollar terms; it makes each dollar <i>buy less</i>. That distinction — nominal amounts vs. what they actually purchase — is the single most important idea in this lesson, and it recurs everywhere in investing.</p>
+        <div class="worked"><b>Worked example 1 — the basic rate</b><p>(206 − 200)/200 = <b>3%</b> inflation this year.</p></div>
+        <h3 class="sec">Build it up: compounding, and what it does to a saver</h3>
+        <p>Inflation compounds, just like investment returns do (Investment Fundamentals Lesson 0.1). Three percent doesn't sound dramatic for one year, but run it for five years and the basket's cost climbs by more than 3%×5=15% — because each year's increase applies to an already-higher price.</p>
+        <div class="worked"><b>Worked example 2 — cumulative inflation</b><p>(1.03)⁵ − 1 ≈ <b>15.93%</b> cumulative price increase over 5 years — noticeably more than the "simple" 15% a quick mental shortcut would suggest.</p></div>
+        <p>Now the question that actually matters to an investor: if your savings earn a 7% <b>nominal</b> return while inflation runs at 3%, your <b>real</b> return — the growth in actual purchasing power — is <i>not</i> simply 7% − 3% = 4%. The exact relationship (the <b>Fisher equation</b>) divides out the inflation rather than subtracting it:</p>
+        <div class="worked"><b>Worked example 3 — real return (Fisher equation)</b><p>(1.07 / 1.03) − 1 ≈ <b>3.88%</b> real return — close to, but a touch below, the quick 4% approximation. The gap between the exact and approximate answer grows as the rates involved get larger.</p></div>
+        <div class="eq">\text{Inflation}=\frac{\text{Basket}_1-\text{Basket}_0}{\text{Basket}_0}\qquad 1+r_{\text{real}}=\frac{1+r_{\text{nominal}}}{1+\text{inflation}}</div>
+        <table class="sym"><tr><td>Basket₀, Basket₁</td><td>the price of the same fixed basket of goods, one year apart</td></tr><tr><td>r_nominal</td><td>the stated return before adjusting for inflation</td></tr><tr><td>r_real</td><td>the return in actual purchasing power</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Confirm the 3% result, then try a basket that falls in price — inflation turns negative (deflation).</li></ol></div>
-      <div data-lab="calc" data-title="Inflation rate" data-params="basket0=200:50..1000:1; basket1=206:50..1000:1" data-rows="inflation % = (basket1 - basket0) / basket0 * 100"></div>
+      <div class="try"><b>Try this</b><ol><li>Confirm the 3% and 15.93% results, then try a basket that falls in price — inflation turns negative (deflation).</li><li>In the real-return calculator, set nominal equal to inflation — real return goes to exactly 0%: your money grows in dollar terms but buys exactly the same as before.</li></ol></div>
+      <div data-lab="calc" data-title="Inflation rate (one year and cumulative)" data-params="basket0=200:50..1000:1; basket1=206:50..1000:1; years=5:1..30:1" data-rows="inflation % = (basket1 - basket0) / basket0 * 100; cumulative % over years = (((basket1 - basket0) / basket0 + 1)^years - 1) * 100"></div>
+      <div data-lab="calc" data-title="Real vs. nominal return (Fisher equation)" data-params="nominal=0.07:0..0.20:0.0025; inflation=0.03:0..0.15:0.0025" data-rows="real return % (exact) = ((1+nominal)/(1+inflation) - 1) * 100; real return % (quick approx) = (nominal - inflation) * 100"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>CPI is an average across a basket — personal experience of inflation can differ a lot.</li><li>Slowing inflation (disinflation) is not the same as falling prices (deflation).</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Central bank inflation targets widely referenced in markets; wage and bond negotiations citing CPI.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>CPI is an average across a basket — personal experience of inflation can differ a lot depending on what you actually spend money on.</li><li>Slowing inflation (disinflation) is not the same as falling prices (deflation) — disinflation still means prices are rising, just more slowly.</li><li>Subtracting inflation from a nominal return (the quick approximation) understates the true cost at higher rates — the exact Fisher relationship divides.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Central bank inflation targets (commonly around 2%) widely referenced in markets; interest-rate decisions are explicitly reactions to inflation readings (Lesson 0.3).</li><li>Wage negotiations and some bond types (inflation-linked bonds) explicitly reference CPI.</li><li>"Real return" is the number that actually determines whether an investor's purchasing power grew — nominal returns alone can be misleading when comparing across different inflation environments or countries.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. Basket goes from $150 to $153. Inflation rate?</summary><div class="ans">(153-150)/150 = 2%.</div></details>
-        <details class="check"><summary>2. What does inflation do to the purchasing power of idle cash?</summary><div class="ans">Erodes it — the same dollar amount buys less over time.</div></details>
+        <details class="check"><summary>1. Basket goes from $150 to $153. Inflation rate, and cumulative inflation over 3 years at that rate?</summary><div class="ans">(153-150)/150 = 2%; cumulative = (1.02)³ − 1 ≈ 6.12% (not simply 6%).</div></details>
+        <details class="check"><summary>2. Nominal return 5%, inflation 5%. What's the real return, and what does that mean in practice?</summary><div class="ans">(1.05/1.05) − 1 = 0% — your money grew in dollar terms, but its purchasing power didn't grow at all.</div></details>
         <details class="check"><summary>3. Is disinflation the same as deflation?</summary><div class="ans">No — disinflation is inflation slowing down (prices still rising, just more slowly); deflation is prices actually falling.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Inflation is the % change in a fixed basket's price.</li><li>It erodes purchasing power, which is why real return (Lesson 2.3) matters.</li></ul></div>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Inflation is the % change in a fixed basket's price, and it compounds year over year.</li><li>Real return (Fisher equation) — not the quick subtraction shortcut — is the exact measure of purchasing-power growth.</li><li>Erosion of purchasing power is why nominal numbers alone can mislead, and why real return matters for every long-term financial decision.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="interest-rates" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Interest rates</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A central bank raises its policy rate. You have a $10,000 loan whose rate rises from 5% to 8%. What's the extra yearly cost?</div>
+        <div class="question"><b>The question</b>A central bank raises its policy rate from 5% to 6%. Your variable-rate loan gets more expensive overnight — but why does a bond you already own also drop in price, even though its coupon payment never changed?</div>
         <h3 class="sec">Intuition</h3>
-        <p>A central bank's <b>policy rate</b> is effectively the price of money. It ripples into mortgage rates, savings yields, and the discount rate used to value future cash flows (the same r from Investment Fundamentals Lesson 0.3).</p>
-        <div class="worked"><b>Worked example</b><p>10,000 × (0.08 − 0.05) = <b>$300</b> more interest per year.</p></div>
-        <div class="eq">\text{Extra interest}=\text{Principal}\times(r_2-r_1)</div>
-        <table class="sym"><tr><td>r₁, r₂</td><td>the old and new interest rate</td></tr></table>
+        <p>A central bank's <b>policy rate</b> is effectively the price of money itself — what banks pay each other to borrow overnight. Because almost every other rate in the economy is priced off it, a change ripples outward: mortgage rates, savings account yields, corporate borrowing costs, and — less obviously — the price of every bond already trading in the market.</p>
+        <div class="worked"><b>Worked example 1 — the direct cost</b><p>10,000 × (0.08 − 0.05) = <b>$300</b> more interest per year on a $10,000 loan whose rate rises from 5% to 8%.</p></div>
+        <h3 class="sec">Build it up: why bond prices move the other way</h3>
+        <p>A bond is a promise of fixed future payments. If a bond pays a fixed $50/year forever (a simple "perpetuity," to keep the arithmetic clean) and the going interest rate is 5%, that stream of $50 payments is worth exactly $1,000 today — because $1,000 invested at 5% also generates $50/year. Now suppose rates rise to 6%: a <i>brand new</i> bond could offer $60/year on $1,000. Nobody would pay $1,000 for the old bond's $50/year when a new one pays more for the same money — so the old bond's price has to fall until its $50/year looks equally attractive at the new, higher rate.</p>
+        <div class="worked"><b>Worked example 2 — bond price vs. rates</b><p>Price = annual payment ÷ yield. At 5% yield: $50/0.05 = <b>$1,000</b>. At 6% yield: $50/0.06 ≈ <b>$833.33</b> — a <b>16.7% price drop</b> from a 1-percentage-point rate rise. At 4% yield (rates fall instead): $50/0.04 = <b>$1,250</b> — bond prices rise when rates fall. This inverse relationship is explored in more depth in Asset Classes and Risk & Derivatives.</p></div>
+        <div class="eq">\text{Extra interest}=\text{Principal}\times(r_2-r_1)\qquad \text{Price}\approx\frac{\text{Annual payment}}{\text{Yield}}</div>
+        <table class="sym"><tr><td>r₁, r₂</td><td>the old and new interest rate</td></tr><tr><td>Yield</td><td>the market's current required rate of return on that bond</td></tr></table>
+        <p>The <b>yield curve</b> — short-term rates plotted against long-term rates — normally slopes upward (lenders want more compensation for tying up money longer). When it inverts (short-term rates rise above long-term rates), it's historically been watched as a notable signal about where the business cycle may be headed (Lesson 0.5) — though, like any single indicator, not a guaranteed forecast.</p>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise the rate gap further: the extra cost grows proportionally.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise the rate gap further in the first calculator: the extra cost grows proportionally.</li><li>In the bond-price calculator, push the yield up and down around the coupon rate and watch the price move in the opposite direction, fastest for the biggest rate changes.</li></ol></div>
       <div data-lab="calc" data-title="Cost of a rate change" data-params="principal=10000:1000..100000:500; r1=0.05:0..0.15:0.0025; r2=0.08:0..0.15:0.0025" data-rows="extra interest per year = principal * (r2 - r1)"></div>
+      <div data-lab="calc" data-title="Bond price vs. yield (perpetuity approximation)" data-params="payment=50:10..200:5; yield=0.06:0.01..0.15:0.0025" data-rows="price = payment / yield"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Fixed-rate borrowers aren't immediately affected by a rate change; variable-rate borrowers are.</li><li>Rate changes take time to work through the whole economy.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A rate hike raising mortgage and savings rates, and the discounting link to Lesson 0.3's present value.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Fixed-rate borrowers aren't immediately affected by a rate change; variable-rate borrowers are.</li><li>Rate changes take time to work through the whole economy — effects on hiring, spending and prices can take many months to fully show up.</li><li>Assuming bond prices and bond yields move together — they move in opposite directions by construction.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A rate hike raising mortgage and savings rates, and simultaneously pressuring existing bond prices lower.</li><li>The discounting link to Investment Fundamentals Lesson 0.3's present value — a higher discount rate lowers the present value of any future cash flow, which is why rate changes also move stock valuations, not just bonds.</li><li>Yield-curve shape as a widely discussed (not guaranteed) recession indicator.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
         <details class="check"><summary>1. A $5,000 loan's rate rises from 4% to 6%. Extra yearly interest?</summary><div class="ans">5000 × 0.02 = $100.</div></details>
-        <details class="check"><summary>2. Who feels a rate change immediately: fixed- or variable-rate borrowers?</summary><div class="ans">Variable-rate borrowers.</div></details>
-        <details class="check"><summary>3. What financial-math concept uses the same "r" as an interest rate?</summary><div class="ans">The discount rate in present value (Investment Fundamentals Lesson 0.3).</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>The policy rate is the price of money and ripples outward.</li><li>Fixed vs. variable rate exposure changes who feels it, and when.</li></ul></div>
+        <details class="check"><summary>2. A bond pays $40/year. Yield rises from 4% to 5%. Approximate price before and after?</summary><div class="ans">Before: 40/0.04 = $1,000. After: 40/0.05 = $800 — a 20% price drop.</div></details>
+        <details class="check"><summary>3. Why does a bond's price fall when market interest rates rise, even though its coupon payment is fixed?</summary><div class="ans">Because new bonds now offer a better rate for the same money, the old bond is only attractive at a lower price that makes its fixed payment competitive with the new, higher-yielding alternative.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>The policy rate is the price of money and ripples outward into loans, savings, and bond and stock valuations alike.</li><li>Bond prices and yields move inversely — a core relationship explored further in later paths.</li><li>Fixed vs. variable rate exposure changes who feels a rate change, and when.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="gdp-and-growth" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>GDP & growth</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>Nominal GDP grows 6% while inflation runs at 4%. How much did the economy actually produce more of?</div>
+        <div class="question"><b>The question</b>Nominal GDP grows 6% while inflation runs at 4%. How much did the economy actually produce more of — and what exactly is being added up to get "GDP" in the first place?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>GDP</b> measures total economic output. <b>Nominal</b> GDP growth mixes real output growth with price inflation; <b>real</b> GDP growth strips inflation out — the same nominal/real split as Lesson 0.2's inflation idea. A widely-cited (rough) recession signal is two consecutive quarters of shrinking real GDP.</p>
-        <div class="worked"><b>Worked example</b><p>(1.06/1.04) − 1 ≈ <b>1.92%</b> real growth — close to, but not exactly, the simple 6% − 4% = 2% approximation.</p></div>
-        <div class="eq">\text{Real growth}=\frac{1+\text{nominal}}{1+\text{inflation}}-1</div>
-        <table class="sym"><tr><td>nominal</td><td>GDP growth before adjusting for inflation</td></tr></table>
+        <p><b>GDP</b> (Gross Domestic Product) is the total value of everything a country produces in a period, and it's built from four pieces that are simply added together: <b>consumption</b> (households buying things), <b>investment</b> (businesses building factories, housing, equipment), <b>government spending</b>, and <b>net exports</b> (exports minus imports). Each piece is itself huge and closely watched, but GDP is just their sum.</p>
+        <div class="worked"><b>Worked example 1 — building GDP from its parts</b><p>Consumption $15T + Investment $3T + Government $4T + Net exports −$1T = <b>$21T</b> GDP. A negative net-exports figure (importing more than exporting) still adds a (negative) number into the same sum — it doesn't get treated specially.</p></div>
+        <h3 class="sec">Build it up: nominal vs. real, and across many years</h3>
+        <p><b>Nominal</b> GDP growth mixes real output growth with plain price inflation; <b>real</b> GDP growth strips inflation out, using the same nominal/real split as Lesson 0.2's Fisher equation.</p>
+        <div class="worked"><b>Worked example 2 — one year's real growth</b><p>(1.06/1.04) − 1 ≈ <b>1.92%</b> real growth — close to, but not exactly, the simple 6% − 4% = 2% approximation.</p></div>
+        <p>Growth also compounds year to year, and real years rarely repeat the same number twice — a healthy year might be followed by a weak or even negative one.</p>
+        <div class="worked"><b>Worked example 3 — compounding across uneven years</b><p>Real growth of +2%, then +3%, then −1% (a mild contraction) over three years: (1.02)(1.03)(0.99) − 1 ≈ <b>4.01%</b> cumulative growth — not simply 2+3−1=4%, because each year compounds on the last.</p></div>
+        <p>Finally, total GDP can be misleading on its own: a country's total output can rise purely from population growth, with nobody individually better off. <b>GDP per capita</b> (total GDP ÷ population) corrects for that.</p>
+        <div class="worked"><b>Worked example 4 — per capita</b><p>$21,000B GDP ÷ 330,000,000 people ≈ <b>$63,636</b> per person — a figure often used (imperfectly) as a stand-in for average living standards.</p></div>
+        <div class="eq">\text{GDP}=C+I+G+NX\qquad \text{Real growth}=\frac{1+\text{nominal}}{1+\text{inflation}}-1</div>
+        <table class="sym"><tr><td>C, I, G, NX</td><td>consumption, investment, government spending, net exports</td></tr><tr><td>nominal</td><td>GDP growth before adjusting for inflation</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Set nominal equal to inflation: real growth goes to 0% — no actual increase in output.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Set nominal equal to inflation: real growth goes to 0% — no actual increase in output.</li><li>In the per-capita calculator, double the population with GDP unchanged: per-capita GDP is cut in half even though total output didn't fall.</li></ol></div>
       <div data-lab="calc" data-title="Real vs. nominal GDP growth" data-params="nominal=0.06:0..0.15:0.005; inflation=0.04:0..0.12:0.005" data-rows="real growth % = ((1+nominal)/(1+inflation) - 1) * 100"></div>
+      <div data-lab="calc" data-title="GDP per capita" data-params="gdp=21000:1000..30000:100; population=330:50..1500:10" data-rows="GDP per capita ($) = gdp * 1e9 / (population * 1e6)"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>GDP doesn't capture everything of value (unpaid work, environmental costs).</li><li>Total GDP vs. per-capita GDP tell different stories about living standards.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Quarterly GDP releases and recession calls reported in financial news.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>GDP doesn't capture everything of value (unpaid work, environmental costs, leisure time, inequality within the total).</li><li>Total GDP vs. per-capita GDP tell different stories about living standards — rising total GDP alone doesn't mean the average person is better off.</li><li>Adding percentage growth rates across years instead of compounding them — real growth rates multiply, they don't simply sum.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Quarterly GDP releases and recession calls reported in financial news.</li><li>Per-capita GDP and growth-rate comparisons used when comparing countries' or regions' economic trajectories (Global & Current Events path).</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. Nominal growth 8%, inflation 5%. Approximate real growth?</summary><div class="ans">About 3% (exactly (1.08/1.05)-1 ≈ 2.86%).</div></details>
-        <details class="check"><summary>2. What's a commonly-cited rough definition of a recession?</summary><div class="ans">Two consecutive quarters of shrinking real GDP.</div></details>
-        <details class="check"><summary>3. Why might per-capita GDP matter more than total GDP for living standards?</summary><div class="ans">Total GDP can rise just from population growth without each person being better off; per-capita adjusts for that.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Real GDP growth strips inflation out of nominal growth.</li><li>GDP is a useful but incomplete measure of economic well-being.</li></ul></div>
+        <details class="check"><summary>1. Nominal growth 8%, inflation 5%. Exact real growth?</summary><div class="ans">(1.08/1.05) − 1 ≈ 2.86% (not exactly the 3% quick-subtraction approximation).</div></details>
+        <details class="check"><summary>2. Real growth is +4% in year 1 and −2% in year 2. Cumulative growth over the two years?</summary><div class="ans">(1.04)(0.98) − 1 = 1.92% — not simply 4−2=2%.</div></details>
+        <details class="check"><summary>3. Why might per-capita GDP matter more than total GDP for judging living standards?</summary><div class="ans">Total GDP can rise just from population growth without each person being better off; per-capita adjusts for that by dividing by the number of people.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>GDP sums consumption, investment, government spending and net exports.</li><li>Real GDP growth strips inflation out of nominal growth, and growth rates compound across years rather than simply adding.</li><li>GDP is a useful but incomplete measure of economic well-being; per-capita figures correct for population size alone.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="business-cycle" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>The business cycle</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>Unemployment is low and factories are near full capacity. Is the economy more likely headed toward a peak or a trough?</div>
+        <div class="question"><b>The question</b>Unemployment is low and factories are near full capacity. Is the economy more likely headed toward a peak or a trough — and how would you even know, before it happens?</div>
         <h3 class="sec">Intuition</h3>
-        <p>Economies move through <b>expansion</b> (growing, unemployment falling) → <b>peak</b> → <b>contraction</b> (shrinking, unemployment rising) → <b>trough</b> → a new expansion. <b>Leading indicators</b> (new orders, building permits) tend to turn before the cycle does; <b>lagging indicators</b> (like unemployment) confirm a turn after the fact — near-full capacity and low unemployment are themselves late-cycle, lagging signs.</p>
+        <p>Economies don't grow in a smooth straight line — they move through recurring phases: <b>expansion</b> (output growing, unemployment falling) → <b>peak</b> (growth tops out) → <b>contraction</b> (output shrinking, unemployment rising — a recession if sustained) → <b>trough</b> (the low point) → a new expansion. No two cycles are the same length or severity; this is a recurring pattern, not a fixed schedule.</p>
+        <h3 class="sec">Build it up: reading the signals, and their timing</h3>
+        <p>Economists classify indicators by <i>when</i> they tend to turn relative to the cycle itself:</p>
+        <ul>
+          <li><b>Leading indicators</b> — tend to turn <i>before</i> the cycle does. New orders for durable goods, building permits, stock market moves, and the slope of the yield curve (Lesson 0.3) are commonly cited examples.</li>
+          <li><b>Coincident indicators</b> — move roughly <i>together with</i> the cycle. Industrial production and personal income are typical examples.</li>
+          <li><b>Lagging indicators</b> — tend to turn <i>after</i> the cycle already has. Unemployment is the classic case: companies keep staff on through early signs of a slowdown and only cut later, and are slow to rehire even after a recovery starts.</li>
+        </ul>
+        <p>This directly answers the opening question: <b>low unemployment and near-full capacity are themselves lagging, late-cycle signs</b> — they describe where the economy <i>has been</i>, not reliably where it's <i>headed</i>. A single indicator, including this one, can send a false signal, which is why analysts read several together rather than leaning on any one.</p>
+        <div class="worked"><b>Worked example — averaging illustrative cycle lengths</b><p>Three illustrative past expansions lasted 58, 73 and 128 months: average = (58+73+128)/3 ≈ <b>86.3 months</b>. The wide spread (58 to 128) itself makes the point — there's no fixed, predictable cycle length to count down to.</p></div>
         <div class="eq">\text{cycle}(t)\approx A\sin(2\pi f t)</div>
         <table class="sym"><tr><td>A</td><td>amplitude — how deep the swings are</td></tr><tr><td>f</td><td>frequency — how often a full cycle repeats</td></tr></table>
+        <p>The sine wave below is a deliberately oversimplified picture — real cycles are irregular in both length and depth, and policymakers actively try to smooth them (lowering rates in a slowdown, raising them to cool an overheating expansion) rather than letting them run an unmanaged course.</p>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise frequency: cycles repeat faster. Raise amplitude: swings get more extreme. No two real cycles are this regular — this is a simplified illustration, not a forecast.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise frequency: cycles repeat faster. Raise amplitude: swings get more extreme. No two real cycles are this regular — this is a simplified illustration, not a forecast.</li><li>In the averaging calculator, make the three illustrative cycle lengths more similar to each other: the average becomes a more informative single number; spread them further apart and a single "average length" starts to mean less.</li></ol></div>
       <div data-lab="fplot" data-title="A stylised business cycle" data-f="A*sin(2*pi*f*x)" data-params="A=1:0.2..2:0.1; f=0.2:0.05..0.6:0.05" data-view="0,10,-2.2,2.2"></div>
+      <div data-lab="calc" data-title="Average of illustrative past cycle lengths (months)" data-params="cycle1=58:12..200:1; cycle2=73:12..200:1; cycle3=128:12..200:1" data-rows="average length (months) = (cycle1 + cycle2 + cycle3) / 3"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>No two real cycles are the same length or severity.</li><li>Any single indicator can send a false signal — they're usually read together.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>PMI surveys, unemployment claims and GDP releases used together to gauge where the cycle stands.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>No two real cycles are the same length or severity — there's no fixed countdown.</li><li>Any single indicator can send a false signal — they're usually read together.</li><li>Treating a lagging indicator (like unemployment) as if it were forward-looking — low unemployment describes recent strength, not necessarily future direction.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>PMI (Purchasing Managers' Index) surveys, unemployment claims, and GDP releases (Lesson 0.4) used together to gauge where the cycle stands.</li><li>Yield-curve shape (Lesson 0.3) as a widely discussed leading indicator.</li><li>Sector rotation strategies that lean into different industries at different cycle stages (explored further in Investment Strategies).</li></ul></div>
         <h3 class="sec">Check yourself</h3>
         <details class="check"><summary>1. Name the four phases of the business cycle in order.</summary><div class="ans">Expansion, peak, contraction, trough.</div></details>
-        <details class="check"><summary>2. Is unemployment generally a leading or a lagging indicator?</summary><div class="ans">Lagging — it tends to confirm a turn in the cycle after it has already begun.</div></details>
-        <details class="check"><summary>3. Why read multiple indicators together instead of just one?</summary><div class="ans">Any single indicator can send a false signal; combining several reduces that risk.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>The cycle moves through expansion, peak, contraction and trough.</li><li>Leading indicators turn first; lagging indicators confirm afterward.</li></ul></div>
+        <details class="check"><summary>2. Is unemployment generally a leading, coincident, or lagging indicator — and why does that matter for reading low unemployment?</summary><div class="ans">Lagging — it tends to confirm a turn in the cycle after it has already begun, so low unemployment reflects recent strength rather than reliably forecasting what comes next.</div></details>
+        <details class="check"><summary>3. Why read multiple indicators together instead of just one?</summary><div class="ans">Any single indicator can send a false signal; combining several (leading, coincident and lagging) reduces that risk.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>The cycle moves through expansion, peak, contraction and trough, with no fixed length.</li><li>Leading indicators turn first, coincident indicators move with the cycle, lagging indicators confirm afterward.</li><li>Low unemployment and high capacity utilization are lagging signals — read alongside leading indicators, not instead of them.</li></ul></div>
       </div>
     </section>
 

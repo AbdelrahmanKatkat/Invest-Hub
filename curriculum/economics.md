@@ -1,8 +1,8 @@
 # Economics (Macro & Micro) — curriculum spec
 
 **End state:** explain supply and demand, inflation, interest rates, GDP/growth and the business cycle well enough to
-read macro news with understanding. **Status:** Module 0 is a basic pass (concise, same structural standard as every
-other lesson on this site). Further modules are not yet planned.
+read macro news with understanding. **Status:** Module 0 is a deep pass (full worked examples and depth, same structural standard as every other lesson on
+this site). Further modules are not yet planned.
 
 ## Module 0 · Foundations  (`economics-0.html`)
 | id | Lesson | Must understand | Real-world link |

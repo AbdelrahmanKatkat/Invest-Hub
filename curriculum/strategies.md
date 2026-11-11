@@ -1,7 +1,7 @@
 # Investment Strategies — curriculum spec
 
 **End state:** describe value, growth, momentum, income and passive indexing as distinct, repeatable processes rather
-than vague labels. **Status:** Module 0 is a basic pass.
+than vague labels. **Status:** Module 0 is a deep pass.
 
 ## Module 0 · Foundations  (`strategies-0.html`)
 | id | Lesson | Must understand | Real-world link |

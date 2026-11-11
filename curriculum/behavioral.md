@@ -1,7 +1,7 @@
 # Behavioral Finance — curriculum spec
 
 **End state:** recognise anchoring, overconfidence, mental accounting and the asymmetry between gains and losses, and
-know practical defenses. **Status:** Module 0 is a basic pass; extends Investment Fundamentals Lesson 0.9's intro to
+know practical defenses. **Status:** Module 0 is a deep pass; extends Investment Fundamentals Lesson 0.9's intro to
 loss aversion, recency bias and herding.
 
 ## Module 0 · Foundations  (`behavioral-0.html`)

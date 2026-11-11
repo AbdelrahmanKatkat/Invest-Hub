@@ -1,7 +1,7 @@
 # Portfolio Management — curriculum spec
 
 **End state:** describe modern portfolio theory, the efficient frontier, CAPM/beta, factor investing and rebalancing
-policy well enough to reason about a real portfolio's construction. **Status:** Module 0 is a basic pass; builds on
+policy well enough to reason about a real portfolio's construction. **Status:** Module 0 is a deep pass; builds on
 Investment Fundamentals Lessons 0.7 (diversification) and 4.2 (rebalancing).
 
 ## Module 0 · Foundations  (`portfolio-0.html`)

@@ -1,7 +1,7 @@
 # Risk & Derivatives — curriculum spec
 
 **End state:** measure drawdown, understand options and futures at a beginner level, and see how derivatives are used
-to hedge rather than only to speculate. **Status:** Module 0 is a basic pass.
+to hedge rather than only to speculate. **Status:** Module 0 is a deep pass.
 
 ## Module 0 · Foundations  (`risk-0.html`)
 | id | Lesson | Must understand | Real-world link |

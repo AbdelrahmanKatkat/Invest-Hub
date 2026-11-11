@@ -1,7 +1,7 @@
 # Technical Analysis — curriculum spec
 
 **End state:** read a price chart, understand moving averages, momentum and volume at a beginner level, and know the
-evidence for and against technical analysis. **Status:** Module 0 is a basic pass; extends Investment Fundamentals
+evidence for and against technical analysis. **Status:** Module 0 is a deep pass; extends Investment Fundamentals
 Lesson 3.5's brief intro to chart reading.
 
 ## Module 0 · Foundations  (`technical-0.html`)

@@ -1,7 +1,7 @@
 # Quant Investing — curriculum spec
 
 **End state:** describe factor models, backtesting, signal construction and the systematic-vs-discretionary distinction,
-and recognise overfitting as the field's central risk. **Status:** Module 0 is a basic pass.
+and recognise overfitting as the field's central risk. **Status:** Module 0 is a deep pass.
 
 ## Module 0 · Foundations  (`quant-0.html`)
 | id | Lesson | Must understand | Real-world link |

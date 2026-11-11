@@ -19,12 +19,13 @@ Each lesson is a `<section class="lesson" id="LESSON-ID" data-lesson>` using the
 10. `<div class="takeaways"><h4>Takeaways</h4><ul>…</ul></div>`.
 
 ## Depth: basic pass vs. deep pass
-The whole site is currently a **basic pass**: every lesson has every required part above, but prose is kept short and
-to-the-point (roughly 150–350 words, one small worked example or none, one lab). This is deliberate — breadth across all
-modules first, then a **deep pass** (700–1500 words, multiple worked examples, richer labs, patient-teacher tone) module by
-module on request, the way Mathematics was deepened in the sibling AI-Hub project. Check `CLAUDE.md` "where things stand"
-for which modules are still basic. Whichever depth you are writing: build from the simplest case to full understanding,
-define terms on first use, give the "why" not only the "what", and never skip a step a beginner would stumble on.
+Every module on the site is now a **deep pass**: each lesson has every required part above, at full depth — roughly
+700–1500 words, multiple worked examples, richer labs, patient-teacher tone — the way Mathematics was deepened in the
+sibling AI-Hub project. A **basic pass** (roughly 150–350 words, one small worked example or none, one lab) is the
+leaner standard used only while a brand-new module is first being scaffolded, before it's deepened. Check `CLAUDE.md`
+"where things stand" for the current state of any module you're about to touch. Whichever depth you are writing: build
+from the simplest case to full understanding, define terms on first use, give the "why" not only the "what", and never
+skip a step a beginner would stumble on.
 
 **Numerical correctness is mandatory.** Every worked example and every "Check yourself" answer must be computed and
 double-checked (use node/python in the shell) before it is written down. Every formula must state its assumptions

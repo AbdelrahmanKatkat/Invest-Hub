@@ -1,7 +1,7 @@
 # Fundamental Analysis — curriculum spec
 
 **End state:** go beyond Investment Fundamentals Module 3's balance sheet/income statement/multiples/DCF basics into
-cash flow, ratio analysis, moats, red flags and qualitative judgement. **Status:** Module 0 is a basic pass.
+cash flow, ratio analysis, moats, red flags and qualitative judgement. **Status:** Module 0 is a deep pass.
 
 ## Module 0 · Foundations  (`fundamental-0.html`)
 | id | Lesson | Must understand | Real-world link |

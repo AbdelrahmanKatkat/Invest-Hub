@@ -1,7 +1,7 @@
 # Financial Markets — curriculum spec
 
 **End state:** describe the main kinds of markets, how they're structured, the case for and against market efficiency,
-why markets are regulated, and how trading spans the globe. **Status:** Module 0 is a basic pass. Module 1 (Investment
+why markets are regulated, and how trading spans the globe. **Status:** Module 0 is a deep pass. Module 1 (Investment
 Fundamentals) already covers order types, spreads, a single exchange's mechanics and settlement at a beginner level —
 this path goes wider across market types rather than repeating that ground.
 

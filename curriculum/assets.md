@@ -1,7 +1,7 @@
 # Asset Classes — curriculum spec
 
 **End state:** go one level deeper than Investment Fundamentals Module 2 within equities and fixed income, and cover
-alternative, international and inflation-linked assets. **Status:** Module 0 is a basic pass.
+alternative, international and inflation-linked assets. **Status:** Module 0 is a deep pass.
 
 ## Module 0 · Foundations  (`assets-0.html`)
 | id | Lesson | Must understand | Real-world link |

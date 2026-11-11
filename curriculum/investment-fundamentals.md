@@ -10,8 +10,8 @@ diversified first portfolio. It is the shared foundation for every deeper path t
 Asset Classes, Fundamental Analysis, Technical Analysis, Behavioral Finance, Investment Strategies, Portfolio Management,
 Risk & Derivatives, Global & Current Events, Quant Investing) — each of those goes deep on one slice of this map.
 
-**Status:** Module 0 is authored to the deep-lesson standard (`investment-fundamentals-0.html`). Modules 1–4 are planned
-below (scope agreed, lessons not yet written) — see `CLAUDE.md` "where things stand".
+**Status:** All 5 modules (`investment-fundamentals-0.html` … `-4.html`, 33 lessons) are authored to the deep-pass
+standard — see `CLAUDE.md` "where things stand".
 
 ## Module 0 · Fundamentals  (`investment-fundamentals-0.html`)
 | id | Lesson | Must understand | Real-world link |

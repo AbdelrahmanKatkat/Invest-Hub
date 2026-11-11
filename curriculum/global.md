@@ -1,7 +1,7 @@
 # Global & Current Events — curriculum spec
 
 **End state:** read macro news, earnings season and geopolitical events as an investor, and tell signal apart from
-noise in real time. **Status:** Module 0 is a basic pass.
+noise in real time. **Status:** Module 0 is a deep pass.
 
 ## Module 0 · Foundations  (`global-0.html`)
 | id | Lesson | Must understand | Real-world link |

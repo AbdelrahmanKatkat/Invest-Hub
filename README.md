@@ -4,9 +4,9 @@ Interactive, animated lessons that take you from the basics to confident investi
 Sibling project to **AI-Hub**, reusing its architecture (curriculum-first authoring, dark/light/neon themes, animated
 labs, notes) rebuilt for investment education.
 
-**Live:** all 12 paths. Investment Fundamentals has 5 modules / 33 lessons; the other 11 each have one "Foundations"
-module / 5 lessons. **Every path's Module 0 is now a full deep pass**; Investment Fundamentals' modules 1–4 remain a
-concise **basic pass** for now, to be deepened on request.
+**Live:** all 12 paths, and **every module on the site is a full deep pass** — rich worked examples, extended labs,
+no basic-pass content left. Investment Fundamentals has 5 modules / 33 lessons; the other 11 paths each have one
+"Foundations" module / 5 lessons.
 
 **General education only — nothing on this site is investment advice** or a recommendation to buy, sell or hold any
 specific security. Market data shown in dashboard widgets is sample/illustrative, not a live feed.

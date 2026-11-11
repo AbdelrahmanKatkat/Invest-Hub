@@ -12,6 +12,7 @@
 <script defer src="assets/curriculum-strategies.js"></script>
 <script defer src="assets/lib.js"></script>
 <script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
 <script defer src="assets/shell.js"></script>
 </head>
 <body data-topic="strategies" data-module="0">
@@ -21,117 +22,172 @@
   <main>
     <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="strategies.html">Investment Strategies</a> › Module 0</div>
     <div class="hero"><div class="big" style="background:#d2992226">0</div>
-      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Value, growth, momentum, income and passive indexing as repeatable, testable processes. Basic pass — concise for now.</p>
-      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Value, growth, momentum, income and passive indexing as repeatable, testable processes.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 70 min</span></div></div>
       <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
     </div>
 
     <section class="lesson" id="value-investing" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Value investing</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>You estimate a company is worth $80 a share. It trades at $55. How much of a buffer does that give you if your estimate is wrong?</div>
+        <div class="question"><b>The question</b>You estimate a company is worth $80 a share based on its future cash flows. It trades at $55. A second analyst, using a completely different method — comparing price to the company's accounting net worth — says the stock also looks cheap. How much of a buffer does the first estimate give you if you're wrong, and why does a second, independent check matter?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>Value investing</b> means buying below an estimated intrinsic worth, with a <b>margin of safety</b> — the gap between estimated value and price — as a cushion against estimation error.</p>
-        <div class="worked"><b>Worked example</b><p>(80 − 55)/80 = <b>31.25%</b> margin of safety.</p></div>
+        <p><b>Value investing</b> means buying below an estimated <b>intrinsic value</b> — what a business is really worth based on the cash it can generate — with a <b>margin of safety</b>: the gap between that estimate and the price you actually pay, acting as a cushion against being wrong.</p>
+        <ul>
+          <li>No intrinsic-value estimate is exact — it depends on assumptions about future cash flows, growth and the discount rate (Investment Fundamentals Lesson 0.3's present value). A margin of safety doesn't make the estimate more accurate; it makes being <i>somewhat</i> wrong survivable.</li>
+          <li>The bigger the uncertainty in the estimate, the larger a margin of safety a careful investor typically wants before acting on it.</li>
+          <li>A cheap price alone isn't the same as cheap <i>relative to value</i> — a stock can fall 50% and still be expensive if the business's prospects have deteriorated even more (a "value trap").</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — margin of safety</b><p>(80 − 55)/80 = <b>31.25%</b> margin of safety: the estimate could be wrong by roughly that much before the "value exceeds price" conclusion flips.</p></div>
         <div class="eq">\text{Margin of safety}=\frac{\text{Intrinsic value}-\text{Price}}{\text{Intrinsic value}}</div>
+        <h3 class="sec">Build it up: a second, independent anchor</h3>
+        <p>Relying on one valuation estimate means relying on one set of assumptions. Investment Fundamentals Lesson 3.3 introduced the <b>price-to-book (P/B)</b> ratio — price divided by a company's accounting net worth per share — as a second anchor that doesn't depend on forecasting future cash flows at all. When a cash-flow estimate <i>and</i> a cheap P/B agree, that's a stronger (though still not certain) signal than either alone.</p>
+        <div class="worked"><b>Worked example 2 — a second anchor</b><p>Book value per share is $44; price is $55: P/B = 55/44 = <b>1.25</b>. If comparable companies in the same industry typically trade near 2.5× book, this stock looks cheap on <i>both</i> the cash-flow estimate and the book-value anchor — two independent checks pointing the same way.</p></div>
+        <table class="sym"><tr><td>Intrinsic value</td><td>an estimate of what the business is really worth, usually from discounted future cash flows</td></tr><tr><td>Price</td><td>what the market currently charges for one share</td></tr><tr><td>P/B</td><td>price ÷ book value per share — a cash-flow-free cross-check</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Bring the price close to the estimated value: margin of safety shrinks toward 0.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Bring the price close to the estimated value: margin of safety shrinks toward 0.</li><li>In the P/B calculator, raise the price while holding book value fixed: P/B climbs — at some point the "cheap on book value" signal disappears even if the cash-flow estimate still looks attractive.</li></ol></div>
       <div data-lab="calc" data-title="Margin of safety" data-params="intrinsicValue=80:1..1000:1; price=55:1..1000:1" data-rows="margin of safety % = (intrinsicValue - price) / intrinsicValue * 100"></div>
+      <div data-lab="calc" data-title="Price-to-book cross-check" data-params="price=55:1..1000:1; bookValuePerShare=44:1..1000:1; peerAvgPB=2.5:0.5..10:0.1" data-rows="P/B = price / bookValuePerShare; discount to peer avg % = (peerAvgPB - (price/bookValuePerShare)) / peerAvgPB * 100"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>An intrinsic-value estimate is still an estimate — the margin of safety cushions estimation error, it doesn't eliminate it.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Classic value-investing commentary about buying "a dollar for fifty cents."</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>An intrinsic-value estimate is still an estimate — the margin of safety cushions estimation error, it doesn't eliminate it.</li><li>A "value trap": a stock that looks statistically cheap (low P/E or P/B) because the underlying business is genuinely deteriorating, not because the market is mispricing it.</li><li>Agreement between two valuation anchors reduces the chance both are wrong for the same reason, but it doesn't guarantee either one is right.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Classic value-investing commentary about buying "a dollar for fifty cents."</li><li>Value-oriented mutual funds and ETFs that screen for low P/E or low P/B stocks relative to their sector.</li><li>Bank and insurance-company analysis, where P/B is especially commonly used alongside (or instead of) cash-flow models (Investment Fundamentals Lesson 3.3).</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What is margin of safety?</summary><div class="ans">The gap between estimated intrinsic value and price, as a cushion against error.</div></details>
-        <details class="check"><summary>2. Intrinsic value $100, price $70. Margin of safety?</summary><div class="ans">30%.</div></details>
-        <details class="check"><summary>3. Does a margin of safety guarantee you're right about the value estimate?</summary><div class="ans">No — it cushions error, it doesn't eliminate the risk of a wrong estimate.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Value investing buys below an estimated intrinsic worth.</li><li>Margin of safety cushions, but doesn't eliminate, estimation error.</li></ul></div>
+        <details class="check"><summary>1. What is margin of safety, and what does it protect against?</summary><div class="ans">The gap between an estimated intrinsic value and the price paid — it cushions against the estimate itself being wrong, it doesn't make the estimate more accurate.</div></details>
+        <details class="check"><summary>2. Intrinsic value $100, price $70. Margin of safety? If book value per share is $50, what's the P/B?</summary><div class="ans">Margin of safety = (100-70)/100 = 30%. P/B = 70/50 = 1.4.</div></details>
+        <details class="check"><summary>3. A stock's price has fallen 60% and its P/E looks very low. Is it automatically a good value investment?</summary><div class="ans">Not necessarily — if the business's earnings power has fallen even more than the price, it can be a "value trap": statistically cheap but not actually cheap relative to its (worsened) true value.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Value investing buys below an estimated intrinsic worth, using margin of safety as a cushion against estimation error.</li><li>A second, independent anchor like P/B reduces (but never removes) reliance on one set of assumptions.</li><li>A statistically cheap price is not the same as a cheap price relative to a deteriorating business — that's a value trap.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="growth-investing" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Growth investing</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A stock trades at a P/E of 30 and is expected to grow earnings 20% a year. Is that multiple "expensive"?</div>
+        <div class="question"><b>The question</b>A stock trades at a P/E of 30 (Investment Fundamentals Lesson 3.3) and is expected to grow earnings 20% a year. Is that multiple "expensive" — and does the answer change if you're willing to hold for several years rather than judge the price today?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>Growth investing</b> accepts a higher P/E (Investment Fundamentals Lesson 3.3) in exchange for faster expected earnings growth. The <b>PEG ratio</b> relates the multiple to the growth rate as a rough cross-check.</p>
-        <div class="worked"><b>Worked example</b><p>30/20 = <b>1.5</b> PEG. A PEG near or below 1 is sometimes used as an (imprecise) rule-of-thumb reference point, though it's not a hard rule.</p></div>
+        <p><b>Growth investing</b> accepts a higher P/E in exchange for faster expected earnings growth — the bet is that today's "expensive-looking" price will look reasonable once earnings catch up. The <b>PEG ratio</b> relates the multiple to the growth rate as a rough cross-check:</p>
+        <ul>
+          <li>A stock with a high P/E and very high expected growth can have the <i>same</i> PEG as a low-P/E, low-growth stock — PEG tries to put "expensive" and "cheap" on a common footing.</li>
+          <li>PEG is only as reliable as the growth forecast feeding it — a popular, widely expected growth rate is also a widely known one, and may already be reflected in the price.</li>
+          <li>Growth investing differs from value investing (Lesson 0.1) in what it's betting on: value bets the <i>price</i> is wrong today; growth bets the <i>future earnings</i> will be large enough to justify today's price.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — PEG</b><p>30/20 = <b>1.5</b> PEG. A PEG near or below 1 is sometimes used as an (imprecise) rule-of-thumb reference point, though it's not a hard rule.</p></div>
         <div class="eq">PEG=\frac{P/E}{\text{Expected growth rate }(\%)}</div>
+        <h3 class="sec">Build it up: growing into the multiple</h3>
+        <p>PEG is a single-year snapshot. A more direct way to see the growth bet is to compound earnings forward several years (the same compounding math as Investment Fundamentals Lesson 0.1) and ask what the <i>current</i> price implies about the P/E an investor would effectively be paying against <i>future</i> earnings, if the growth forecast comes true.</p>
+        <div class="worked"><b>Worked example 2 — the forward multiple</b><p>Current EPS $2, price $60 (P/E = 60/2 = <b>30</b>). If earnings grow 20%/year for 3 years: EPS₃ = 2×(1.20)³ ≈ <b>$3.456</b>. Against that future earnings figure, today's $60 price implies a forward P/E of 60/3.456 ≈ <b>17.4</b> — noticeably less "expensive" three years out, <i>if</i> the growth materializes.</p></div>
+        <div class="eq">\text{EPS}_n=\text{EPS}_0\times(1+g)^n\qquad\text{Forward P/E}=\frac{\text{Price}}{\text{EPS}_n}</div>
+        <table class="sym"><tr><td>PEG</td><td>P/E divided by the expected annual earnings growth rate (%)</td></tr><tr><td>EPS₀, EPSₙ</td><td>earnings per share today, and projected n years ahead</td></tr><tr><td>g</td><td>the assumed annual earnings growth rate</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise expected growth with P/E fixed: PEG falls — the same multiple looks more reasonable against faster growth.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise expected growth with P/E fixed: PEG falls — the same multiple looks more reasonable against faster growth.</li><li>In the earnings-compounding plot, raise the growth rate slider: the curve bends upward much faster — small differences in assumed growth compound into large differences in forward earnings over several years.</li></ol></div>
       <div data-lab="calc" data-title="PEG ratio" data-params="pe=30:1..100:1; growthRate=20:1..60:1" data-rows="PEG = pe / growthRate"></div>
+      <div data-lab="fplot" data-title="Earnings compounding — growing into the multiple" data-sub="years on the x-axis; projected EPS on the y-axis" data-f="eps0*(1+g/100)^x" data-params="eps0=2:0.5..10:0.1; g=20:0..40:1" data-view="0,10,0,60"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Growth forecasts are uncertain — PEG is only as good as the growth estimate feeding it.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Growth-oriented funds concentrated in fast-expanding industries.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Growth forecasts are uncertain — PEG and forward P/E are only as good as the growth estimate feeding them.</li><li>A widely expected growth rate may already be "priced in" — the stock doesn't necessarily re-rate just because the expected growth shows up, if everyone expected it.</li><li>Compounding cuts both ways: a growth rate that disappoints doesn't just fall short, it falls short compounded over every year assumed.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Growth-oriented funds concentrated in fast-expanding industries, such as technology-sector growth funds.</li><li>Analyst "forward P/E" figures quoted in equity research, built exactly this way from projected future earnings.</li><li>High-growth small-cap sectors, where expectations (and the room to disappoint them) both tend to run largest.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does PEG relate?</summary><div class="ans">The P/E ratio to the expected earnings growth rate.</div></details>
-        <details class="check"><summary>2. P/E 40, growth 25%. PEG?</summary><div class="ans">40/25 = 1.6.</div></details>
-        <details class="check"><summary>3. Is a low PEG a guarantee of a good investment?</summary><div class="ans">No — it depends entirely on the growth estimate being accurate.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Growth investing pays more per dollar of current earnings for expected future growth.</li><li>PEG is a rough cross-check, not a precise rule.</li></ul></div>
+        <details class="check"><summary>1. What does PEG relate, and what's its main limitation?</summary><div class="ans">It relates the P/E ratio to the expected earnings growth rate; it's only as reliable as the growth forecast used, which is uncertain.</div></details>
+        <details class="check"><summary>2. P/E 40, growth 25%. PEG? EPS $1.50 growing at 25%/year — what is it after 2 years?</summary><div class="ans">PEG = 40/25 = 1.6. EPS₂ = 1.50×(1.25)² = $2.34375 ≈ $2.34.</div></details>
+        <details class="check"><summary>3. Why might a stock with "obviously" high expected growth not necessarily be a good buy?</summary><div class="ans">If the growth is widely expected, it may already be reflected in (priced into) today's share price — the stock only outperforms if growth comes in even better than what's already expected.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Growth investing pays more per dollar of current earnings for expected future growth.</li><li>PEG is a rough one-year cross-check; compounding earnings forward shows the same bet playing out over several years.</li><li>Widely expected growth may already be priced in, and disappointment compounds just like growth does.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="momentum-investing" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Momentum investing</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A stock has risen steadily for 6 months. Does that trend, by itself, say anything useful about the next 6 months?</div>
+        <div class="question"><b>The question</b>A stock has risen steadily for 6 months. Does that trend, by itself, say anything useful about the next 6 months? And does it matter whether you measure the trend through yesterday, or stop one month short of today?</div>
         <h3 class="sec">Intuition</h3>
         <p><b>Momentum investing</b> buys what has recently trended up, on evidence that trends have historically tended to persist for some period before reversing — directly related to the trend-slope idea from Investment Fundamentals Lesson 3.5, now used as a selection rule across many stocks rather than read off one chart.</p>
-        <div class="worked"><b>Worked example</b><p>A stock rising from $40 to $52 over 6 months has a trailing 6-month return of (52−40)/40 = <b>30%</b> — a momentum strategy would rank this favorably versus a flat or declining peer.</p></div>
+        <ul>
+          <li>Momentum is a <i>relative</i> ranking tool: a portfolio typically buys the stocks with the strongest trailing returns across a large group, not just any single stock that happens to be rising.</li>
+          <li>The lookback window matters — too short, and the "signal" is mostly noise; too long, and it stops reflecting anything recent.</li>
+          <li>Momentum and value (Lesson 0.1) often point in opposite directions: a stock with strong recent momentum is, almost by definition, <i>not</i> the stock trading furthest below its estimated value.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — trailing return</b><p>A stock rising from $40 to $52 over 6 months has a trailing 6-month return of (52−40)/40 = <b>30%</b> — a momentum strategy would rank this favorably versus a flat or declining peer.</p></div>
         <div class="eq">\text{trailing return}=\frac{P_{\text{now}}-P_{\text{6mo ago}}}{P_{\text{6mo ago}}}</div>
+        <h3 class="sec">Build it up: the "12-minus-1" construction</h3>
+        <p>Academic and practitioner momentum research commonly measures a <b>12-month return that skips the most recent month</b> (often called "12-1" momentum), rather than a plain 12-month return through today. The most recent month is dropped because very short-term price moves have historically tended to show the opposite pattern — short-term <b>reversal</b> rather than momentum — and mixing the two can blur the signal the strategy is trying to capture.</p>
+        <div class="worked"><b>Worked example 2 — 12-1 vs. plain 12-month</b><p>Price 12 months ago: $45. Price 1 month ago: $66. Price now: $70. 12-1 momentum (12mo-ago to 1mo-ago) = (66−45)/45 ≈ <b>46.7%</b>. Plain 12-month return (12mo-ago to now) = (70−45)/45 ≈ <b>55.6%</b> — the two measures tell a noticeably different story about the same stock, because the final month's extra move is excluded from one and not the other.</p></div>
+        <div class="eq">\text{momentum}_{12\text{-}1}=\frac{P_{\text{1mo ago}}-P_{\text{12mo ago}}}{P_{\text{12mo ago}}}</div>
+        <table class="sym"><tr><td>P_now, P_6mo ago</td><td>price today and 6 months ago</td></tr><tr><td>P_1mo ago, P_12mo ago</td><td>price 1 month ago and 12 months ago — the standard "12-1" window</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Make the two prices equal: trailing return goes to 0% — no momentum signal either way.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Make the two prices equal: trailing return goes to 0% — no momentum signal either way.</li><li>In the 12-1 calculator, push the price 1 month ago up toward the price now: the gap between the two measures shrinks — most of the difference comes from what happened in that final month.</li></ol></div>
       <div data-lab="calc" data-title="Trailing return ranking input" data-params="priceNow=52:1..1000:1; priceSixMoAgo=40:1..1000:1" data-rows="trailing 6-month return % = (priceNow - priceSixMoAgo) / priceSixMoAgo * 100"></div>
+      <div data-lab="calc" data-title="12-1 momentum vs. plain 12-month return" data-params="price12moAgo=45:1..1000:1; price1moAgo=66:1..1000:1; priceNow=70:1..1000:1" data-rows="12-1 momentum % = (price1moAgo - price12moAgo) / price12moAgo * 100; plain 12-month return % = (priceNow - price12moAgo) / price12moAgo * 100"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Momentum can reverse sharply and without warning — past persistence is not a guarantee.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Momentum factor funds and trend-following strategies.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Momentum can reverse sharply and without warning — past persistence is not a guarantee.</li><li>Mixing up a plain 12-month return with the 12-1 construction — they can disagree meaningfully, as the worked example shows.</li><li>Momentum strategies can suffer unusually sharp losses exactly when many momentum-driven positions unwind at once (a "momentum crash") — a known risk in the academic literature, not a hypothetical one.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Momentum factor funds and trend-following strategies offered by several large asset managers.</li><li>Managed-futures and trend-following funds that apply a similar idea across commodities, currencies and bonds, not just stocks.</li><li>Technical analysis (its own path in this site) uses closely related trend concepts at a shorter, chart-reading timescale.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does momentum investing buy?</summary><div class="ans">What has recently trended upward, expecting the trend to persist for a while.</div></details>
-        <details class="check"><summary>2. Price $30 six months ago, $36 now. Trailing return?</summary><div class="ans">20%.</div></details>
-        <details class="check"><summary>3. Is a trend guaranteed to continue?</summary><div class="ans">No — momentum can reverse sharply.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Momentum investing bets on the persistence of recent trends.</li><li>It carries real reversal risk.</li></ul></div>
+        <details class="check"><summary>1. What does momentum investing buy, and over roughly what kind of horizon does the "signal" typically get measured?</summary><div class="ans">What has recently trended upward, typically measured over a lookback window of several months to about a year, expecting the trend to persist for a while longer.</div></details>
+        <details class="check"><summary>2. Price $30 twelve months ago, $33 one month ago, $36 now. What's the 12-1 momentum, and the plain 12-month return?</summary><div class="ans">12-1 = (33-30)/30 = 10%. Plain 12-month = (36-30)/30 = 20%.</div></details>
+        <details class="check"><summary>3. Why do many momentum strategies skip the most recent month rather than using a plain trailing return?</summary><div class="ans">Very short-term price moves have historically tended to show reversal rather than momentum, so including the most recent month can blur the longer trend the strategy is trying to capture.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Momentum investing bets on the persistence of recent trends, usually ranked across many stocks at once.</li><li>The standard "12-1" construction skips the most recent month to avoid blending in short-term reversal.</li><li>It carries real reversal risk, including the possibility of sharp "momentum crash" episodes.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="income-investing" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Income investing</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>You bought a stock at $50. Its dividend has since grown to $3/year. What's your yield relative to what you actually paid?</div>
+        <div class="question"><b>The question</b>You bought a stock at $50. Its dividend has since grown to $3/year. What's your yield relative to what you actually paid — and if that dividend keeps growing, how different does the same stock look to someone buying fresh today?</div>
         <h3 class="sec">Intuition</h3>
         <p><b>Income investing</b> prioritises current cash income over price appreciation. <b>Yield on cost</b> measures the current dividend against your original purchase price, which can look very different from the yield a new buyer sees today (the current-price dividend yield from Investment Fundamentals Lesson 2.1).</p>
-        <div class="worked"><b>Worked example</b><p>3/50 = <b>6%</b> yield on cost — potentially much higher than the stock's current-price dividend yield if the price has also risen since purchase.</p></div>
+        <ul>
+          <li>Yield on cost only rises over time if the dividend itself grows — it isn't automatic, and some companies freeze or cut dividends instead of growing them.</li>
+          <li>A long holding period combined with steady dividend growth can push yield on cost well above what any new buyer currently receives.</li>
+          <li>Income investing differs from growth investing (Lesson 0.2) in what's being compounded — growth investors compound <i>earnings</i> and hope the price follows; income investors compound the <i>cash paid out</i> directly.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — yield on cost today</b><p>3/50 = <b>6%</b> yield on cost — potentially much higher than the stock's current-price dividend yield if the price has also risen since purchase.</p></div>
         <div class="eq">\text{Yield on cost}=\frac{\text{Current dividend}}{\text{Original purchase price}}</div>
+        <h3 class="sec">Build it up: a growing dividend, projected forward</h3>
+        <p>A dividend that grows at a steady rate compounds exactly like any other growing quantity (Investment Fundamentals Lesson 0.1) — the lab below reuses that same compounding engine, now tracking a <i>dividend</i> climbing year after year rather than an account balance.</p>
+        <div class="worked"><b>Worked example 2 — projecting the dividend forward</b><p>Starting dividend $3, growing 7%/year for 10 years: 3×(1.07)¹⁰ ≈ <b>$5.90</b>. Against the original $50 purchase price, yield on cost would then be 5.90/50 ≈ <b>11.80%</b> — nearly double the 6% starting point, purely from a decade of dividend growth.</p></div>
+        <div class="worked"><b>Worked example 3 — the same dividend, two buyers</b><p>Suppose, 10 years on, the price has also risen to $70 and a new buyer purchases at that price. Their fresh yield is 5.90/70 ≈ <b>8.43%</b> — respectable, but well below the original holder's 11.80% yield on cost on the <i>same</i> $5.90 dividend. The gap is entirely explained by the different purchase price, not by anything special about either buyer's shares.</p></div>
+        <div class="eq">\text{Dividend}_n=\text{Dividend}_0\times(1+g)^n</div>
+        <table class="sym"><tr><td>Dividend₀, Dividendₙ</td><td>the dividend today, and projected n years ahead</td></tr><tr><td>g</td><td>the assumed annual dividend growth rate</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise the dividend with purchase price fixed: yield on cost rises — a longer holding period with dividend growth compounds this.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise the dividend with purchase price fixed: yield on cost rises — a longer holding period with dividend growth compounds this.</li><li>In the dividend-compounding lab, compare the "simple growth" line (growing by a flat dollar amount each year) against the compounding line — the gap is exactly the same effect as compound interest, applied to a dividend instead of an account balance.</li></ol></div>
       <div data-lab="calc" data-title="Yield on cost" data-params="currentDividend=3:0..50:0.1; purchasePrice=50:1..1000:1" data-rows="yield on cost % = currentDividend / purchasePrice * 100"></div>
+      <div data-lab="compound" data-title="A dividend compounding over time" data-p="3" data-r="0.07" data-y="10"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A high yield on cost reflects a long, successful holding period — it says nothing about buying the stock fresh today at its current price.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Dividend-growth portfolios commonly cited as a retirement-income approach.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A high yield on cost reflects a long, successful holding period — it says nothing about buying the stock fresh today at its current price.</li><li>An unusually high current-price dividend yield can signal distress (the price has fallen because the market expects a dividend cut), not a bargain.</li><li>Dividend growth isn't guaranteed — a company can freeze or cut its dividend, which also freezes or reverses yield-on-cost growth.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Dividend-growth portfolios commonly cited as a retirement-income approach.</li><li>"Dividend aristocrat" style indices and funds that specifically screen for a long history of consecutive dividend increases.</li><li>Dividend reinvestment plans (DRIPs), which use each payout to buy more shares, compounding both the share count and the dividend together.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does yield on cost use as its denominator?</summary><div class="ans">The original purchase price, not the current price.</div></details>
-        <details class="check"><summary>2. Dividend $4, purchase price $40. Yield on cost?</summary><div class="ans">10%.</div></details>
-        <details class="check"><summary>3. Does a high yield on cost mean the stock is a good buy today?</summary><div class="ans">Not necessarily — it reflects the original purchase, not today's price.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Yield on cost measures income against your original price, not today's.</li><li>It can look very different from a fresh buyer's current yield.</li></ul></div>
+        <details class="check"><summary>1. What does yield on cost use as its denominator, and why can two investors in the exact same stock have very different yields on cost?</summary><div class="ans">The original purchase price, not the current price — investors who bought at different times paid different prices, so the same current dividend produces a different yield on cost for each.</div></details>
+        <details class="check"><summary>2. Dividend $4, purchase price $40. Yield on cost? If that dividend grows 5%/year for 5 years, what is it then?</summary><div class="ans">Yield on cost today = 4/40 = 10%. Dividend after 5 years = 4×(1.05)^5 ≈ $5.105.</div></details>
+        <details class="check"><summary>3. Does a high yield on cost mean the stock is a good buy today, for a new investor?</summary><div class="ans">No — it reflects the original holder's purchase price, not today's; a new buyer's yield depends entirely on today's price, which may be far higher.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Yield on cost measures income against your original price, not today's.</li><li>A growing dividend compounds yield on cost upward over a long holding period, using the same math as any other compounding quantity.</li><li>The same dividend can mean very different yields for the original holder versus a fresh buyer today.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="passive-indexing" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Passive indexing</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>If markets are reasonably efficient (Financial Markets Lesson "market-efficiency") and active management costs more (Investment Fundamentals Lesson 2.7), what's the simplest alternative?</div>
+        <div class="question"><b>The question</b>If markets are reasonably efficient (Financial Markets Lesson "market-efficiency") and active management costs more (Investment Fundamentals Lesson 2.7), what's the simplest alternative — and is the stated expense ratio the whole story, or just part of the cost gap?</div>
         <h3 class="sec">Intuition</h3>
         <p><b>Passive indexing</b> gives up trying to beat a benchmark and instead tracks it as cheaply as possible. It directly combines two earlier lessons: the market-efficiency argument that beating the market consistently is hard, and the fee-drag math showing how much costs matter over decades.</p>
-        <div class="worked"><b>Worked example</b><p>Reusing Investment Fundamentals Lesson 2.7's numbers: $10,000 at 7% gross for 30 years grows to about $75,485 at a 0.03% fee versus about $57,435 at a 1% fee — the same math, now framed as the core argument for passive indexing.</p></div>
+        <ul>
+          <li>A passive fund's goal isn't to outperform its benchmark — it's to match it as closely as possible, net of a very small fee ("tracking error" measures how well it succeeds).</li>
+          <li>The headline expense ratio is the most visible cost, but it isn't the only one — how a fund trades also matters.</li>
+          <li>Passive indexing and the other four strategies in this module aren't mutually exclusive in practice — many real portfolios blend a low-cost indexed "core" with smaller active or factor-tilted positions (sometimes called "core-satellite").</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — fee drag over decades</b><p>Reusing Investment Fundamentals Lesson 2.7's numbers: $10,000 at 7% gross for 30 years grows to about $75,485 at a 0.03% fee versus about $57,435 at a 1% fee — the same math, now framed as the core argument for passive indexing.</p></div>
+        <h3 class="sec">Build it up: turnover and taxable trading add a second, quieter drag</h3>
+        <p>A fund's stated expense ratio captures its management fee, but actively managed funds also tend to trade far more often ("turnover") than index funds, which mostly just hold their benchmark's constituents. In a taxable account, each profitable sale can trigger a taxable gain years before the investor would otherwise have realized one by simply holding — an extra, less visible drag on compounding, on top of the headline fee.</p>
+        <div class="worked"><b>Worked example 2 — adding turnover-driven tax drag</b><p>Suppose, on top of Worked example 1's fees, light turnover costs the passive fund an extra illustrative 0.02%/year while heavy turnover costs the active fund an extra illustrative 0.50%/year. Net annual rates become 7% − 0.03% − 0.02% = <b>6.95%</b> (passive) and 7% − 1% − 0.50% = <b>5.5%</b> (active). Over the same 30 years: $10,000 grows to about <b>$75,063</b> (passive) versus about <b>$49,840</b> (active) — an even wider gap than the fee-only comparison, entirely from a cost that doesn't show up in either fund's advertised expense ratio.</p></div>
+        <div class="eq">\text{Ending value}=\text{Principal}\times(1+\text{gross}-\text{fee}-\text{turnover drag})^{\text{years}}</div>
+        <table class="sym"><tr><td>gross</td><td>the market's return before any costs</td></tr><tr><td>fee</td><td>the fund's stated annual expense ratio</td></tr><tr><td>turnover drag</td><td>an illustrative extra annual cost from taxable trading activity, beyond the stated fee</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Revisit the fee-drag calculator in Investment Fundamentals Lesson 2.7 and vary the years held — the passive-vs-active cost gap grows with time.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Revisit the fee-drag calculator in Investment Fundamentals Lesson 2.7 and vary the years held — the passive-vs-active cost gap grows with time.</li><li>In the compounding lab below, compare the "simple growth" line against the compounding line at the passive fund's 6.95% net rate over 30 years — most of the ending balance comes from compounding, not from the original principal, which is exactly why even small, hard-to-see cost differences matter so much over decades.</li></ol></div>
       <div data-lab="calc" data-title="Active vs. passive fee drag (recap)" data-params="principal=10000:1000..100000:500; gross=0.07:0.02..0.12:0.005; feeLow=0.0003:0..0.01:0.0001; feeHigh=0.01:0..0.02:0.0005; years=30:1..40:1" data-rows="passive ending value = principal * (1 + gross - feeLow)^years; active ending value = principal * (1 + gross - feeHigh)^years"></div>
+      <div data-lab="compound" data-title="Letting compounding run, undisturbed (net of costs)" data-p="10000" data-r="0.0695" data-y="30"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>"Passive" doesn't mean risk-free — an index fund still carries the full risk of the market it tracks.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Broad-market index funds and ETFs are the standard passive vehicle.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>"Passive" doesn't mean risk-free — an index fund still carries the full risk of the market it tracks.</li><li>Comparing only the headline expense ratio between an active and a passive fund can understate the true cost gap, since turnover-driven taxable trading isn't included in that number.</li><li>Assuming every "index fund" is automatically ultra-low-cost — expense ratios vary across index products, and tracking error can also differ between funds following the same benchmark.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Broad-market index funds and ETFs are the standard passive vehicle.</li><li>Fund fact sheets that disclose both an expense ratio and a separate "turnover ratio," reflecting the two different cost sources discussed here.</li><li>Core-satellite portfolio construction, blending a passive core with targeted active or factor positions (Portfolio Management path).</li></ul></div>
         <h3 class="sec">Check yourself</h3>
         <details class="check"><summary>1. What two earlier ideas does passive indexing combine?</summary><div class="ans">Market efficiency (hard to beat consistently) and the cost of fees compounding over time.</div></details>
-        <details class="check"><summary>2. Does passive indexing eliminate market risk?</summary><div class="ans">No — it still carries the full risk of the tracked market.</div></details>
-        <details class="check"><summary>3. Why does the active-vs-passive fee gap grow with more years held?</summary><div class="ans">Because the fee difference compounds, the same way returns compound (Investment Fundamentals Lesson 0.1).</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Passive indexing trades the attempt to beat the market for low, predictable costs.</li><li>It still carries full market risk.</li></ul></div>
+        <details class="check"><summary>2. Besides the expense ratio, what other cost tends to be higher for actively managed funds, and why does it matter?</summary><div class="ans">Trading turnover — more frequent buying and selling can trigger taxable gains more often in a taxable account, adding a cost beyond the stated fee, which also compounds against the investor over time.</div></details>
+        <details class="check"><summary>3. Why does even a small, "invisible" extra cost (like 0.02% vs. 0.50% in turnover drag) matter so much over 30 years?</summary><div class="ans">Because it's subtracted from the rate being compounded every single year — compounding applies to the difference as much as to the headline return, so small annual gaps become large dollar gaps over decades.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Passive indexing trades the attempt to beat the market for low, predictable costs.</li><li>Turnover-driven taxable trading is a second, less visible cost gap on top of the headline expense ratio.</li><li>It still carries full market risk, and often gets blended with smaller active positions rather than used in isolation.</li></ul></div>
       </div>
     </section>
 

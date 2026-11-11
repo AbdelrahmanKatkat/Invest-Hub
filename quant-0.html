@@ -12,6 +12,7 @@
 <script defer src="assets/curriculum-quant.js"></script>
 <script defer src="assets/lib.js"></script>
 <script defer src="assets/labs-core.js"></script>
+<script defer src="assets/labs-fundamentals.js"></script>
 <script defer src="assets/shell.js"></script>
 </head>
 <body data-topic="quant" data-module="0">
@@ -21,124 +22,162 @@
   <main>
     <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="quant.html">Quant Investing</a> › Module 0</div>
     <div class="hero"><div class="big" style="background:#8957e526">0</div>
-      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Factor models, backtesting, signal construction, systematic vs. discretionary investing, and overfitting risk. Basic pass — concise for now.</p>
-      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Factor models, backtesting, signal construction, systematic vs. discretionary investing, and overfitting risk.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 70 min</span></div></div>
       <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
     </div>
 
     <section class="lesson" id="factor-models-intro" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Factor models, briefly</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>Can a stock's expected return be broken into pieces tied to measurable characteristics, rather than treated as one unexplained number?</div>
+        <div class="question"><b>The question</b>Can a stock's expected return be broken into pieces tied to measurable, shared characteristics — rather than treated as one unexplained number, or as a single bet on "the market" as a whole?</div>
         <h3 class="sec">Intuition</h3>
-        <p>A <b>factor model</b> expresses expected return as a base rate plus exposures to shared, measurable characteristics (factors) — the same idea introduced less formally in Portfolio Management's factor-investing lesson, now treated as a tool for building systematic signals.</p>
-        <div class="worked"><b>Worked example</b><p>E[R] = 2% + 0.08×(factor 1 score) + 0.05×(factor 2 score). With scores of 10 and 6: 2 + 0.8 + 0.3 = <b>3.1%</b> over the base rate's own period.</p></div>
-        <div class="eq">E[R]=a+b_1x_1+b_2x_2</div>
-        <table class="sym"><tr><td>x₁, x₂</td><td>factor exposure scores</td></tr><tr><td>b₁, b₂</td><td>how much each factor contributes</td></tr></table>
+        <p>A <b>factor model</b> expresses expected return as a base rate plus exposures to shared, measurable characteristics (<b>factors</b>) — the same idea introduced less formally in Portfolio Management's factor-investing lesson, now treated as a tool for building systematic signals. Commonly cited factors include:</p>
+        <ul>
+          <li><b>Value</b> — cheapness relative to fundamentals (e.g. a low price-to-earnings ratio).</li>
+          <li><b>Size</b> — smaller companies, which have historically shown different average returns than larger ones.</li>
+          <li><b>Momentum</b> — recent relative strength or weakness in price.</li>
+          <li><b>Quality</b> — profitability and balance-sheet strength.</li>
+          <li><b>Low volatility</b> — historically steadier price behaviour.</li>
+        </ul>
+        <p>Each factor gets its own coefficient (how much it contributes per unit of exposure), and a stock's total expected return is just the sum of a base rate plus every factor's contribution.</p>
+        <div class="worked"><b>Worked example 1 — a simple two-factor model</b><p>E[R] = 2% + 0.08×(factor 1 score) + 0.05×(factor 2 score). With scores of 10 and 6: 2 + 0.8 + 0.3 = <b>3.1%</b> over the base rate's own period.</p></div>
+        <h3 class="sec">Build it up: the single-factor special case (CAPM), and generalizing it</h3>
+        <p>The oldest and simplest factor model is the <b>CAPM</b> (Capital Asset Pricing Model): expected return equals a risk-free rate plus one single factor exposure — <b>beta</b> — times the market's own excess return (the "market risk premium"). A multi-factor model is just this same idea generalized to more than one factor at once.</p>
+        <div class="worked"><b>Worked example 2 — CAPM as a one-factor model</b><p>Risk-free rate 2%, market risk premium 6%, beta 1.2: E[R] = 2 + 1.2×6 = <b>9.2%</b>.</p></div>
+        <div class="worked"><b>Worked example 3 — adding a second factor on top of CAPM</b><p>Keep the same CAPM term (9.2%) and add a size-factor exposure of 0.5 with its own 3% premium: E[R] = 2 + 1.2×6 + 0.5×3 = 9.2 + 1.5 = <b>10.7%</b> — exactly the multi-factor pattern from Worked example 1, now built on top of a real, named single-factor baseline instead of generic "factor 1/factor 2" scores.</p></div>
+        <div class="eq">E[R]=a+b_1x_1+b_2x_2\qquad E[R]_{\text{CAPM}}=R_f+\beta(R_m-R_f)</div>
+        <table class="sym"><tr><td>x₁, x₂</td><td>factor exposure scores</td></tr><tr><td>b₁, b₂</td><td>how much each factor contributes</td></tr><tr><td>Rf</td><td>the risk-free rate</td></tr><tr><td>β (beta)</td><td>exposure to the single market factor in CAPM</td></tr><tr><td>Rm − Rf</td><td>the market risk premium — the market's expected excess return over the risk-free rate</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise a factor's coefficient: its contribution to expected return grows proportionally to its score.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise a factor's coefficient: its contribution to expected return grows proportionally to its score.</li><li>In the CAPM line below, push beta above 1: expected return rises faster than the market premium itself — the stock is modeled as riskier than the market.</li></ol></div>
       <div data-lab="calc" data-title="A simple two-factor model" data-params="a=2:0..10:0.1; b1=0.08:-0.2..0.3:0.01; x1=10:-20..20:1; b2=0.05:-0.2..0.3:0.01; x2=6:-20..20:1" data-rows="E[R] % = a + b1*x1 + b2*x2"></div>
+      <div data-lab="fplot" data-title="CAPM: the security market line (x = beta)" data-f="Rf + x*mktprem" data-names="E[R]" data-params="Rf=2:0..8:0.5; mktprem=6:0..12:0.5" data-view="0,2,0,16"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A factor model fits historical data by construction — it doesn't guarantee the same relationship holds going forward.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Multi-factor risk models used by quantitative funds.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A factor model fits historical data by construction — it doesn't guarantee the same relationship holds going forward.</li><li>Treating beta (or any single factor) as the whole story — real multi-factor models commonly combine several factors precisely because one factor alone leaves much of a stock's return unexplained.</li><li>Assuming a factor's historical premium is a fixed constant — factor premiums (like the market risk premium itself) move over time and across market regimes.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Multi-factor risk models used by quantitative funds.</li><li>CAPM beta, still widely quoted for individual stocks and used as a starting point before adding further factors.</li><li>"Smart beta" / factor exchange-traded funds built explicitly around named factors such as value, size, momentum or low volatility (illustrative categories, not a recommendation of any specific fund).</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does a factor model add to a simple base rate?</summary><div class="ans">Exposures to shared, measurable characteristics (factors), each with its own coefficient.</div></details>
-        <details class="check"><summary>2. a=1, b1=0.1, x1=5. E[R] from this one term plus a?</summary><div class="ans">1 + 0.1×5 = 1.5%.</div></details>
-        <details class="check"><summary>3. Does a factor model guarantee future performance?</summary><div class="ans">No — it's fit to historical data and may not hold going forward.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Factor models decompose expected return into measurable exposures.</li><li>Fit to the past doesn't guarantee the future.</li></ul></div>
+        <details class="check"><summary>1. What does a factor model add to a simple base rate, and what is CAPM an example of?</summary><div class="ans">Exposures to shared, measurable characteristics (factors), each with its own coefficient; CAPM is the simplest case, with a single factor (market beta).</div></details>
+        <details class="check"><summary>2. Rf=1%, beta=1.5, market premium=4%. CAPM E[R]?</summary><div class="ans">1 + 1.5×4 = 7%.</div></details>
+        <details class="check"><summary>3. Does a factor model — single- or multi-factor — guarantee future performance?</summary><div class="ans">No — it's fit to historical data (premiums and exposures alike) and may not hold going forward.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Factor models decompose expected return into measurable exposures, from the single-factor CAPM up to many factors at once.</li><li>Fit to the past doesn't guarantee the future, for any number of factors.</li><li>Multi-factor models are a direct generalization of CAPM's one-factor idea, not a wholly different concept.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="backtesting-basics" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Backtesting basics</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>You test a trading rule on 10 years of data and it looks great. Is that proof it will work going forward?</div>
+        <div class="question"><b>The question</b>You test a trading rule on 10 years of data and it looks great. Is that proof it will work going forward — and does testing it on one single held-out period really settle the question?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>Backtesting</b> splits data into an <b>in-sample</b> period (used to build/tune the rule) and an <b>out-of-sample</b> period (used to test it, untouched during development). A rule that only looks good in-sample may simply be fit to that specific data's noise.</p>
-        <div class="worked"><b>Worked example</b><p>10 years of data split 70/30: 7 years in-sample, 3 years out-of-sample = <b>30%</b> of the data reserved purely for honest testing.</p></div>
-        <div class="eq">\text{out-of-sample years}=\text{total years}\times(1-\text{in-sample fraction})</div>
+        <p><b>Backtesting</b> splits data into an <b>in-sample</b> period (used to build/tune the rule) and an <b>out-of-sample</b> period (used to test it, untouched during development). A rule that only looks good in-sample may simply be fit to that specific data's noise rather than a real, repeatable pattern.</p>
+        <ul>
+          <li>In-sample performance answers: "does this rule fit the data I built it on?" — almost any rule can be made to fit its own training data well enough, given enough tuning.</li>
+          <li>Out-of-sample performance answers the question that actually matters: "does this rule still work on data it never saw?"</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — a simple static split</b><p>10 years of data split 70/30: 7 years in-sample, 3 years out-of-sample = <b>30%</b> of the data reserved purely for honest testing.</p></div>
+        <h3 class="sec">Build it up: one split isn't enough — walk-forward testing</h3>
+        <p>A single static split has a weakness of its own: the one out-of-sample period you happened to choose could itself be an unusually easy or unusually hard stretch, by chance. <b>Walk-forward (rolling-window) testing</b> fixes this by repeating the split many times: train on a window of years, test on the next, then slide the whole window forward and repeat — producing several independent out-of-sample results instead of just one.</p>
+        <div class="worked"><b>Worked example 2 — walk-forward folds</b><p>15 years of data, a 5-year training window, tested 2 years at a time, sliding forward with no overlap: (15 − 5) / 2 = <b>5</b> separate out-of-sample test folds, each built from a rule trained only on the years before it — a far more demanding (and more honest) test than one lucky or unlucky 30% slice.</p></div>
+        <div class="eq">\text{out-of-sample years}=\text{total years}\times(1-\text{in-sample fraction})\qquad \text{folds}\approx\frac{\text{total years}-\text{training window}}{\text{test window}}</div>
+        <table class="sym"><tr><td>training window</td><td>years of data the rule is built/tuned on, per fold</td></tr><tr><td>test window</td><td>years of data the rule is then tested on, untouched during that fold's training</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise the in-sample fraction toward 100%: almost no data is left for an honest, untouched test.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise the in-sample fraction toward 100%: almost no data is left for an honest, untouched test.</li><li>In the walk-forward calculator, shrink the test window: more, shorter folds — more independent checks, each on less data.</li></ol></div>
       <div data-lab="calc" data-title="In-sample / out-of-sample split" data-params="totalYears=10:1..50:1; inSampleFraction=0.7:0.1..0.95:0.05" data-rows="in-sample years = totalYears * inSampleFraction; out-of-sample years = totalYears * (1 - inSampleFraction)"></div>
+      <div data-lab="calc" data-title="Walk-forward folds" data-params="totalYears=15:5..60:1; trainWindow=5:1..30:1; testWindow=2:1..10:1" data-rows="out-of-sample folds = (totalYears - trainWindow) / testWindow"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Peeking at out-of-sample data while still tuning the rule quietly turns it into in-sample data.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A strategy that looked great in-sample but failed once tested out-of-sample.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Peeking at out-of-sample data while still tuning the rule quietly turns it into in-sample data.</li><li>Treating a single out-of-sample period as the final word — one held-out stretch can itself be an easy or hard draw; walk-forward testing across several folds is a sturdier (though still imperfect) check.</li><li>Ignoring look-ahead bias — using information that would not actually have been available at the time (e.g. a restated financial figure, or a stock universe defined using hindsight) silently leaks future information into a "backtest."</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>A strategy that looked great in-sample but failed once tested out-of-sample.</li><li>Walk-forward (rolling-window) backtests used by systematic funds to continually re-validate a rule as new data arrives, rather than relying on one fixed historical test.</li><li>Index-reconstitution and restatement effects that can introduce look-ahead bias into a careless backtest of, say, a rule applied to "the S&amp;P 500" without accounting for which companies were actually in the index at each historical date.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What's the purpose of an out-of-sample period?</summary><div class="ans">An honest test on data the rule wasn't built or tuned on.</div></details>
-        <details class="check"><summary>2. 20 years of data, 80% in-sample. Out-of-sample years?</summary><div class="ans">4 years.</div></details>
-        <details class="check"><summary>3. What happens if you tune a rule using out-of-sample data?</summary><div class="ans">It stops being a true out-of-sample test — it's effectively become in-sample.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Backtesting needs a genuinely untouched out-of-sample period.</li><li>In-sample success alone is not proof of a real strategy.</li></ul></div>
+        <details class="check"><summary>1. What's the purpose of an out-of-sample period, and why might even that not be enough on its own?</summary><div class="ans">An honest test on data the rule wasn't built or tuned on; but one single out-of-sample period can itself be an easy or hard draw by chance, which is why walk-forward testing uses several.</div></details>
+        <details class="check"><summary>2. 20 years of data, 80% in-sample. Out-of-sample years? Separately, 20 years total with a 6-year training window and a 2-year test window, non-overlapping: how many walk-forward folds?</summary><div class="ans">4 years out-of-sample; (20 − 6) / 2 = 7 folds.</div></details>
+        <details class="check"><summary>3. What is look-ahead bias, concretely?</summary><div class="ans">Using information in a backtest that would not actually have been available at that historical point in time, which makes the backtest's results unrealistically good.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Backtesting needs a genuinely untouched out-of-sample period.</li><li>In-sample success alone is not proof of a real strategy — and even one out-of-sample success can be a lucky single draw.</li><li>Walk-forward testing and avoiding look-ahead bias are two separate, necessary disciplines for an honest backtest.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="signal-construction" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Signal construction</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A stock scores 85 on some measure, with a universe average of 70 and a standard deviation of 10. How "extreme" is that, in a comparable unit?</div>
+        <div class="question"><b>The question</b>A stock scores 85 on some measure, with a universe average of 70 and a standard deviation of 10. How "extreme" is that, in a comparable unit — and what do you do once you have several different measures, each on its own unrelated scale?</div>
         <h3 class="sec">Intuition</h3>
         <p>A <b>z-score</b> normalises a raw measure into "how many standard deviations from the average" — using the same standard-deviation idea from Investment Fundamentals Lesson 0.5 — so very different measures (valuation, momentum, quality) can be compared and combined on one common scale.</p>
-        <div class="worked"><b>Worked example</b><p>(85 − 70)/10 = <b>1.5</b> — one and a half standard deviations above average.</p></div>
-        <div class="eq">z=\frac{x-\mu}{\sigma}</div>
-        <table class="sym"><tr><td>x</td><td>the raw measure</td></tr><tr><td>μ, σ</td><td>the universe's average and standard deviation</td></tr></table>
+        <div class="worked"><b>Worked example 1 — a single z-score</b><p>(85 − 70)/10 = <b>1.5</b> — one and a half standard deviations above average.</p></div>
+        <h3 class="sec">Build it up: combining several signals into one composite score</h3>
+        <p>Real systematic processes rarely rank stocks on one measure alone. Once a valuation measure and a momentum measure are each converted to their own z-score, they live on the same scale and can be combined into a single <b>composite score</b> — typically a weighted average, with the weights reflecting how much conviction the process places in each signal.</p>
+        <div class="worked"><b>Worked example 2 — a composite score</b><p>A stock's valuation z-score is 1.5 (cheap) and its momentum z-score is (40 − 50)/20 = −0.5 (weak recent momentum). Weighted 60% valuation / 40% momentum: composite = 0.6×1.5 + 0.4×(−0.5) = 0.9 − 0.2 = <b>0.7</b> — a modestly positive overall score, pulled down from the valuation signal alone by weaker momentum.</p></div>
+        <div class="eq">z=\frac{x-\mu}{\sigma}\qquad \text{composite}=w_1z_1+w_2z_2</div>
+        <table class="sym"><tr><td>x</td><td>the raw measure</td></tr><tr><td>μ, σ</td><td>the universe's average and standard deviation</td></tr><tr><td>z1, z2</td><td>each signal's own z-score</td></tr><tr><td>w1, w2</td><td>the weight placed on each signal in the composite</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Set x equal to the average: z becomes 0 — exactly typical.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Set x equal to the average: z becomes 0 — exactly typical.</li><li>In the composite calculator, push one weight to 1 and the other to 0: the composite collapses to that single signal's z-score exactly.</li></ol></div>
       <div data-lab="calc" data-title="Z-score normalisation" data-params="x=85:0..200:1; mu=70:0..200:1; sigma=10:0.5..50:0.5" data-rows="z-score = (x - mu) / sigma"></div>
+      <div data-lab="calc" data-title="Combining two signals into a composite score" data-params="z1=1.5:-3..3:0.1; w1=0.6:0..1:0.05; z2=-0.5:-3..3:0.1; w2=0.4:0..1:0.05" data-rows="composite score = w1*z1 + w2*z2"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A z-score depends on the comparison universe chosen — the same raw value can have different z-scores in different universes.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Ranking stocks by a standardised valuation or momentum score.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A z-score depends on the comparison universe chosen — the same raw value can have different z-scores in different universes.</li><li>Combining z-scores with arbitrary weights is itself a modeling choice — picking weights by searching for whichever combination looked best historically reintroduces the overfitting risk of Lesson 0.5.</li><li>A raw measure with extreme outliers can produce an extreme z-score that overwhelms a composite — many practitioners cap ("winsorize") raw values before scoring them.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Ranking stocks by a standardised valuation or momentum score.</li><li>Multi-factor composite scores — combining, say, value, quality and momentum z-scores into one ranking — used by systematic equity strategies and "smart beta" style indices.</li><li>Winsorizing/clipping extreme raw values, a standard data-cleaning step before scoring, used at index providers and quant research desks alike.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does a z-score measure?</summary><div class="ans">How many standard deviations a value is from the average.</div></details>
-        <details class="check"><summary>2. x=60, μ=50, σ=5. Z-score?</summary><div class="ans">2.</div></details>
-        <details class="check"><summary>3. Can the same raw value have different z-scores?</summary><div class="ans">Yes — it depends on the comparison universe's average and standard deviation.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Z-scores put different measures on one comparable scale.</li><li>They depend on the chosen comparison universe.</li></ul></div>
+        <details class="check"><summary>1. What does a z-score measure, and why would you compute it for several different raw measures before combining them?</summary><div class="ans">How many standard deviations a value is from the average; different raw measures live on different scales, so z-scoring puts them on one comparable scale before a weighted combination makes sense.</div></details>
+        <details class="check"><summary>2. x=60, μ=50, σ=5. Z-score? Also, two signals' z-scores are 2 and −1, weighted 50/50 — composite?</summary><div class="ans">z = 2; composite = 0.5×2 + 0.5×(−1) = 0.5.</div></details>
+        <details class="check"><summary>3. Why could choosing composite weights by testing many weight combinations and picking the best-looking historical result be risky?</summary><div class="ans">That's exactly the overfitting mechanism of Lesson 0.5 — with enough weight combinations tried, one will look good purely by chance, without necessarily reflecting a real, repeatable edge.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Z-scores put different measures on one comparable scale.</li><li>They depend on the chosen comparison universe.</li><li>Combining several z-scored signals into a composite is standard practice, but the combination weights are themselves parameters that can be overfit.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="systematic-vs-discretionary" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Systematic vs. discretionary</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>Two managers both use valuation and momentum signals. One follows them mechanically every time; the other uses them as one input among several judgement calls. Same strategy?</div>
+        <div class="question"><b>The question</b>Two managers both use valuation and momentum signals. One follows them mechanically every time; the other uses them as one input among several judgement calls. Same strategy? And if ten different systematic funds all built similar rule-based signals independently, are their results actually independent of each other?</div>
         <h3 class="sec">Intuition</h3>
         <p>A <b>systematic</b> process follows fixed, pre-defined rules consistently; a <b>discretionary</b> one leaves room for human judgement on top of (or instead of) the rules. This is really the same process-vs-impulse theme from Behavioral Finance's debiasing lesson, applied at the level of an entire investment process.</p>
-        <div class="worked"><b>Worked example</b><p>If a systematic process follows its rules on 100% of decisions and a discretionary one overrides the rule-based signal on, say, 30% of decisions, that 30% is exactly where human judgement (and human bias) can enter.</p></div>
-        <div class="eq">\text{override rate}=\frac{\text{decisions overriding the rule}}{\text{total decisions}}</div>
+        <div class="worked"><b>Worked example 1 — override rate</b><p>If a systematic process follows its rules on 100% of decisions and a discretionary one overrides the rule-based signal on, say, 30% of decisions, that 30% is exactly where human judgement (and human bias) can enter.</p></div>
+        <h3 class="sec">Build it up: "independent" systematic processes can still move together</h3>
+        <p>A common misconception is that a fully systematic process is automatically safer because it removes human judgement. But many different managers can independently arrive at similar systematic rules — similar valuation and momentum signals, for instance — and when they do, their positions become <b>crowded</b>: different funds, running what looks on paper like separate strategies, end up holding highly correlated books. If one is forced to unwind quickly (say, from a margin call), its selling pushes prices against all the others at the same time — even though none of them shares a single common manager making a single common decision.</p>
+        <div class="worked"><b>Worked example 2 — crowding shown through correlation</b><p>Two systematic strategies each have the same 20% annual volatility, blended 50/50. At a low correlation of ρ=0.2 between them: σ_P = √(0.5²×0.2² + 0.5²×0.2² + 2×0.5×0.5×0.2×0.2²) = √0.024 ≈ <b>15.5%</b> — meaningfully below the 20% either strategy carries alone. Raise the correlation to ρ=0.9 (crowded, moving together) with nothing else changed: √(0.5²×0.2² + 0.5²×0.2² + 2×0.5×0.5×0.9×0.2²) = √0.038 ≈ <b>19.5%</b> — almost no diversification benefit left, even though each strategy's own volatility never changed.</p></div>
+        <div class="eq">\text{override rate}=\frac{\text{decisions overriding the rule}}{\text{total decisions}}\qquad \sigma_P=\sqrt{w^2\sigma^2+(1-w)^2\sigma^2+2w(1-w)\rho\sigma^2}</div>
+        <table class="sym"><tr><td>w</td><td>weight in strategy A (the rest, 1−w, sits in strategy B)</td></tr><tr><td>σ</td><td>each strategy's own volatility (assumed equal here, for a clean comparison)</td></tr><tr><td>ρ</td><td>correlation between the two strategies' returns — higher means more crowded, moving together</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Push the override rate to 0%: the process becomes fully systematic by this measure.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Push the override rate to 0%: the process becomes fully systematic by this measure.</li><li>In the diversification lab below, treat the two return series as two different systematic strategies rather than two asset classes, and drag correlation up toward 1: the blended line's swings grow closer to either strategy alone — the crowding effect, visualized.</li></ol></div>
       <div data-lab="calc" data-title="How systematic is a process?" data-params="overrides=30:0..100:1; totalDecisions=100:1..1000:1" data-rows="override rate % = overrides / totalDecisions * 100"></div>
+      <div data-lab="diversify"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Neither approach is automatically superior — systematic removes bias but can miss context; discretionary can adapt but reopens the door to bias.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Rules-based quant funds vs. traditional active managers.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Neither approach is automatically superior — systematic removes bias but can miss context; discretionary can adapt but reopens the door to bias.</li><li>Assuming "systematic" automatically means "uncorrelated with other systematic strategies" — independently built rules can still converge on similar signals and become crowded.</li><li>Treating a systematic/discretionary blend ("quantamental") as automatically the worst — or best — of both; its outcome depends entirely on how and when the discretionary overlay is actually applied.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Rules-based quant funds vs. traditional active managers.</li><li>Documented episodes of correlated systematic strategies unwinding together over a short period (sometimes called a "quant crash"), commonly cited as historical examples of crowding risk — illustrative history, not investment advice.</li><li>"Quantamental" investment processes that combine systematic screens with a discretionary portfolio manager's final judgement.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
         <details class="check"><summary>1. What's the key difference between systematic and discretionary processes?</summary><div class="ans">Systematic follows fixed rules consistently; discretionary allows judgement calls on top.</div></details>
-        <details class="check"><summary>2. 10 overrides out of 50 decisions. Override rate?</summary><div class="ans">20%.</div></details>
-        <details class="check"><summary>3. Is one approach automatically better than the other?</summary><div class="ans">No — each has trade-offs between bias-resistance and contextual adaptability.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Systematic and discretionary processes trade off consistency and adaptability.</li><li>Overrides are exactly where human judgement (and bias) re-enters.</li></ul></div>
+        <details class="check"><summary>2. 10 overrides out of 50 decisions. Override rate? Separately, if two "independent" systematic funds' returns actually have ρ=0.95, how much diversification benefit should you expect from holding both?</summary><div class="ans">20%; very little — at ρ close to 1 the blended portfolio's volatility sits close to either fund's own volatility, since they are effectively moving together.</div></details>
+        <details class="check"><summary>3. Why can two systematic funds built by two completely separate teams still create concentrated risk for an investor holding both?</summary><div class="ans">If their independently-built rules are similar enough, their positions correlate highly, so both funds can suffer losses at the same time — crowding, not shared management, is what creates the concentration.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Systematic and discretionary processes trade off consistency and adaptability.</li><li>Overrides are exactly where human judgement (and bias) re-enters.</li><li>"Systematic" does not mean "uncorrelated with other systematic strategies" — independently-built rules can crowd into the same trades and move together.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="overfitting-risk" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>Overfitting risk</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A strategy has 20 tunable parameters fit on only 50 historical observations. Should that make you nervous?</div>
+        <div class="question"><b>The question</b>A strategy has 20 tunable parameters fit on only 50 historical observations. Should that make you nervous — and if you tested 1,000 different parameter combinations instead of just one, would that make the best-looking one more trustworthy, or less?</div>
         <h3 class="sec">Intuition</h3>
         <p><b>Overfitting</b> happens when a model has enough free parameters relative to the data that it starts fitting noise rather than a real, repeatable pattern — the single biggest risk in quant strategy design, and a sharper version of the factor-model warning in Lesson 0.1.</p>
-        <div class="worked"><b>Worked example</b><p>50 observations ÷ 20 parameters = <b>2.5</b> observations per parameter — far below commonly-cited rules of thumb suggesting at least 10 observations per parameter as a bare minimum.</p></div>
-        <div class="eq">\text{obs. per parameter}=\frac{\text{observations}}{\text{parameters}}</div>
+        <div class="worked"><b>Worked example 1 — observations per parameter</b><p>50 observations ÷ 20 parameters = <b>2.5</b> observations per parameter — far below commonly-cited rules of thumb suggesting at least 10 observations per parameter as a bare minimum.</p></div>
+        <h3 class="sec">Build it up: trying many combinations manufactures "winners" from nothing</h3>
+        <p>There's a second, sneakier version of overfitting that has nothing to do with how many parameters a single model has: <b>data snooping</b> (or "multiple testing"). If you test enough different rules or parameter combinations against the same historical data, one of them will look great purely by chance — even if every single one of them has zero real skill. A standard statistical rule of thumb says that among N independent, equally noisy, no-skill trials, the expected best-looking result (in standard deviations above zero) grows roughly with √(2 ln N) — slowly, but it never stops growing as N grows.</p>
+        <div class="worked"><b>Worked example 2 — the cost of a bigger search</b><p>√(2 ln 10) ≈ <b>2.15</b> "standard deviations" of apparent edge expected from the best of just 10 random, no-skill trials, purely by chance. √(2 ln 1,000) ≈ <b>3.72</b> — trying 100× more combinations doesn't multiply the apparent edge 100×, but it does manufacture a meaningfully stronger-looking "winner" out of pure noise, with no real skill anywhere in the search. (This is an illustrative approximation for the general shape of the effect, not an exact formula for any specific performance statistic.)</p></div>
+        <p>A third, closely related symptom: an overfit strategy typically shows a large gap between its in-sample and out-of-sample performance (Lesson 0.2) — a hallmark that the in-sample result was substantially noise.</p>
+        <div class="worked"><b>Worked example 3 — in-sample vs. out-of-sample decay</b><p>A strategy shows an in-sample Sharpe ratio of 2.5 but only 0.3 once genuinely tested out-of-sample: 0.3 / 2.5 = <b>12%</b> of the in-sample performance survived contact with new data — the rest was the model fitting the training period's own noise.</p></div>
+        <div class="eq">\text{obs. per parameter}=\frac{\text{observations}}{\text{parameters}}\qquad E[\text{best of }N]\approx\sqrt{2\ln N}</div>
+        <table class="sym"><tr><td>N</td><td>number of independent rules/parameter combinations tried against the same data</td></tr><tr><td>ln</td><td>the natural logarithm</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Cut the parameter count while holding observations fixed: observations-per-parameter rises — a less overfitting-prone setup.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Cut the parameter count while holding observations fixed: observations-per-parameter rises — a less overfitting-prone setup.</li><li>In the chart below, compare how much the curve rises from N=10 to N=100 versus from N=100 to N=1,000 — the "manufactured edge" keeps growing, just more and more slowly.</li></ol></div>
       <div data-lab="calc" data-title="Observations per parameter" data-params="observations=50:10..10000:10; parameters=20:1..200:1" data-rows="observations per parameter = observations / parameters"></div>
+      <div data-lab="fplot" data-title="Expected 'best of N' from pure chance alone (x = N)" data-f="sqrt(2*log(x))" data-names="E[best of N]" data-view="1,500,0,4"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A strategy with many parameters can look spectacular in-sample precisely because it's fitting noise, not signal.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>The "more parameters than data can support" trap in strategy design, closely related to Lesson 0.2's backtesting discipline.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A strategy with many parameters can look spectacular in-sample precisely because it's fitting noise, not signal.</li><li>Judging a strategy by only its best historical configuration after trying many variations — the "best of many tries" is expected to look good from chance alone, independent of any real skill.</li><li>Treating a strategy's in-sample Sharpe ratio as a forecast of its future Sharpe ratio — a wide in-sample/out-of-sample gap is a specific, checkable warning sign of overfitting.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>The "more parameters than data can support" trap in strategy design, closely related to Lesson 0.2's backtesting discipline.</li><li>Data-snooping / multiple-testing concerns that quantitative researchers specifically try to guard against (e.g. holding out data no parameter combination was ever allowed to touch) before trusting a historical "best" rule.</li><li>Published academic "anomalies" and factor premiums that have shrunk or disappeared after publication — a widely discussed, illustrative case of apparent historical edges not fully surviving out-of-sample scrutiny.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What is overfitting?</summary><div class="ans">A model fitting noise in the data rather than a real, repeatable pattern, usually from too many free parameters relative to data.</div></details>
-        <details class="check"><summary>2. 200 observations, 10 parameters. Observations per parameter?</summary><div class="ans">20.</div></details>
-        <details class="check"><summary>3. Does a great in-sample result rule out overfitting?</summary><div class="ans">No — overfitting specifically produces great-looking in-sample results.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Overfitting is the central risk of the whole quant field.</li><li>Too many parameters relative to data is the classic warning sign.</li></ul></div>
+        <details class="check"><summary>1. What is overfitting, in both its "too many parameters" and "too many trials" forms?</summary><div class="ans">A model (or search process) fitting noise rather than a real, repeatable pattern — either because it has too many free parameters relative to its data, or because many rules/combinations were tried and the best-looking one was kept.</div></details>
+        <details class="check"><summary>2. 200 observations, 10 parameters. Observations per parameter? Separately, roughly how many "standard deviations" of apparent edge would you expect purely by chance from the best of 100 no-skill trials?</summary><div class="ans">20; √(2 ln 100) ≈ 3.03.</div></details>
+        <details class="check"><summary>3. Does a great in-sample result rule out overfitting? What specific follow-up check would help tell the difference?</summary><div class="ans">No — overfitting specifically produces great-looking in-sample results; comparing in-sample to genuinely out-of-sample performance (Lesson 0.2) is the direct check, since a large gap is the classic warning sign.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Overfitting is the central risk of the whole quant field, and it shows up both as "too many parameters" and "too many trials."</li><li>Too many parameters relative to data, and testing too many combinations against the same data, are two distinct but related mechanisms for manufacturing a fake "winner."</li><li>A wide gap between in-sample and out-of-sample performance is overfitting's clearest symptom — treat it as a required check, not an afterthought.</li></ul></div>
       </div>
     </section>
 
-    <div class="callout"><b>Module complete</b> You've now covered the basic pass of every path on Invest Buddy. Deeper modules are planned next, one path at a time.</div>
+    <div class="callout"><b>Module complete</b> You've now covered a deep-pass Foundations module of every path on Invest Buddy. A second module for any path is planned next, one at a time.</div>
   </main>
   <aside id="outline"></aside>
 </div>

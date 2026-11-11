@@ -21,117 +21,173 @@
   <main>
     <div class="crumbs"><a href="index.html">Invest Buddy</a> › <a href="technical.html">Technical Analysis</a> › Module 0</div>
     <div class="hero"><div class="big" style="background:#f8514926">0</div>
-      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Chart types, moving averages, momentum indicators, volume analysis, and the debate around technical analysis. Basic pass — concise for now.</p>
-      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 35 min</span></div></div>
+      <div style="flex:1"><h1>Module 0 · Foundations</h1><p>Chart types, moving averages, momentum indicators, volume analysis, and the debate around technical analysis.</p>
+      <div class="chips"><span class="chip">5 lessons</span><span class="chip">≈ 70 min</span></div></div>
       <div style="min-width:170px"><b id="hero-pct">0% complete</b><div class="bar"><i id="hero-bar"></i></div></div>
     </div>
 
     <section class="lesson" id="chart-types" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.1</span><h2>Chart types</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A line chart, a bar chart and a candlestick chart can all show the same stock. What's actually different between them?</div>
+        <div class="question"><b>The question</b>A line chart, a bar chart and a candlestick chart can all show the same stock over the same days. But two very different trading days — one where price grinds quietly up to a close, another where it spikes sharply higher and then sells most of it back off before the close — can land on the exact same closing price and therefore plot as the exact same point on a line chart. What is the line chart hiding, and how would you recover it?</div>
         <h3 class="sec">Intuition</h3>
-        <p>A <b>line chart</b> plots just the closing price — simple, but it hides a period's range. A <b>bar</b> or <b>candlestick</b> chart shows the open, high, low and close for each period, revealing how much a price swung even within one day.</p>
-        <div class="worked"><b>Worked example</b><p>A day opens $48, dips to $46, rises to $51, closes $50. A line chart would only show the "50" endpoint; a candlestick shows the full $46–$51 range that happened along the way.</p></div>
+        <p>Three chart types describe the same underlying trades with different amounts of detail:</p>
+        <ul>
+          <li>A <b>line chart</b> plots just the closing price for each period, connected into a curve — clean and easy to read, but it keeps only one number per day.</li>
+          <li>A <b>bar chart</b> (OHLC bar) draws a vertical line from the low to the high, with a small tick left for the open and right for the close — four numbers per day instead of one.</li>
+          <li>A <b>candlestick chart</b> shows the same four numbers (open, high, low, close) as a "body" (the open-to-close box, typically shaded differently for an up day vs. a down day) with thin "wicks" above and below for the high and low.</li>
+        </ul>
+        <p>Candlesticks and bars contain identical information — they are just two different drawing conventions for the same open/high/low/close (OHLC) data. A line chart, by contrast, genuinely throws information away: it cannot distinguish a day that opened at the close from a day that whipsawed wildly and only ended up near where it started.</p>
+        <h3 class="sec">Build it up: what a single candle encodes beyond "up or down"</h3>
+        <p>A candle's shape carries more than its color. Two useful numbers, computed directly from the same four prices every candle already has:</p>
+        <ul>
+          <li><b>Body</b> = close − open. Positive means the period closed above where it opened (commonly shaded green/white); negative means it closed below (commonly shaded red/black).</li>
+          <li><b>Close location value (CLV)</b> = where the close sits within that period's full high-to-low range, scaled from −1 (closed exactly at the low) to +1 (closed exactly at the high). A long wick with a close near one end tells a very different story from a close sitting in the middle of a wide range.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — body and range</b><p>A day opens $48, dips to a low of $46, rises to a high of $51, and closes at $50. Body = 50 − 48 = <b>+$2</b> (a modestly up day). Range = 51 − 46 = <b>$5</b> — five times the net body, meaning the day did a lot of back-and-forth before settling only $2 higher. A line chart would show only the final "$50" point and miss that entire round trip.</p></div>
+        <div class="worked"><b>Worked example 2 — same close, different story</b><p>Day A: open $48, high $51, low $46, close $50 → CLV = ((50−46)−(51−50))/(51−46) = (4−1)/5 = <b>0.6</b> (closed well into the upper part of its range — buyers were in control late in the day). Day B: open $52, high $54, low $47, close $50 → CLV = ((50−47)−(54−50))/(54−47) = (3−4)/7 ≈ <b>−0.14</b> (closed slightly below the middle of its range, after being rejected on a push up to $54). Both days close at exactly $50 — identical on a line chart — yet Day A is a bullish candle with a strong close near its high, while Day B is a bearish candle that gave back most of an intraday rally.</p></div>
+        <div class="eq">\text{body}=\text{close}-\text{open}\qquad \text{CLV}=\frac{(\text{close}-\text{low})-(\text{high}-\text{close})}{\text{high}-\text{low}}</div>
+        <table class="sym"><tr><td>open, high, low, close</td><td>the four prices a single bar or candle records for one period</td></tr><tr><td>body</td><td>close − open; positive = up candle, negative = down candle</td></tr><tr><td>CLV</td><td>close location value, from −1 (closed at the low) to +1 (closed at the high)</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Picture plotting only the close each day for a week versus plotting the full daily range — notice how much intraday detail the line chart loses.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Picture plotting only the close each day for a week versus plotting the full daily range — notice how much intraday detail the line chart loses.</li><li>In the CLV calculator below, keep close and open fixed but widen the gap between high and low — watch CLV shrink toward 0 as the same close becomes a smaller fraction of a now-much-wider range.</li></ol></div>
       <div data-lab="fplot" data-title="A price line is only one slice of the full range" data-f="x^2*0.3+2" data-params="" data-view="0,5,0,10"></div>
+      <div data-lab="calc" data-title="Body and close location value (CLV) of one candle" data-params="open=48:0..200:1; high=51:0..200:1; low=46:0..200:1; close=50:0..200:1" data-rows="body = close - open; range = high - low; close location value = ((close - low) - (high - close)) / (high - low)" data-note="CLV runs from -1 (closed at the low) to +1 (closed at the high); 0 means closed at the exact midpoint of the day's range."></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A line chart can look deceptively smooth compared to what the price actually did intraday.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Candlestick charts on virtually every trading platform.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A line chart can look deceptively smooth compared to what the price actually did intraday.</li><li>Two candles can share the exact same closing price — and therefore the exact same point on a line chart — while having very different bodies and CLVs; the close alone doesn't tell you how the price got there.</li><li>A long wick isn't automatically bullish or bearish on its own — it has to be read together with the candle's body direction and its place in the surrounding trend, not in isolation.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Candlestick charts on virtually every trading platform.</li><li>Close-location-value-style logic underlies popular volume/price indicators such as the Accumulation/Distribution line — the same idea reappears, applied to volume, in Lesson 0.4.</li><li>Named candle patterns like "hammer" or "shooting star" are defined specifically by where the close sits within the day's range — language that traces directly back to CLV.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does a line chart typically plot?</summary><div class="ans">Just the closing price for each period.</div></details>
-        <details class="check"><summary>2. What four values does a candlestick show for one period?</summary><div class="ans">Open, high, low, close.</div></details>
-        <details class="check"><summary>3. Which chart type hides intraday range: line or candlestick?</summary><div class="ans">Line.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Line charts simplify; candlesticks show more of what actually happened.</li></ul></div>
+        <details class="check"><summary>1. A candle has open $40, high $46, low $38, close $44. What are its body, range, and CLV?</summary><div class="ans">Body = 44 − 40 = +4. Range = 46 − 38 = 8. CLV = ((44−38)−(46−44))/(46−38) = (6−2)/8 = 0.5.</div></details>
+        <details class="check"><summary>2. Day X ranges $70–$78 and closes at $77; Day Y ranges $70–$82 and closes at $72. Day Y's close is a lower price — but which day's CLV is actually higher, and what does that reveal?</summary><div class="ans">Day X: CLV = ((77−70)−(78−77))/(78−70) = 6/8 = 0.75. Day Y: CLV = ((72−70)−(82−72))/(82−70) = −8/12 ≈ −0.67. Day X has the higher CLV even though its closing price is lower — it closed in the upper three-quarters of a narrower range, while Day Y surged to $82 and gave almost all of it back, closing in the lower third of a much wider range.</div></details>
+        <details class="check"><summary>3. Why can a candlestick chart reveal something a line chart cannot, even over a sequence of days that end at the exact same closing prices?</summary><div class="ans">A line chart only plots the close, discarding the open/high/low path for each day — and therefore the body and CLV information that shows how the price got there and who looked more in control by the close.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Line charts simplify to one number per period; bars and candlesticks keep all four (open, high, low, close).</li><li>A candle's body (close − open) and CLV (where the close sits in the day's range) encode information a line chart discards entirely.</li><li>Two days can close at an identical price yet tell opposite stories once the full range is examined.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="moving-averages" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.2</span><h2>Moving averages</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>Prices over 5 days: 10, 12, 11, 13, 14. What's the 5-day moving average, and what does it smooth away?</div>
+        <div class="question"><b>The question</b>Prices over 5 days: 10, 12, 11, 13, 14. The simple 5-day average is 12 — but a trader instead computes a 3-day <i>exponential</i> moving average, which deliberately weights the most recent prices more heavily than older ones. Does that give the same answer, or does it tell a noticeably different, more current story?</div>
         <h3 class="sec">Intuition</h3>
-        <p>A <b>moving average</b> replaces day-to-day noise with the average of the last N periods, making the underlying trend easier to see. A <b>crossover</b> (e.g. a short average crossing above a longer one) is a commonly watched, debated trend signal.</p>
-        <div class="worked"><b>Worked example</b><p>(10+12+11+13+14)/5 = 60/5 = <b>12</b>.</p></div>
-        <div class="eq">MA_N=\frac1N\sum_{i=1}^{N}P_i</div>
+        <p>A <b>moving average</b> replaces day-to-day noise with the average of the last N periods, making the underlying trend easier to see:</p>
+        <ul>
+          <li>A <b>simple moving average (SMA)</b> gives every one of the last N prices equal weight — today's close counts exactly as much as the close from N days ago.</li>
+          <li>A <b>crossover</b> (a shorter average crossing above or below a longer one) is a commonly watched, debated trend signal — short above long is often read as a strengthening uptrend, and vice versa.</li>
+          <li>Shorter averages track price more closely (and react faster to a new move); longer averages are smoother but slower to turn.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — the simple average</b><p>(10+12+11+13+14)/5 = 60/5 = <b>12</b>.</p></div>
+        <h3 class="sec">Build it up: weighting recent prices more — the exponential moving average</h3>
+        <p>An <b>exponential moving average (EMA)</b> answers a natural complaint about the SMA: why should a price from N days ago count exactly as much as today's? An EMA instead blends today's price with yesterday's EMA, using a <b>smoothing factor</b> α = 2/(N+1) that puts more weight on recent data without discarding older data entirely — each past price's influence just fades geometrically rather than being dropped all at once.</p>
+        <div class="worked"><b>Worked example 2 — a 3-day EMA, step by step</b><p>For N=3, α = 2/(3+1) = <b>0.5</b>. Seed the EMA with the simple average of the first 3 prices (10, 12, 11): (10+12+11)/3 = <b>11</b>. Day 4's price is 13: EMA = 0.5×13 + 0.5×11 = <b>12</b>. Day 5's price is 14: EMA = 0.5×14 + 0.5×12 = <b>13</b>. The final 3-day EMA is <b>13</b> — noticeably higher than the 3-day SMA of the same last three prices (11+13+14)/3 ≈ <b>12.67</b>, because the EMA leans harder on day 5's high price of 14.</p></div>
+        <div class="eq">MA_N=\frac1N\sum_{i=1}^{N}P_i\qquad \text{EMA}_t=\alpha P_t+(1-\alpha)\,\text{EMA}_{t-1},\quad \alpha=\frac{2}{N+1}</div>
+        <table class="sym"><tr><td>MA_N</td><td>simple moving average over the last N periods</td></tr><tr><td>P_i, P_t</td><td>price in period i (or at time t)</td></tr><tr><td>EMA_t, EMA_{t-1}</td><td>the exponential moving average at the current and previous period (first seeded with a simple average)</td></tr><tr><td>α</td><td>smoothing factor; larger α (shorter N) weights recent prices more heavily</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Confirm the average is 12, then raise one price a lot — notice how much a single outlier can move a short average.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Confirm the SMA is 12, then raise one price a lot — notice how much a single outlier can move a short average.</li><li>In the crossover chart below, watch the fast (short) average cross back and forth over the slow (long) one — each crossing is a classic, debated "signal" point.</li></ol></div>
       <div data-lab="calc" data-title="5-day moving average" data-params="p1=10:0..100:0.5; p2=12:0..100:0.5; p3=11:0..100:0.5; p4=13:0..100:0.5; p5=14:0..100:0.5" data-rows="5-day moving average = (p1+p2+p3+p4+p5)/5"></div>
+      <div data-lab="fplot" data-title="A short moving average crossing a long one" data-names="Long MA (slow);Short MA (fast)" data-f="8+0.4*x; 8+0.4*x+1.5*sin(0.6*x)" data-params="" data-view="0,12,4,15" data-roots></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A short moving average reacts to noise more than a long one — neither is simply "better".</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>50-day/200-day moving-average crossovers discussed in market commentary.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A short moving average reacts to noise more than a long one — neither is simply "better", it's a trade-off.</li><li>An EMA's "seed" (the value you start the recursion from) matters less and less over time, but seeding it from too few days can distort early readings — real platforms typically seed from far more history than this small example uses.</li><li>Treating any single crossover as a standalone buy/sell signal — crossovers also fire false signals in sideways, choppy markets, and are commonly combined with other evidence (like volume, Lesson 0.4) rather than traded alone.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>50-day/200-day moving-average crossovers discussed in market commentary.</li><li>MACD (moving average convergence/divergence), a widely used indicator, is built directly on top of the exponential moving average introduced here.</li><li>Most charting platforms let you switch the exact same price series between SMA and EMA (and change the lookback period) — the same data, a different averaging method, can flash a "signal" at a different moment.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does a moving average do to day-to-day noise?</summary><div class="ans">Smooths it out by averaging over several periods.</div></details>
-        <details class="check"><summary>2. Prices 20,22,18,24,26. 5-day average?</summary><div class="ans">(20+22+18+24+26)/5 = 22.</div></details>
-        <details class="check"><summary>3. Does a shorter or longer moving average react faster to new prices?</summary><div class="ans">A shorter one.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Moving averages trade noise for smoothness.</li><li>Shorter vs. longer averages trade off responsiveness and stability.</li></ul></div>
+        <details class="check"><summary>1. What does a moving average do to day-to-day noise?</summary><div class="ans">Smooths it out by averaging over several periods — trading noise for a clearer (but lagged) view of trend.</div></details>
+        <details class="check"><summary>2. Using α = 2/(N+1) for a 3-day EMA, the previous EMA is 12 and the new price is 16. What's the new EMA?</summary><div class="ans">α = 0.5. New EMA = 0.5×16 + 0.5×12 = 8 + 6 = 14.</div></details>
+        <details class="check"><summary>3. Why can a 3-day EMA and a 3-day SMA, computed on the exact same five prices, end up with different final values?</summary><div class="ans">The SMA weights the last three prices equally, while the EMA weights more recent prices more heavily through its recursive α-blending — so when the latest price is unusually high or low, the EMA reacts more strongly than the SMA does.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Moving averages trade noise for smoothness.</li><li>Shorter vs. longer averages trade off responsiveness and stability.</li><li>Exponential moving averages weight recent prices more heavily than simple moving averages, reacting faster to new data at the cost of being "jumpier".</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="momentum-indicators" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.3</span><h2>Momentum indicators</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A stock's average recent gain is 1.5%, its average recent loss is 1.0%. What does the Relative Strength Index (RSI) say?</div>
+        <div class="question"><b>The question</b>A stock's average recent gain is 1.5%, its average recent loss is 1.0%. What does the Relative Strength Index (RSI) say — and where do "average gain" and "average loss" actually come from in the first place, given that each day is either a gain <i>or</i> a loss, never both?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>RSI</b> compares the size of recent gains to recent losses, scaled to 0–100. High readings (often around 70+) are commonly called "overbought"; low readings (often around 30−) "oversold" — descriptive labels, not guarantees of a reversal.</p>
-        <div class="worked"><b>Worked example</b><p>RS = 1.5/1.0 = 1.5. RSI = 100 − 100/(1+1.5) = 100 − 40 = <b>60</b>.</p></div>
+        <p><b>RSI</b> compares the size of recent gains to recent losses, scaled to a 0–100 range:</p>
+        <ul>
+          <li>High readings (commonly around 70+) are called "overbought"; low readings (commonly around 30−) "oversold" — descriptive labels for how large recent gains have been relative to recent losses, not guarantees of a reversal.</li>
+          <li>RSI is typically computed over a fixed lookback window (commonly 14 periods), so it updates as the window rolls forward one period at a time.</li>
+          <li>A reading of exactly 50 means average gains and average losses over the window have been the same size — a "neutral" reading, neither strongly up nor down.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — from given averages</b><p>RS = 1.5/1.0 = 1.5. RSI = 100 − 100/(1+1.5) = 100 − 40 = <b>60</b>.</p></div>
+        <h3 class="sec">Build it up: where "average gain" and "average loss" come from</h3>
+        <p>Over a lookback window, each day's price change is sorted into exactly one of two buckets: if the price rose, that day's move counts as a <b>gain</b> and contributes <b>0</b> to that day's loss bucket; if it fell, the (positive) size of the drop counts as a <b>loss</b> and that day contributes 0 to the gain bucket. <b>Average gain</b> and <b>average loss</b> are then just the plain average of each bucket across the whole window — including the zeros from the "other" direction's days.</p>
+        <div class="worked"><b>Worked example 2 — computing RSI from 6 raw closes</b><p>Closes: 44.00, 44.25, 44.50, 43.75, 44.65, 45.10 → five daily changes: +0.25, +0.25, −0.75, +0.90, +0.45. Gains bucket: 0.25, 0.25, 0, 0.90, 0.45 → average = 1.85/5 = <b>0.37</b>. Losses bucket: 0, 0, 0.75, 0, 0 → average = 0.75/5 = <b>0.15</b>. RS = 0.37/0.15 ≈ <b>2.467</b>. RSI = 100 − 100/(1+2.467) ≈ 100 − 28.85 = <b>71.15</b> — just into "overbought" territory, driven by the one large down day being outweighed by three up days.</p></div>
         <div class="eq">RS=\frac{\text{avg gain}}{\text{avg loss}}\qquad RSI=100-\frac{100}{1+RS}</div>
+        <table class="sym"><tr><td>avg gain</td><td>average of the positive price changes over the lookback window (0 counted on down days)</td></tr><tr><td>avg loss</td><td>average of the (positive) size of negative price changes over the same window (0 counted on up days)</td></tr><tr><td>RS, RSI</td><td>relative strength, and RSI scaled to 0–100</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise average loss toward average gain: RS falls toward 1 and RSI moves toward 50 — neutral.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise average loss toward average gain: RS falls toward 1 and RSI moves toward 50 — neutral.</li><li>In the curve below, notice how steeply RSI rises as RS moves away from 1 on the low side, versus how it flattens out for large RS — the formula itself isn't a straight line.</li></ol></div>
       <div data-lab="calc" data-title="RSI calculator" data-params="avgGain=1.5:0..10:0.1; avgLoss=1.0:0.01..10:0.1" data-rows="RS = avgGain / avgLoss; RSI = 100 - 100 / (1 + (avgGain/avgLoss))"></div>
+      <div data-lab="fplot" data-title="RSI as a function of RS — a bounded, nonlinear curve" data-f="100-100/(1+x)" data-params="" data-view="0,5,0,100"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>"Overbought" doesn't mean "must fall now" — a strong trend can stay overbought for a long time.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>RSI commonly plotted under a price chart as an overbought/oversold gauge.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>"Overbought" doesn't mean "must fall now" — a strong trend can stay overbought for a long time.</li><li>A day with zero price change still has to be counted in the window (as a 0 in both buckets) — skipping it quietly shortens the lookback and skews the result.</li><li>This lesson uses a plain average for teaching clarity; the original Wilder RSI uses a smoothed moving average of gains/losses, so a live charting platform's default RSI on the same prices will read very slightly differently.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>RSI commonly plotted under a price chart as an overbought/oversold gauge.</li><li>RSI "divergences" (price makes a new high or low but RSI doesn't) are widely discussed among technical traders as a possible early-warning sign — contested, not proof.</li><li>Momentum indicators like RSI are frequently plotted alongside moving averages (Lesson 0.2) rather than read alone.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does RSI compare?</summary><div class="ans">The size of recent average gains to recent average losses.</div></details>
-        <details class="check"><summary>2. Avg gain 2, avg loss 2. RSI?</summary><div class="ans">RS=1; RSI=100−50=50 (neutral).</div></details>
-        <details class="check"><summary>3. Does "overbought" guarantee a price drop?</summary><div class="ans">No — it's descriptive, not a guarantee.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>RSI scales recent gain/loss strength to 0–100.</li><li>Extremes are descriptive labels, not certainties.</li></ul></div>
+        <details class="check"><summary>1. What does RSI compare?</summary><div class="ans">The size of recent average gains to recent average losses, scaled to 0–100.</div></details>
+        <details class="check"><summary>2. Avg gain 1.0, avg loss 2.0. RS and RSI?</summary><div class="ans">RS = 0.5; RSI = 100 − 100/1.5 ≈ 33.3 (oversold territory).</div></details>
+        <details class="check"><summary>3. A 5-day window has daily changes (in %) of +0.5, −0.3, +0.2, −0.3, +0.1. What are avg gain, avg loss, RS and RSI?</summary><div class="ans">Gains: 0.5, 0, 0.2, 0, 0.1 → avg = 0.8/5 = 0.16. Losses: 0, 0.3, 0, 0.3, 0 → avg = 0.6/5 = 0.12. RS = 0.16/0.12 ≈ 1.333. RSI = 100 − 100/2.333 ≈ 57.1.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>RSI scales recent gain/loss strength to 0–100.</li><li>Extremes are descriptive labels, not certainties.</li><li>Average gain and average loss come from sorting each day's change into one bucket and 0 into the other, then averaging across the whole lookback window.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="volume-analysis" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.4</span><h2>Volume analysis</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>A stock breaks above a resistance level on very high volume. Does that mean something different from the same breakout on thin volume?</div>
+        <div class="question"><b>The question</b>A stock breaks above a resistance level on very high volume. Does that mean something different from the same breakout on thin volume — and could tracking volume over many days, not just one, reveal something a single day's ratio misses entirely?</div>
         <h3 class="sec">Intuition</h3>
-        <p><b>Volume</b> — how many shares traded — is often used to confirm or question a price move. A move on heavy volume is commonly viewed as more "convincing" (more participants agreeing with it) than the same move on thin volume, though this is a heuristic, not a law.</p>
-        <div class="worked"><b>Worked example</b><p>Average daily volume 1,000,000 shares; breakout day volume 2,500,000 shares: volume ratio = 2,500,000/1,000,000 = <b>2.5×</b> average — a notably heavier-than-usual day.</p></div>
-        <div class="eq">\text{volume ratio}=\frac{\text{day's volume}}{\text{average volume}}</div>
+        <p><b>Volume</b> — how many shares traded — is often used to confirm or question a price move:</p>
+        <ul>
+          <li>A move on heavy volume is commonly viewed as more "convincing" (more participants agreeing with it) than the same move on thin volume, though this is a heuristic, not a law.</li>
+          <li>A single day's volume is easiest to read relative to its own recent average — hence a "volume ratio" rather than a raw share count, which varies hugely across different stocks.</li>
+          <li>One day's ratio, on its own, says nothing about whether conviction has been building or fading over the days (or weeks) leading up to it.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — one day's ratio</b><p>Average daily volume 1,000,000 shares; breakout day volume 2,500,000 shares: volume ratio = 2,500,000/1,000,000 = <b>2.5×</b> average — a notably heavier-than-usual day.</p></div>
+        <h3 class="sec">Build it up: turning many days of volume into one running trend — On-Balance Volume</h3>
+        <p><b>On-Balance Volume (OBV)</b> answers the question above directly: it's a running cumulative total that <i>adds</i> a day's volume when the price closes up, and <i>subtracts</i> it when the price closes down. The result is a single line that can reveal steady accumulation (OBV trending up) or distribution (OBV trending down) even on days where the price itself looks flat or choppy.</p>
+        <div class="worked"><b>Worked example 2 — four days of OBV</b><p>Signed volumes (positive on an up-close day, negative on a down-close day): Day 1 +1,200,000; Day 2 −900,000; Day 3 +1,500,000; Day 4 −600,000. Running OBV: 0+1,200,000 = <b>1,200,000</b> → 1,200,000−900,000 = <b>300,000</b> → 300,000+1,500,000 = <b>1,800,000</b> → 1,800,000−600,000 = <b>1,200,000</b> (final). Even though the series ends on a down day, the final OBV of 1,200,000 is still well above 0 — across the four days, more volume showed up on up days than down days, a hint of net accumulation that a single day's ratio alone wouldn't show.</p></div>
+        <div class="eq">\text{volume ratio}=\frac{\text{day's volume}}{\text{average volume}}\qquad \text{OBV}_t=\text{OBV}_{t-1}+\text{sign}(\Delta P_t)\times V_t</div>
+        <table class="sym"><tr><td>volume ratio</td><td>a day's volume divided by its recent average volume</td></tr><tr><td>OBV_t, OBV_{t-1}</td><td>running on-balance-volume total, this period and the previous one (starts at 0)</td></tr><tr><td>sign(ΔP_t)</td><td>+1 if the period closed up, −1 if it closed down, 0 if unchanged</td></tr><tr><td>V_t</td><td>that period's volume</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Bring the day's volume down toward the average: the ratio approaches 1 — an unremarkable volume day.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Bring the day's volume down toward the average: the ratio approaches 1 — an unremarkable volume day.</li><li>In the OBV calculator, flip the sign on one day's volume (turn an up day into a down day of the same size): watch how much that single day swings the running total.</li></ol></div>
       <div data-lab="calc" data-title="Volume ratio" data-params="dayVolume=2500000:0..20000000:10000; avgVolume=1000000:1..10000000:10000" data-rows="volume ratio = dayVolume / avgVolume"></div>
+      <div data-lab="calc" data-title="On-balance volume (OBV) over 4 days" data-params="day1=1200000:-3000000..3000000:50000; day2=-900000:-3000000..3000000:50000; day3=1500000:-3000000..3000000:50000; day4=-600000:-3000000..3000000:50000" data-rows="OBV after day 1 = day1; OBV after day 2 = day1 + day2; OBV after day 3 = day1 + day2 + day3; OBV after day 4 (final) = day1 + day2 + day3 + day4" data-note="Enter each day's volume as positive on an up-close day, negative on a down-close day."></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>Volume confirms conviction, not direction by itself — a heavy-volume move can still reverse.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>"Breakout on high volume" is a commonly cited (and debated) pattern.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>Volume confirms conviction, not direction by itself — a heavy-volume move can still reverse.</li><li>OBV's absolute level means little on its own — what matters is its direction over time (rising, falling, or diverging from price), not the raw cumulative number, which depends on an arbitrary starting point.</li><li>A volume spike around a scheduled event (earnings, an index rebalance) can be a one-off mechanical effect rather than a genuine shift in investor conviction.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>"Breakout on high volume" is a commonly cited (and debated) pattern.</li><li>On-Balance Volume and related accumulation/distribution indicators are standard add-ons on most charting platforms, plotted directly under the price.</li><li>Unusually heavy volume around corporate actions (an index addition or removal, a large block trade) is routinely flagged in market commentary as "mechanical" rather than information-driven.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
         <details class="check"><summary>1. What does volume measure?</summary><div class="ans">How many shares (or contracts) traded over a period.</div></details>
         <details class="check"><summary>2. Day volume 3,000,000, average 1,500,000. Ratio?</summary><div class="ans">2×.</div></details>
-        <details class="check"><summary>3. Does heavy volume guarantee a price move continues?</summary><div class="ans">No — it's a heuristic about conviction, not a guarantee.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Volume is used to gauge conviction behind a price move.</li><li>It's a heuristic, not a certainty.</li></ul></div>
+        <details class="check"><summary>3. Three days of signed volume: +800,000 (up), −500,000 (down), +300,000 (up). What's the running OBV after each day, starting from 0?</summary><div class="ans">After day 1: 800,000. After day 2: 800,000 − 500,000 = 300,000. After day 3: 300,000 + 300,000 = 600,000 (final).</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Volume is used to gauge conviction behind a price move.</li><li>A single day's ratio is a heuristic, not a certainty.</li><li>On-Balance Volume turns many days of volume into one running trend line — its direction matters more than its absolute level.</li></ul></div>
       </div>
     </section>
 
     <section class="lesson" id="the-ta-debate" data-lesson>
       <div class="lesson-head"><span class="level" style="color:var(--blue)">0.5</span><h2>The debate around technical analysis</h2><button class="btn small mark"></button></div>
       <div class="prose">
-        <div class="question"><b>The question</b>If markets are even roughly efficient (Financial Markets, Lesson "market-efficiency"), should chart patterns work at all?</div>
+        <div class="question"><b>The question</b>If markets are even roughly efficient (Financial Markets, Lesson "market-efficiency"), should chart patterns work at all? And even if a pattern looks real in historical data, how would you tell a genuine edge apart from a run of lucky coin flips?</div>
         <h3 class="sec">Intuition</h3>
-        <p>Technical analysis has enthusiastic practitioners and serious academic skeptics; weak-form market efficiency specifically questions whether past-price patterns offer a reliable edge. Neither side has fully "won" — it remains genuinely debated evidence.</p>
-        <div class="worked"><b>Worked example</b><p>If a pattern "works" only 52% of the time versus a 50% coin flip, that's a real but very small edge — easily erased by trading costs (Investment Fundamentals Lessons 1.1–1.2) unless the edge is large and consistent.</p></div>
-        <div class="eq">\text{edge}=\text{win rate}-50\%</div>
+        <p>Technical analysis has enthusiastic practitioners and serious academic skeptics:</p>
+        <ul>
+          <li><b>Weak-form market efficiency</b> specifically questions whether past-price patterns offer a reliable, repeatable edge — if enough participants already act on a visible pattern, the argument goes, the edge should get traded away.</li>
+          <li>Practitioners counter that markets are efficient only approximately, and that behavioral patterns (Behavioral Finance path) can create exploitable, if small and inconsistent, tendencies.</li>
+          <li>Neither side has fully "won" this debate — it remains genuinely contested, actively researched evidence, not a settled question.</li>
+        </ul>
+        <div class="worked"><b>Worked example 1 — a small edge vs. costs</b><p>If a pattern "works" only 52% of the time versus a 50% coin flip, that's a real but very small edge — easily erased by trading costs (Investment Fundamentals Lessons 1.1–1.2) unless the edge is large and consistent.</p></div>
+        <h3 class="sec">Build it up: is a measured edge even statistically real?</h3>
+        <p>A measured win rate is only an <i>estimate</i>, built from a limited sample of past trades — and a small sample's estimate can easily be noise rather than a genuine edge. The <b>standard error</b> of a win rate measures how much that estimate could plausibly bounce around purely from sample size, even if the "true" long-run rate were exactly 50%. A common rule of thumb: an edge within roughly 1–2 standard errors of zero is hard to distinguish from random chance.</p>
+        <div class="worked"><b>Worked example 2 — the same 52% edge, two sample sizes</b><p>At n = 100 trades: SE = √(0.52×0.48/100) ≈ <b>5.0%</b>. The measured edge (2 percentage points above 50%) is only 2/5.0 ≈ <b>0.40 standard errors</b> from zero — statistically indistinguishable from a coin flip. At n = 10,000 trades: SE = √(0.52×0.48/10,000) ≈ <b>0.50%</b>. The same 2-point edge is now 2/0.50 = <b>4.0 standard errors</b> from zero — much harder to dismiss as luck, though it still needs out-of-sample confirmation and a hard look at trading costs before it means anything in practice.</p></div>
+        <div class="eq">\text{edge}=\text{win rate}-50\%\qquad SE=\sqrt{\frac{p(1-p)}{n}}\qquad z=\frac{p-0.5}{SE}</div>
+        <table class="sym"><tr><td>p</td><td>measured win rate, as a decimal (e.g. 0.52)</td></tr><tr><td>n</td><td>number of trades/observations in the sample</td></tr><tr><td>SE</td><td>standard error of the win-rate estimate</td></tr><tr><td>z</td><td>the edge measured in standard errors away from a 50% coin flip</td></tr></table>
       </div>
-      <div class="try"><b>Try this</b><ol><li>Raise the win rate: the edge grows. Push trading costs up alongside: a small edge can be erased entirely.</li></ol></div>
+      <div class="try"><b>Try this</b><ol><li>Raise the win rate: the edge grows. Push trading costs up alongside: a small edge can be erased entirely.</li><li>In the standard-error calculator, hold the win rate fixed at 52% and raise the sample size n from 100 toward 10,000 — watch the standard error shrink and the same small edge turn from statistically meaningless into much harder to dismiss.</li></ol></div>
       <div data-lab="calc" data-title="A small edge vs. trading costs" data-params="winRate=52:40..70:1; costPerTradePct=0.2:0..2:0.05" data-rows="edge (pp) = winRate - 50; net of two round-trip costs (pp) = winRate - 50 - 2*costPerTradePct"></div>
+      <div data-lab="calc" data-title="Is a win rate statistically different from 50%?" data-params="winRate=0.52:0.4..0.7:0.005; n=100:10..20000:10" data-rows="standard error (%) = sqrt(winRate*(1-winRate)/n)*100; edge in standard errors (z) = (winRate-0.5)/sqrt(winRate*(1-winRate)/n)"></div>
       <div class="prose">
-        <div class="trap"><b>Common traps</b><ul><li>A small statistical edge can be fully erased by trading costs and taxes.</li></ul></div>
-        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Academic market-efficiency research is routinely cited both for and against technical trading approaches.</li></ul></div>
+        <div class="trap"><b>Common traps</b><ul><li>A small statistical edge can be fully erased by trading costs and taxes.</li><li>Testing many different patterns or rules against the same historical data until one looks good (overfitting/data-mining) will eventually turn up an apparent "pattern" by chance alone, even in purely random data.</li><li>A statistically significant edge found in past data is still not a guarantee it continues to work going forward — markets can change as more participants learn and trade on a known pattern.</li></ul></div>
+        <div class="realhook"><b>Where it shows up in real investing</b><ul><li>Academic market-efficiency research is routinely cited both for and against technical trading approaches.</li><li>Backtesting software, used by both retail and professional traders, tests chart-based rules against years of historical data before risking real money.</li><li>The Quant Investing path on this site formalizes exactly this kind of statistical-significance testing for trading signals.</li></ul></div>
         <h3 class="sec">Check yourself</h3>
-        <details class="check"><summary>1. What does weak-form efficiency specifically question?</summary><div class="ans">Whether past price patterns offer a reliable trading edge.</div></details>
+        <details class="check"><summary>1. What does weak-form efficiency specifically question?</summary><div class="ans">Whether past price patterns offer a reliable, repeatable trading edge.</div></details>
         <details class="check"><summary>2. Win rate 55%, two round-trip costs of 0.3pp each. Net edge?</summary><div class="ans">55 − 50 − 0.6 = 4.4 percentage points.</div></details>
-        <details class="check"><summary>3. Is the debate over technical analysis fully settled?</summary><div class="ans">No — it remains genuinely debated.</div></details>
-        <div class="takeaways"><h4>Takeaways</h4><ul><li>Technical analysis is debated, not settled, evidence.</li><li>A small edge can be erased by trading costs.</li></ul></div>
+        <details class="check"><summary>3. A 52% win rate is measured over 400 trades (SE ≈ 2.5%) versus the same 52% over just 100 trades (SE ≈ 5.0%). Which sample makes the 2-point edge more convincing, and why?</summary><div class="ans">The 400-trade sample — the edge is about 2/2.5 ≈ 0.8 standard errors from zero there, versus only about 2/5.0 ≈ 0.4 at n=100. Neither is strongly past typical significance thresholds (often ~2 standard errors), which is exactly the point: sample size changes how much a given win rate can be trusted.</div></details>
+        <div class="takeaways"><h4>Takeaways</h4><ul><li>Technical analysis is debated, not settled, evidence.</li><li>A small edge can be erased by trading costs.</li><li>A measured edge needs a large enough sample — and should hold up out-of-sample — before it can be trusted as more than noise.</li></ul></div>
       </div>
     </section>
 

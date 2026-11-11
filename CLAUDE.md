@@ -9,11 +9,11 @@ Invest Buddy dashboard mockup for layout/branding.
 Investment Fundamentals → Economics (Macro & Micro) → Financial Markets → Asset Classes → Fundamental Analysis →
 Technical Analysis → Behavioral Finance → Investment Strategies → Portfolio Management → Risk & Derivatives →
 Global & Current Events → Quant Investing.
-**All 12 paths are now live.** Investment Fundamentals has 5 modules / 33 lessons (a basic pass). The other 11 paths
-each have one module (`<id>-0.html`, "Foundations", 5 lessons each = 55 more lessons), deliberately kept to a single
-module per path to control scope. **Economics and Financial Markets' Module 0 have been deepened to a full deep pass**
-(700–1500 words/lesson, multiple worked examples, richer labs); every other path is still a basic pass — concise
-lessons, to be deepened module by module later, on request.
+**All 12 paths are now live, and every path's Module 0 is now a full deep pass** (700–1500 words/lesson, multiple
+worked examples, richer labs). Investment Fundamentals has 5 modules / 33 lessons, of which Module 0 is deep and
+modules 1–4 remain a basic pass (to be deepened later, on request). The other 11 paths each have one module
+(`<id>-0.html`, "Foundations", 5 lessons each = 55 lessons), deliberately kept to a single module per path to control
+scope — all 11 of those modules are now deep.
 
 ## Layout
 ```
@@ -68,21 +68,27 @@ assets/style.css                  dark/light/neon theme + lesson building blocks
   55 lessons total): `economics`, `markets`, `assets`, `fundamental`, `technical`, `behavioral`, `strategies`,
   `portfolio`, `risk`, `global`, `quant`. These hub pages are intentionally lean (hero + mod-list only, no separate
   "how to learn" essay or per-path pipeline — they all share the `hub`/`fundamentals` PIPELINES entry rather than each
-  getting a bespoke 6-stage pipeline, to keep the basic pass cheap — this still holds even where a module's lessons
-  have been deepened). Lessons avoid duplicating Investment Fundamentals' ground and instead cross-reference it by
-  lesson name (e.g. "Investment Fundamentals Lesson 0.7") — read an existing module page before adding a lesson that
-  might overlap.
-- **Economics `economics-0.html`** and **Financial Markets `markets-0.html`** are now a **deep pass**: each of their
-  5 lessons has 700–1500 words, 2–3 worked examples (all numerically verified), and 2 labs (reusing `calc`/`fplot`
-  from `labs-core.js` — no new lab files were needed). New ideas introduced: price elasticity, the Fisher equation
-  (exact real return), bond price/yield inversion, GDP components (C+I+G+NX) and per-capita GDP, leading/coincident/
-  lagging indicators (Economics); primary vs. secondary markets and market capitalization, central clearing vs.
-  bilateral counterparty risk, luck-vs-skill in manager track records, insider-trading penalty structure, and
-  currency-adjusted international returns (Financial Markets). Their hub pages (`economics.html`, `markets.html`) and
-  `CLAUDE.md`/`README.md` now say "deep pass" instead of "basic pass" for these two.
-- **Deepening order**: Economics and Financial Markets are done; every other path is still a basic pass. Next step is
-  to deepen one more module at a time, on request — there's no fixed order; follow whatever the user asks to go
-  deeper on first.
+  getting a bespoke 6-stage pipeline — this still holds even though every module's lessons are now deep). Lessons
+  avoid duplicating Investment Fundamentals' ground and instead cross-reference it by lesson name (e.g. "Investment
+  Fundamentals Lesson 0.7") — read an existing module page before adding a lesson that might overlap.
+- **Every path's Module 0 is now a deep pass**: each of its 5 lessons has 700–1500 words, 2–3 worked examples (all
+  numerically verified), and 2 labs (almost entirely reusing `calc`/`fplot` from `labs-core.js`, plus `diversify`/
+  `allocpie`/`compound` from `labs-fundamentals.js` where genuinely relevant — `assets-0.html`, `portfolio-0.html`,
+  `quant-0.html` and `strategies-0.html` load `labs-fundamentals.js` for this reason). No new lab files were needed
+  anywhere. Notable new ideas per path: price elasticity, the Fisher equation, bond price/yield inversion, GDP
+  components, leading/lagging indicators (Economics); primary/secondary markets, market cap, counterparty risk,
+  luck-vs-skill, currency-adjusted returns (Financial Markets); currency hedging, "2-and-20" fee drag, breakeven
+  inflation (Asset Classes); DuPont decomposition, customer LTV, DSO trend (Fundamental Analysis); CLV/candlesticks,
+  EMA vs. SMA, RSI derivation, OBV, statistical significance of a "win rate" (Technical Analysis); insufficient
+  adjustment, cost of overtrading, the full prospect-theory value function (Behavioral Finance); P/B and PEG
+  cross-checks, 12-1 momentum, dividend/passive compounding (Investment Strategies); n-asset risk floor, the Security
+  Market Line, Fama-French 3-factor (Portfolio Management); parametric VaR, margin calls, delta/gamma (Risk &
+  Derivatives); economic-surprise z-scores, event-study abnormal return, carry trade/PPP (Global & Current Events);
+  multi-factor CAPM generalization, walk-forward testing, the √(2 ln N) multiple-testing bound (Quant Investing). All
+  hub pages and `CLAUDE.md`/`README.md` now say "deep pass" everywhere a Module 0 is referenced.
+- **Deepening order**: every path's Module 0 is done. What's left is Investment Fundamentals' modules 1–4 (still a
+  basic pass) and, longer-term, a second module for any of the 11 single-module paths. No fixed order — follow
+  whatever the user asks to go deeper on next.
 - Shared labs: `assets/labs-core.js` (fplot, calc, machine, sigma, vec2, decode — ported from AI-Hub, domain-agnostic)
   and `assets/labs-fundamentals.js` (compound, diversify, riskreturn, allocpie — written for Investment Fundamentals,
   reused across its 5 modules and by `portfolio-0.html` (diversify) rather than writing new lab files per path, since
